@@ -1,0 +1,1346 @@
+{
+  "items": [
+    {
+      "id": "id_card",
+      "displayName": "ID Card",
+      "description": "A government ID. Not yours, but the photo is close enough.",
+      "rarity": 0,
+      "jobIds": [],
+      "categories": [],
+      "satisfies": [
+        "id"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "business_card",
+      "displayName": "Business Card",
+      "description": "Somebody else's job title, in embossed lettering.",
+      "rarity": 0,
+      "jobIds": [],
+      "categories": [],
+      "satisfies": [
+        "reference"
+      ],
+      "credit": 4,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "certificate",
+      "displayName": "Certificate",
+      "description": "A framed-looking certificate. It can stand in for a missing resume.",
+      "rarity": 1,
+      "jobIds": [],
+      "categories": [],
+      "satisfies": [
+        "certification",
+        "resume"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "reference_letter",
+      "displayName": "Reference Letter",
+      "description": "Glowing praise from somebody who definitely exists.",
+      "rarity": 1,
+      "jobIds": [],
+      "categories": [],
+      "satisfies": [
+        "reference"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "old_resume",
+      "displayName": "Crumpled Resume",
+      "description": "A resume copy. Slightly wet, but readable.",
+      "rarity": 1,
+      "jobIds": [],
+      "categories": [],
+      "satisfies": [
+        "resume"
+      ],
+      "credit": 5,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "portfolio_folder",
+      "displayName": "Portfolio Folder",
+      "description": "A thick folder of work samples.",
+      "rarity": 1,
+      "jobIds": [],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6D7BC6",
+      "size": {
+        "x": 0.24,
+        "y": 0.03,
+        "z": 0.32
+      }
+    },
+    {
+      "id": "proof_electrician",
+      "displayName": "License card",
+      "description": "Laminated, a bit greasy, still valid.",
+      "rarity": 2,
+      "jobIds": [
+        "electrician"
+      ],
+      "categories": [],
+      "satisfies": [
+        "certification"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "proof_nurse",
+      "displayName": "Registration badge",
+      "description": "Clipped to a lanyard. The photo is from a better day.",
+      "rarity": 2,
+      "jobIds": [
+        "nurse"
+      ],
+      "categories": [],
+      "satisfies": [
+        "id"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#6D96C6",
+      "size": {
+        "x": 0.07,
+        "y": 0.006,
+        "z": 0.1
+      }
+    },
+    {
+      "id": "proof_accountant",
+      "displayName": "Accounting certificate",
+      "description": "Every number on it adds up. Mostly.",
+      "rarity": 2,
+      "jobIds": [
+        "accountant"
+      ],
+      "categories": [],
+      "satisfies": [
+        "certification"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_forklift",
+      "displayName": "Operator permit",
+      "description": "Proof you may lift things that are heavier than you.",
+      "rarity": 2,
+      "jobIds": [
+        "forklift"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "proof_developer",
+      "displayName": "Portfolio printout",
+      "description": "Printed in 6 point so the code looks like a lot.",
+      "rarity": 2,
+      "jobIds": [
+        "developer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_support_lead",
+      "displayName": "Reference letter",
+      "description": "Praise from a customer who stopped shouting.",
+      "rarity": 2,
+      "jobIds": [
+        "support_lead"
+      ],
+      "categories": [],
+      "satisfies": [
+        "reference"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_designer",
+      "displayName": "Portfolio folder",
+      "description": "A thick folder of work, none of it in Comic Sans.",
+      "rarity": 2,
+      "jobIds": [
+        "designer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#6D70C6",
+      "size": {
+        "x": 0.24,
+        "y": 0.03,
+        "z": 0.32
+      }
+    },
+    {
+      "id": "proof_project_manager",
+      "displayName": "PM certificate",
+      "description": "Signed, stamped, and slightly behind schedule.",
+      "rarity": 2,
+      "jobIds": [
+        "project_manager"
+      ],
+      "categories": [],
+      "satisfies": [
+        "certification"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_chef",
+      "displayName": "Food-handler card",
+      "description": "Stained at the corners, which is a good sign.",
+      "rarity": 2,
+      "jobIds": [
+        "chef"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "proof_security_guard",
+      "displayName": "Guard badge",
+      "description": "Shiny, official, and a little bit too big.",
+      "rarity": 2,
+      "jobIds": [
+        "security_guard"
+      ],
+      "categories": [],
+      "satisfies": [
+        "id"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#C6986D",
+      "size": {
+        "x": 0.07,
+        "y": 0.006,
+        "z": 0.1
+      }
+    },
+    {
+      "id": "proof_it_genius",
+      "displayName": "Certificate",
+      "description": "It says genius. Nobody checked who wrote it.",
+      "rarity": 2,
+      "jobIds": [
+        "it_genius"
+      ],
+      "categories": [],
+      "satisfies": [
+        "certification"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_negotiator",
+      "displayName": "Signed testimonial",
+      "description": "A signed note from a very satisfied counterpart.",
+      "rarity": 2,
+      "jobIds": [
+        "negotiator"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_napper",
+      "displayName": "Sleep-lab certificate",
+      "description": "Awarded after a rigorous eight hour assessment.",
+      "rarity": 2,
+      "jobIds": [
+        "napper"
+      ],
+      "categories": [],
+      "satisfies": [
+        "certification"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_ex_ceo",
+      "displayName": "Company ID card",
+      "description": "Still opens the executive elevator. Probably.",
+      "rarity": 2,
+      "jobIds": [
+        "ex_ceo"
+      ],
+      "categories": [],
+      "satisfies": [
+        "id"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "proof_polyglot",
+      "displayName": "Language certificate",
+      "description": "Covers more languages than you can pronounce.",
+      "rarity": 2,
+      "jobIds": [
+        "polyglot"
+      ],
+      "categories": [],
+      "satisfies": [
+        "certification"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_wizard",
+      "displayName": "Wand permit",
+      "description": "Issued by a guild nobody can locate.",
+      "rarity": 2,
+      "jobIds": [
+        "wizard"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.085,
+        "y": 0.003,
+        "z": 0.054
+      }
+    },
+    {
+      "id": "proof_time_guru",
+      "displayName": "Reference letter",
+      "description": "Written on a deadline, naturally.",
+      "rarity": 2,
+      "jobIds": [
+        "time_guru"
+      ],
+      "categories": [],
+      "satisfies": [
+        "reference"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_spreadsheet_sorcerer",
+      "displayName": "Spreadsheet ribbon",
+      "description": "A ribbon for the best pivot table in the building.",
+      "rarity": 2,
+      "jobIds": [
+        "spreadsheet_sorcerer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#C66D7D",
+      "size": {
+        "x": 0.07,
+        "y": 0.006,
+        "z": 0.1
+      }
+    },
+    {
+      "id": "proof_app_inventor",
+      "displayName": "Patent paperwork",
+      "description": "Pages of legal text about a very simple idea.",
+      "rarity": 2,
+      "jobIds": [
+        "app_inventor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "proof_meeting_survivor",
+      "displayName": "Award plaque",
+      "description": "A plaque for sitting through 400 meetings.",
+      "rarity": 2,
+      "jobIds": [
+        "meeting_survivor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 8,
+      "primitive": 0,
+      "colorHex": "#74C66D",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "multimeter",
+      "displayName": "Multimeter",
+      "description": "Beeps when you pretend to know what it says.",
+      "rarity": 1,
+      "jobIds": [
+        "electrician"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#6D9BC6",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "wiring_diagram",
+      "displayName": "Wiring Diagram",
+      "description": "Neatly drawn, color coded, slightly singed.",
+      "rarity": 0,
+      "jobIds": [
+        "electrician"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "stethoscope",
+      "displayName": "Stethoscope",
+      "description": "Cold metal and a lot of credibility.",
+      "rarity": 1,
+      "jobIds": [
+        "nurse"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#6DC681",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "nursing_reference",
+      "displayName": "Nursing Reference",
+      "description": "A warm recommendation from a ward sister.",
+      "rarity": 1,
+      "jobIds": [
+        "nurse"
+      ],
+      "categories": [],
+      "satisfies": [
+        "reference"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "calculator",
+      "displayName": "Calculator",
+      "description": "The buttons are worn smooth.",
+      "rarity": 0,
+      "jobIds": [
+        "accountant",
+        "spreadsheet_sorcerer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#C68D6D",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "ledger",
+      "displayName": "Ledger",
+      "description": "Heavy, leather bound, perfectly balanced.",
+      "rarity": 1,
+      "jobIds": [
+        "accountant"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#C66DC3",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "forklift_key",
+      "displayName": "Forklift Key",
+      "description": "Do not ask whose forklift it is.",
+      "rarity": 1,
+      "jobIds": [
+        "forklift"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#6DC6AC",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "pallet_log",
+      "displayName": "Pallet Log",
+      "description": "Page after page of stacked pallets.",
+      "rarity": 0,
+      "jobIds": [
+        "forklift"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "linux_laptop",
+      "displayName": "Linux Laptop",
+      "description": "A beaten-up laptop covered in stickers. Boots straight to a terminal.",
+      "rarity": 1,
+      "jobIds": [
+        "developer",
+        "it_genius",
+        "app_inventor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo",
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#C5C66D",
+      "size": {
+        "x": 0.3,
+        "y": 0.03,
+        "z": 0.2
+      }
+    },
+    {
+      "id": "usb_stick",
+      "displayName": "USB Stick",
+      "description": "Holds a few projects and a suspicious amount of memes.",
+      "rarity": 0,
+      "jobIds": [
+        "developer",
+        "spreadsheet_sorcerer",
+        "app_inventor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6DC686",
+      "size": {
+        "x": 0.06,
+        "y": 0.02,
+        "z": 0.02
+      }
+    },
+    {
+      "id": "headset",
+      "displayName": "Headset",
+      "description": "Still warm from a very long call.",
+      "rarity": 0,
+      "jobIds": [
+        "support_lead"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#6DC6A1",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "ticket_report",
+      "displayName": "Ticket Report",
+      "description": "Resolved tickets, a lot of them.",
+      "rarity": 0,
+      "jobIds": [
+        "support_lead"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "sketchbook",
+      "displayName": "Sketchbook",
+      "description": "Full of work you can show off.",
+      "rarity": 0,
+      "jobIds": [
+        "designer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio",
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6DB1C6",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "drawing_tablet",
+      "displayName": "Drawing Tablet",
+      "description": "One scratch on the pen, many on the screen.",
+      "rarity": 1,
+      "jobIds": [
+        "designer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6DA6C6",
+      "size": {
+        "x": 0.3,
+        "y": 0.03,
+        "z": 0.2
+      }
+    },
+    {
+      "id": "gantt_chart",
+      "displayName": "Gantt Chart",
+      "description": "Every bar is exactly on schedule.",
+      "rarity": 0,
+      "jobIds": [
+        "project_manager"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "sticky_notes",
+      "displayName": "Sticky Notes",
+      "description": "A pad that runs a whole project.",
+      "rarity": 0,
+      "jobIds": [
+        "project_manager",
+        "meeting_survivor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#6DC6A6",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "chef_knife",
+      "displayName": "Chef Knife",
+      "description": "A very sharp argument for your skills.",
+      "rarity": 1,
+      "jobIds": [
+        "chef"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 1,
+      "colorHex": "#6DC6C1",
+      "size": {
+        "x": 0.04,
+        "y": 0.25,
+        "z": 0.04
+      }
+    },
+    {
+      "id": "recipe_book",
+      "displayName": "Recipe Book",
+      "description": "Stained pages full of handwritten notes.",
+      "rarity": 0,
+      "jobIds": [
+        "chef"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#C66D92",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "flashlight",
+      "displayName": "Flashlight",
+      "description": "Heavy enough to count as equipment.",
+      "rarity": 0,
+      "jobIds": [
+        "security_guard"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 1,
+      "colorHex": "#C67D6D",
+      "size": {
+        "x": 0.04,
+        "y": 0.25,
+        "z": 0.04
+      }
+    },
+    {
+      "id": "patrol_log",
+      "displayName": "Patrol Log",
+      "description": "Every round signed and timed.",
+      "rarity": 0,
+      "jobIds": [
+        "security_guard"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "network_cable",
+      "displayName": "Network Cable",
+      "description": "Two meters of proof you can fix the internet.",
+      "rarity": 0,
+      "jobIds": [
+        "it_genius"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 1,
+      "colorHex": "#C6826D",
+      "size": {
+        "x": 0.04,
+        "y": 0.25,
+        "z": 0.04
+      }
+    },
+    {
+      "id": "briefcase",
+      "displayName": "Briefcase",
+      "description": "Leather, scuffed, full of leverage.",
+      "rarity": 1,
+      "jobIds": [
+        "negotiator",
+        "ex_ceo"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6D91C6",
+      "size": {
+        "x": 0.3,
+        "y": 0.03,
+        "z": 0.2
+      }
+    },
+    {
+      "id": "contract_draft",
+      "displayName": "Contract Draft",
+      "description": "Both sides are named. Both sides are smiling.",
+      "rarity": 0,
+      "jobIds": [
+        "negotiator"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "travel_pillow",
+      "displayName": "Travel Pillow",
+      "description": "Shaped by a thousand naps.",
+      "rarity": 0,
+      "jobIds": [
+        "napper"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#C6BD6D",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "sleep_diary",
+      "displayName": "Sleep Diary",
+      "description": "Detailed notes on every nap, with ratings.",
+      "rarity": 0,
+      "jobIds": [
+        "napper"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6F6DC6",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "golden_pen",
+      "displayName": "Golden Pen",
+      "description": "Signed a lot of layoffs with it.",
+      "rarity": 2,
+      "jobIds": [
+        "ex_ceo"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 1,
+      "colorHex": "#BFC66D",
+      "size": {
+        "x": 0.04,
+        "y": 0.25,
+        "z": 0.04
+      }
+    },
+    {
+      "id": "annual_report",
+      "displayName": "Annual Report",
+      "description": "Glossy, thick, mostly charts.",
+      "rarity": 1,
+      "jobIds": [
+        "ex_ceo"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#8A6DC6",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "phrasebook",
+      "displayName": "Phrasebook",
+      "description": "Dog-eared in at least twelve languages.",
+      "rarity": 0,
+      "jobIds": [
+        "polyglot"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#C6A86D",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "translated_letter",
+      "displayName": "Translated Letter",
+      "description": "The same letter in six languages.",
+      "rarity": 0,
+      "jobIds": [
+        "polyglot"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "wand",
+      "displayName": "Wand",
+      "description": "Smells faintly of ozone. Probably real.",
+      "rarity": 1,
+      "jobIds": [
+        "wizard"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 1,
+      "colorHex": "#6DBCC6",
+      "size": {
+        "x": 0.04,
+        "y": 0.25,
+        "z": 0.04
+      }
+    },
+    {
+      "id": "spellbook",
+      "displayName": "Spellbook",
+      "description": "Heavy, leather bound, whispers when closed.",
+      "rarity": 1,
+      "jobIds": [
+        "wizard"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#94C66D",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "pocket_watch",
+      "displayName": "Pocket Watch",
+      "description": "It is always exactly the right time.",
+      "rarity": 1,
+      "jobIds": [
+        "time_guru"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#C6726D",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "planner",
+      "displayName": "Planner",
+      "description": "Every minute of the year is booked.",
+      "rarity": 0,
+      "jobIds": [
+        "time_guru"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#6DACC6",
+      "size": {
+        "x": 0.2,
+        "y": 0.04,
+        "z": 0.27
+      }
+    },
+    {
+      "id": "macro_printout",
+      "displayName": "Macro Printout",
+      "description": "Four hundred lines that replace one intern.",
+      "rarity": 0,
+      "jobIds": [
+        "spreadsheet_sorcerer"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "prototype_phone",
+      "displayName": "Prototype Phone",
+      "description": "Held together with tape and optimism.",
+      "rarity": 1,
+      "jobIds": [
+        "app_inventor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#C6BD6D",
+      "size": {
+        "x": 0.3,
+        "y": 0.03,
+        "z": 0.2
+      }
+    },
+    {
+      "id": "app_mockups",
+      "displayName": "App Mockups",
+      "description": "Beautiful screens that do nothing yet.",
+      "rarity": 0,
+      "jobIds": [
+        "app_inventor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    },
+    {
+      "id": "coffee_mug",
+      "displayName": "Coffee Mug",
+      "description": "Survived a thousand meetings, still full.",
+      "rarity": 0,
+      "jobIds": [
+        "meeting_survivor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "demo"
+      ],
+      "credit": 6,
+      "primitive": 2,
+      "colorHex": "#C66D98",
+      "size": {
+        "x": 0.08,
+        "y": 0.08,
+        "z": 0.08
+      }
+    },
+    {
+      "id": "meeting_minutes",
+      "displayName": "Meeting Minutes",
+      "description": "Minutes of a meeting about minutes.",
+      "rarity": 0,
+      "jobIds": [
+        "meeting_survivor"
+      ],
+      "categories": [],
+      "satisfies": [
+        "portfolio"
+      ],
+      "credit": 6,
+      "primitive": 0,
+      "colorHex": "#EDE6D3",
+      "size": {
+        "x": 0.21,
+        "y": 0.004,
+        "z": 0.3
+      }
+    }
+  ]
+}

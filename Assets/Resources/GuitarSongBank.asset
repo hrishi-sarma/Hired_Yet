@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca0a1e1a42efad4c84494c7d7c2fb05, type: 3}
+  m_Name: GuitarSongBank
+  m_EditorClassIdentifier: Assembly-CSharp::Items.GuitarSongBank
+  slots:
+  - clip: {fileID: 8300000, guid: 27741f61187ae4f40ab40bf0b212f924, type: 3}
+    title: Main Theme Acoustic
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 4290626299d4d4645bb73012aa82b88c, type: 3}
+    title: Life with her
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 8bb7b85fedac47940864ba069ae3a333, type: 3}
+    title: The Last Goodbye
+    volume: 0.5
+  - clip: {fileID: 8300000, guid: 2a37404111b240044800d8309eeae514, type: 3}
+    title: Calming Winds
+    volume: 0.5
+  order: 0
+  masterVolume: 0.8
+  fadeIn: 0.15
+  fadeOut: 0.35
+  loopWhileHeld: 1
+  loopBpm: 120
+  loopBars: 8
+  titleHold: 2.5
+  titleFade: 1.2

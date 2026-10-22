@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5774a979958b3d41bd150ee6840a37d, type: 3}
+  m_Name: InterviewRoomCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::InterviewRoomCatalog
+  deskPrefabs:
+  - {fileID: 8957275475651382418, guid: a640dae6100b53b4ca9bb92c46773972, type: 3}
+  - {fileID: 655403447031457700, guid: 141e5782a7b9eca4ea38f8a0f66746fb, type: 3}
+  - {fileID: 3958309247798301498, guid: 967f27315cdc09c4690d53105ddd4956, type: 3}
+  - {fileID: 849815270560562989, guid: cabb045b714a92b428390b58d765d79c, type: 3}
+  - {fileID: 7591416186709475038, guid: c184ee61f59bf7a45832f4bd6fe6d54c, type: 3}
+  - {fileID: 8970352612326234679, guid: aeec122b5cfbc844894e42eb2bd55386, type: 3}
+  - {fileID: 8970352612326234679, guid: 794b45d9dcd477445a791f54bab09d4c, type: 3}
+  - {fileID: 2274854557414604318, guid: 46b951c178938ff469e5550fbc61efa0, type: 3}
+  - {fileID: 3519905367244488835, guid: db25d2b389bb0f8478e7e515c8f76426, type: 3}
+  interviewerChairPrefabs:
+  - {fileID: 693322340144808405, guid: eac496dabf87c6e4098dd8cfa5f37ccc, type: 3}
+  - {fileID: 1527867948325245013, guid: 555776743ab31da46822e12ac74c2e88, type: 3}
+  - {fileID: 211260291240662588, guid: 615251885f1a6ab458e28dd5d6c6da64, type: 3}
+  guestChairPrefabs:
+  - {fileID: 4782796004413089033, guid: f68bfe219b543b747b5834a1b4403166, type: 3}
+  - {fileID: 1527867948325245013, guid: 555776743ab31da46822e12ac74c2e88, type: 3}
+  deskLampPrefabs: []
+  laptopPrefabs: []
+  deskClutterPrefabs:
+  - {fileID: 4139981288079972886, guid: ed7a8441bc8a9e042b68e5c08b5d0286, type: 3}
+  - {fileID: 3515388588732114866, guid: 4f0decf06c4a82947b05e0f13c3ff038, type: 3}
+  - {fileID: 4957400001754959986, guid: 435ccff05efc97e4f8eb9212bce6f158, type: 3}
+  - {fileID: 6122886380407386896, guid: d3c21da7f014ddf4cac46e46f889b009, type: 3}
+  - {fileID: 3406386670497577258, guid: ca0f1f9e7b6e2ca43a8e405e213b5857, type: 3}
+  - {fileID: 1176271974739730283, guid: a2c9e035f53a5144e9e19418b131c2f2, type: 3}
+  - {fileID: 1176271974739730283, guid: bf15518dc245933498060e3aa7112ed6, type: 3}
+  - {fileID: 1725821090813808922, guid: ad2fa7a61dc7cc340bb3a98a565abdb0, type: 3}
+  - {fileID: 357065274687872603, guid: e84285a83eb81ac48873e516fa1603d5, type: 3}
+  - {fileID: 357065274687872603, guid: ab4c001269ce71c4b91a2b67970392ef, type: 3}
+  - {fileID: 357065274687872603, guid: 68d14f4fae1c5ed43a13663b08c324ed, type: 3}
+  - {fileID: 4614135868670668708, guid: 27e85d63cb9b30b4d9acc2497f67048b, type: 3}
+  - {fileID: 7610345134387402476, guid: 95d7dcfcb3189ab4c86b35b6c76dd40e, type: 3}
+  - {fileID: 1716624500340832802, guid: 611590c46e3e47d4b9eb12aab6295a68, type: 3}
+  - {fileID: 8676400715440597394, guid: 1a665596c035d1644a00269a3765301e, type: 3}
+  - {fileID: 7953690301633518604, guid: 2588ea7ddbc74c648bbeeff01e031312, type: 3}
+  - {fileID: 104216880950422563, guid: 8175144d77bc3f4449fec41cd271fe5d, type: 3}
+  - {fileID: 2512959679473070732, guid: 8e84ca73543071240ba2039c509d539c, type: 3}
+  plantPrefabs:
+  - {fileID: 1198564387723729240, guid: fbfa3deadb3c42a4ca10bd64a2f7554d, type: 3}
+  - {fileID: 1929323652270254930, guid: edfc80eb86786314086d9c9dfae717ac, type: 3}
+  - {fileID: 3755655105378591804, guid: dcd4d5d708b95aa409942224275fa9b2, type: 3}
+  - {fileID: 1929323652270254930, guid: 93e95a25893f69d46aba08851115522c, type: 3}
+  - {fileID: 4924787111933840155, guid: 9dd715038d6fa2e43a9da28d327d977b, type: 3}
+  cornerPropPrefabs:
+  - {fileID: 3470290254577752618, guid: af3f02e156544404486f81e67775fd2e, type: 3}
+  - {fileID: 8903516023095244506, guid: ecc14f0acfe79f9438b09817f25f3745, type: 3}
+  - {fileID: 7602342695349368770, guid: 60a81d054e8b7894482c2fe57553d989, type: 3}
+  - {fileID: 5003677952847945096, guid: ba80b85bf77952144a7c91245a33d968, type: 3}
+  - {fileID: 7830451069015520827, guid: 8a482249a59d4014c981a62156c484a8, type: 3}
+  - {fileID: 1469056589813633687, guid: 66db9ad9447bb6c4cb0892a19dccca07, type: 3}
+  - {fileID: 7757796281935650685, guid: 10fb39104f2573c41b611b9d2e2415df, type: 3}
+  - {fileID: 1421241981054176975, guid: 1b23bbb4cbc3d944f849ea507a8e0993, type: 3}
+  - {fileID: 4965504952640764165, guid: e7f65dd45ef89dc4fb6d5db55058f16d, type: 3}
+  - {fileID: 1530752864748989467, guid: ad9718c51f2bf8f4c8b58deb6496cbbc, type: 3}
+  - {fileID: 8894449980116481040, guid: 4f62bf55507131d428a39fda2161c745, type: 3}
+  - {fileID: 6292717783073524905, guid: 6a3bae98aef97ab43bf76776001c9293, type: 3}
+  - {fileID: 7791722115893786378, guid: 79e5fecc08a749941bdef448897de6f3, type: 3}
+  - {fileID: 3470290254577752618, guid: 450d9563d518cbc4ea0c40995d0c09da, type: 3}
+  - {fileID: 5827216194447440732, guid: 596468c1540895f4289c548e9df77b27, type: 3}
+  carpetPrefabs:
+  - {fileID: 2566189823868774651, guid: 5efae71b946e33d45887f7768a802da5, type: 3}
+  - {fileID: 1068981069347632455, guid: 9be9cf2bdd96e56418d6a0815d9176d0, type: 3}
+  wallDecorPrefabs:
+  - {fileID: 8229265224472104520, guid: a3862a85dc82a1e478bba0d9b5241d73, type: 3}
+  - {fileID: 7617004452992806232, guid: e58f3a007909fa84ba968739582b4af6, type: 3}
+  - {fileID: 596128784101713390, guid: ecded36ace2188a4e96f1880834f230b, type: 3}
+  - {fileID: 739452338329536689, guid: 3962d8b94c80dae44b13e7d28b2e60df, type: 3}
+  - {fileID: 455128841748339472, guid: bbbf61090fb8c064789785c8a7727b89, type: 3}
+  - {fileID: 7170065718348854297, guid: 222cb652f40eb5c46bb42c9f185af0db, type: 3}
+  - {fileID: 7386852494112565894, guid: 077eb31668b6a20409273c674a9ef4b7, type: 3}
+  windowPrefabs: []
+  doorPrefabs: []
+  interviewerPrefabs:
+  - {fileID: 8055012865927290494, guid: 73d73623de411414caefcac79f44c65a, type: 3}
+  - {fileID: 8634637594312527959, guid: 83208228e90324a269a6120c1cadc77a, type: 3}
+  - {fileID: 8712839804944818009, guid: 14082265d011c4d2e9e5dbb57d93f04f, type: 3}
+  wallMaterials: []
+  floorMaterials: []
+  ceilingMaterials: []

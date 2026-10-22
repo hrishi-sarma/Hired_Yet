@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5861eaac9be7af049a01a679e325ff7c, type: 3}
+  m_Name: thirsty_plants
+  m_EditorClassIdentifier: Assembly-CSharp::WorldEventConfig
+  id: thirsty_plants
+  zone: 0
+  enabled: 1
+  spawnWeight: 1
+  npcLabel: NEIGHBOR
+  prompt: WATER THE PLANTS
+  ask: My plants are wilting. Could you water them with me?
+  success: They look so happy! Here, take this.
+  fail: They will have to wait for rain.
+  npcOverride:
+    name: NPC
+    enabled: 1
+    prefab: {fileID: 0}
+    spawnWeight: 1
+    fitToHeight: 0
+    scaleRange: {x: 1, y: 1}
+    overrideSpeed: 0
+    speedMin: 1.1
+    speedMax: 1.6
+    animationSet: {fileID: 0}
+    stripPrefabPhysics: 1
+  npcBefore: {fileID: 0}
+  npcDuring: {fileID: 0}
+  npcAfter: {fileID: 0}
+  soundBefore: {fileID: 0}
+  soundDuring: {fileID: 0}
+  soundAfter: {fileID: 0}
+  soundVolume: 1
+  propPrefab: {fileID: 0}
+  propScale: {x: 1, y: 1, z: 1}
+  propOffset: {x: 0, y: 0, z: 0}
+  propKind: 1
+  propColor: {r: 0.627451, g: 0.3764706, b: 0.24705882, a: 1}
+  propSize: {x: 0.4, y: 0.5, z: 0.4}
+  shirt: {r: 0.43529412, g: 0.627451, b: 0.3764706, a: 1}
+  handler: 0
+  amount: 5
+  limit: 0
+  reward: 0.35
+  playerBefore: 1
+  playerDuring: 15
+  playerAfter: 2
+  timing:
+    pointerSpeed: 1.2
+    zoneWidth: 0.22
+    hits: 3
+  choice:
+    questions: []
+    asked: 1
+  sorting:
+    categories:
+    - Safe
+    - Poisonous
+    items: []
+    allowedMistakes: 1
+  objects:
+    holdSeconds: 2
+    count: 6
+    radius: 5

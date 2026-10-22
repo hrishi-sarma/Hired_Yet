@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e105d628923ab408ff879c96301da4, type: 3}
+  m_Name: NpcAnimationSet
+  m_EditorClassIdentifier: Assembly-CSharp::NpcAnimationSet
+  idleAnimations:
+  - clip: {fileID: -203655887218126122, guid: 05af79f2b371bb542bb183c99dba464d, type: 3}
+    playbackSpeed: 1
+  - clip: {fileID: -203655887218126122, guid: 5761eba75c435964282ccfb9ae69f220, type: 3}
+    playbackSpeed: 1
+  walkAnimations:
+  - clip: {fileID: -203655887218126122, guid: 59ddf8b7b1b48bb4db25a89cd64aa38a, type: 3}
+    playbackSpeed: 0.65
+  - clip: {fileID: -203655887218126122, guid: bbcb008277ea04c40b40655556debf1e, type: 3}
+    playbackSpeed: 0.65
+  - clip: {fileID: -203655887218126122, guid: 91f016986e8906e498d2276ddeb99fb9, type: 3}
+    playbackSpeed: 0.65
+  - clip: {fileID: -203655887218126122, guid: 89a912269ee38f449a1fd83debbfe43f, type: 3}
+    playbackSpeed: 0.65
+  confrontationAnimations: []
+  idle: {fileID: -203655887218126122, guid: 05af79f2b371bb542bb183c99dba464d, type: 3}
+  walk: {fileID: -203655887218126122, guid: eb0298fee94309b4db74561c6a51d0ef, type: 3}
+  confrontation: {fileID: -203655887218126122, guid: 53ff6991110a24843aa10456a1ffb751, type: 3}
+  crossfadeSeconds: 0.2
+  walkReferenceSpeed: 1
+  walkPlaybackRange: {x: 0.4, y: 2.2}
+  loopConfrontation: 0
+  extendAlertToClip: 1
+  maxAlertSeconds: 6

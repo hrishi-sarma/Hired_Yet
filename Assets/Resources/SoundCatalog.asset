@@ -1,0 +1,1342 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730b887b16239ce4993b472dcbcfeede, type: 3}
+  m_Name: SoundCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::SoundCatalog
+  entries:
+  - clip: {fileID: 8300000, guid: 083c4805e9184f44cbffb0be67225a67, type: 3}
+    category: ambient
+    group: city
+    tags:
+    - city
+    - park
+    - city_park
+  - clip: {fileID: 8300000, guid: 14f39102f07dafd4d8e487ae2dc684e2, type: 3}
+    category: ambient
+    group: city
+    tags:
+    - cityambient1
+  - clip: {fileID: 8300000, guid: 821e969f22d0ea44ca25dc2d87cce559, type: 3}
+    category: ambient
+    group: city
+    tags:
+    - cityambient2
+  - clip: {fileID: 8300000, guid: 0bc503642507eae41a7fb4b0f4c6b9eb, type: 3}
+    category: ambient
+    group: city
+    tags:
+    - cityambient3
+  - clip: {fileID: 8300000, guid: df2e5164166419d44b073b31b0e78f78, type: 3}
+    category: ambient
+    group: forest
+    tags:
+    - forest
+    - day1
+    - forest_day1
+  - clip: {fileID: 8300000, guid: a4c6e857a6528ff45b277bd0fd842591, type: 3}
+    category: ambient
+    group: forest
+    tags:
+    - forest
+    - day2
+    - forest_day2
+  - clip: {fileID: 8300000, guid: 3e802059e8b485049bf4d0a07bff114f, type: 3}
+    category: ambient
+    group: forest
+    tags:
+    - forest
+    - night1
+    - forest_night1
+  - clip: {fileID: 8300000, guid: e8ce7476947a2f944b06266a035dab21, type: 3}
+    category: ambient
+    group: forest
+    tags:
+    - forest
+    - night2
+    - forest_night2
+  - clip: {fileID: 8300000, guid: 49e164d7000bc0c48aafe0e8d606d8e9, type: 3}
+    category: ambient
+    group: suburb
+    tags:
+    - suburb
+    - day
+    - suburb_day
+  - clip: {fileID: 8300000, guid: e9062a7cdbd1a274a97129581d88cd19, type: 3}
+    category: ambient
+    group: suburb
+    tags:
+    - suburb
+    - night
+    - suburb_night
+  - clip: {fileID: 8300000, guid: 240a99c3a0631c74bbf7a15cd723c533, type: 3}
+    category: animals
+    group: birds
+    tags:
+    - bird
+    - sound
+    - bird_sound
+  - clip: {fileID: 8300000, guid: 659bf4954bb36494393c612094ccf516, type: 3}
+    category: animals
+    group: bunnies
+    tags:
+    - rabit
+    - sound
+    - rabit_sound
+  - clip: {fileID: 8300000, guid: a5d80c8ea177d4b4eaa575953622b9ec, type: 3}
+    category: animals
+    group: cats
+    tags:
+    - cat
+    - petting
+    - cat_petting
+  - clip: {fileID: 8300000, guid: 752842c25b39cba4bab82a970607b3a8, type: 3}
+    category: animals
+    group: cats
+    tags:
+    - cat
+    - meow
+    - cat_meow
+  - clip: {fileID: 8300000, guid: f8c32a0a2439a4346af294082b5525e1, type: 3}
+    category: animals
+    group: deers
+    tags:
+    - deer
+    - normal
+    - deer_normal
+  - clip: {fileID: 8300000, guid: 1136653e97382c643ac19e9f764071da, type: 3}
+    category: animals
+    group: deers
+    tags:
+    - deer
+    - wounded
+    - deer_wounded
+  - clip: {fileID: 8300000, guid: 2c96afce11105cd43994c73e7ec1459c, type: 3}
+    category: animals
+    group: dogs
+    tags:
+    - dog
+    - bark1
+    - dog_bark1
+  - clip: {fileID: 8300000, guid: 79e1f7ba71cb8dd47841b26d86e81d99, type: 3}
+    category: animals
+    group: dogs
+    tags:
+    - dog
+    - bark2
+    - dog_bark2
+  - clip: {fileID: 8300000, guid: 35cb84d45085cb44fb9ca32946ce4379, type: 3}
+    category: animals
+    group: dogs
+    tags:
+    - dog
+    - petting
+    - dog_petting
+  - clip: {fileID: 8300000, guid: 65709935d39223544a04a3e30ac726d3, type: 3}
+    category: cars
+    group: engines
+    tags:
+    - hatchback
+    - engine
+    - idle
+    - hatchback_engine_idle
+  - clip: {fileID: 8300000, guid: 6905c785c4085b445a51e70a3a81defe, type: 3}
+    category: cars
+    group: engines
+    tags:
+    - sedan
+    - engine
+    - idle
+    - sedan_engine_idle
+  - clip: {fileID: 8300000, guid: 933046b7fab020042896146600c57a93, type: 3}
+    category: cars
+    group: engines
+    tags:
+    - truck
+    - engine
+    - idle
+    - truck_engine_idle
+  - clip: {fileID: 8300000, guid: 0233c77f39993c54d88a3071a33c63bf, type: 3}
+    category: cars
+    group: horns
+    tags:
+    - dragon
+    - studio
+    - car
+    - honk
+    - dragon_studio_car_honk_386166
+  - clip: {fileID: 8300000, guid: ab72846b884de714eaa04d3581d99c97, type: 3}
+    category: cars
+    group: horns
+    tags:
+    - freesound
+    - community
+    - car
+    - horn
+    - beep
+    - two
+    - beeps
+    - honk
+    - freesound_community_car_horn_beep_beep_two_beeps_honk_honk_6188
+  - clip: {fileID: 8300000, guid: 938fdb7c59884814f967bb9f08f08805, type: 3}
+    category: cars
+    group: horns
+    tags:
+    - universfield
+    - automobile
+    - horn
+    - universfield_automobile_horn_02_352065
+  - clip: {fileID: 8300000, guid: 47008fc9bcb58d74bbca7968e3e68472, type: 3}
+    category: cars
+    group: horns
+    tags:
+    - universfield
+    - double
+    - car
+    - honk
+    - universfield_double_car_honk_352443
+  - clip: {fileID: 8300000, guid: 5415f11615511b949b96a4fed07a6a9f, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_01
+  - clip: {fileID: 8300000, guid: d6d36e035fe279c43b06ed0910bcf16e, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_02
+  - clip: {fileID: 8300000, guid: d8f34c11b1367974db735da381494dc7, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_03
+  - clip: {fileID: 8300000, guid: 56764d2394341b940ad86f3e4850a49d, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_04
+  - clip: {fileID: 8300000, guid: 6add22474a47ce34c9eb89c21308eef9, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_05
+  - clip: {fileID: 8300000, guid: 2d6c4f41274683947a0546dbbc7740ec, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_06
+  - clip: {fileID: 8300000, guid: a8f6830596b01254a9ec0ae7ab887013, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_07
+  - clip: {fileID: 8300000, guid: 6e88712654a87fa4182588f9e3b6d640, type: 3}
+    category: footsteps
+    group: asphalt
+    tags:
+    - step
+    - asphalt
+    - step_asphalt_08
+  - clip: {fileID: 8300000, guid: bde8ed1e16680534cade8305983c8a43, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_01
+  - clip: {fileID: 8300000, guid: 48fd77a1effc03f49a959822acea938c, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_02
+  - clip: {fileID: 8300000, guid: 4349fb42e333d8044b9ce1755e5bfbb8, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_03
+  - clip: {fileID: 8300000, guid: d35504f19a614ef4b8d7181ff58a4caf, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_04
+  - clip: {fileID: 8300000, guid: 99c48187df5f78140afb700af407e58d, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_05
+  - clip: {fileID: 8300000, guid: b42b22db13f37374bae69019685c00cf, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_06
+  - clip: {fileID: 8300000, guid: 3f90010c2a203784f87fc1a4daeb0cbe, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_07
+  - clip: {fileID: 8300000, guid: 98386f2f9d3e5a34989ac519c341ff98, type: 3}
+    category: footsteps
+    group: concrete
+    tags:
+    - step
+    - concrete
+    - step_concrete_08
+  - clip: {fileID: 8300000, guid: ae5af5e57afa8ce4abe278dbf54fcfc0, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_01
+  - clip: {fileID: 8300000, guid: 63c25be440e50c8469f0cdf32ea84fdf, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_02
+  - clip: {fileID: 8300000, guid: f5377b86e02140140aeec22e37132edf, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_03
+  - clip: {fileID: 8300000, guid: 6cdd70e654c88704dbbced5deea1ba8d, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_04
+  - clip: {fileID: 8300000, guid: d8e717253778dc34ba68e9f8b61f2227, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_05
+  - clip: {fileID: 8300000, guid: bb698ed5ad6b3b2459ba92803655f5a2, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_06
+  - clip: {fileID: 8300000, guid: 9969423800167b34887b29edc39268a0, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_07
+  - clip: {fileID: 8300000, guid: 47cfc1ba6d205a547bc885be3bf633e0, type: 3}
+    category: footsteps
+    group: dirt
+    tags:
+    - step
+    - dirt
+    - step_dirt_08
+  - clip: {fileID: 8300000, guid: e601733d0341bfe47b0ead24cbe53049, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_01
+  - clip: {fileID: 8300000, guid: a53a7a0bac1710546959b6e226f7ac0a, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_02
+  - clip: {fileID: 8300000, guid: 65232b44095218340b73f325c4251533, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_03
+  - clip: {fileID: 8300000, guid: 8e601b193b7c84f4da268eab3de17e08, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_04
+  - clip: {fileID: 8300000, guid: 95906d23c5ac5214bb5c709b43a5e4c0, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_05
+  - clip: {fileID: 8300000, guid: 76c607931d4da4d41861db0a32740335, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_06
+  - clip: {fileID: 8300000, guid: 6448519c602312c4a88dd7ea3ba25a98, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_07
+  - clip: {fileID: 8300000, guid: 01bd0c4773b99394b8e95c6627447561, type: 3}
+    category: footsteps
+    group: grass
+    tags:
+    - step
+    - grass
+    - step_grass_08
+  - clip: {fileID: 8300000, guid: f612824bcd8f35b46a0809e7a6432e86, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_01
+  - clip: {fileID: 8300000, guid: 129ec8c8243047c4c8ac94f25dc17494, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_02
+  - clip: {fileID: 8300000, guid: 4bb50176090ff1d44b346b58f5148ecd, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_03
+  - clip: {fileID: 8300000, guid: 6cf81765c5bde9540a4c84ff62914d97, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_04
+  - clip: {fileID: 8300000, guid: 41135b5fbe2f9a44087546c43d58fb81, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_05
+  - clip: {fileID: 8300000, guid: 8e662a4dae36c5f4e93c8604036bca37, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_06
+  - clip: {fileID: 8300000, guid: f07df2fa62bb50a478bc1d22e8b783f5, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_07
+  - clip: {fileID: 8300000, guid: 08a45f77fef68c443a1b5c61ffb19410, type: 3}
+    category: footsteps
+    group: indoor
+    tags:
+    - step
+    - indoor
+    - step_indoor_08
+  - clip: {fileID: 8300000, guid: 6366d8bba266856458425f3aabc09d40, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_01
+  - clip: {fileID: 8300000, guid: 42aaffa0fa84de64dbea042ba81f062a, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_02
+  - clip: {fileID: 8300000, guid: 9ad3cffb2890e4640ab61eda9ffef912, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_03
+  - clip: {fileID: 8300000, guid: 091ce0020858f6f4682e8b0c508e8b24, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_04
+  - clip: {fileID: 8300000, guid: 3916e43bb0ae706408b7108225911a17, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_05
+  - clip: {fileID: 8300000, guid: aa6a5ed0ce0f6a246ae9c05641282bcd, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_06
+  - clip: {fileID: 8300000, guid: 2866296faffa21a45b20d93f2fb78ce2, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_07
+  - clip: {fileID: 8300000, guid: b24b3b6764bcdd54180782cbb855b38d, type: 3}
+    category: footsteps
+    group: metal
+    tags:
+    - step
+    - metal
+    - step_metal_08
+  - clip: {fileID: 8300000, guid: bd62134acb99c5446bbbbdbbdf9753a4, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_01
+  - clip: {fileID: 8300000, guid: e2c1780ddb6ced2478f46fc8c1fda2e2, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_02
+  - clip: {fileID: 8300000, guid: ed3c65cdfec6d924282179ba7169356e, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_03
+  - clip: {fileID: 8300000, guid: 1ec0ef7e9dc08104faf886f908db305a, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_04
+  - clip: {fileID: 8300000, guid: fe83cf9c7912dfc4aa36ccb7c99f530a, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_05
+  - clip: {fileID: 8300000, guid: 41e3bfeb5c4264b4d8699d3a034e69bc, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_06
+  - clip: {fileID: 8300000, guid: 1b1cba7beac84be4c8ee2cb0c30e2d02, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_07
+  - clip: {fileID: 8300000, guid: c12a0a1f3bb9956458261b2ecfe3e047, type: 3}
+    category: footsteps
+    group: water
+    tags:
+    - step
+    - water
+    - step_water_08
+  - clip: {fileID: 8300000, guid: 8a94fe59a33457e4e9d0d752b341a94d, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_01
+  - clip: {fileID: 8300000, guid: 10b005d93f7456541ac3eedd40096667, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_02
+  - clip: {fileID: 8300000, guid: 90b0e5fdea094ff42821cb7ab9683d90, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_03
+  - clip: {fileID: 8300000, guid: 51f71075ab84cf64a8ccbaca97e6612f, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_04
+  - clip: {fileID: 8300000, guid: 52ed6ee3296d4f940be694615c25dcd1, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_05
+  - clip: {fileID: 8300000, guid: 2cd1818dc2837b04f99edcd0c361a5a2, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_06
+  - clip: {fileID: 8300000, guid: c081eff7c23d1d04788e985c548519b0, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_07
+  - clip: {fileID: 8300000, guid: 01c3d21bf5ffbcd4e9ec8c048c78efde, type: 3}
+    category: footsteps
+    group: wood
+    tags:
+    - step
+    - wood
+    - step_wood_08
+  - clip: {fileID: 8300000, guid: a3b89286ca77e964abc3a66f74058ef4, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_01
+  - clip: {fileID: 8300000, guid: 805423ef3975cae48b03dfc472d312c7, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_02
+  - clip: {fileID: 8300000, guid: be0da403432198a45afe6e6b612b6475, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_03
+  - clip: {fileID: 8300000, guid: d234b84f4ebb0924499c5d549e83b493, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_04
+  - clip: {fileID: 8300000, guid: 32227236ab1cb0349a7fd8ffa0792308, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_05
+  - clip: {fileID: 8300000, guid: 4553e64605fbacf48b33b7c374c42492, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_06
+  - clip: {fileID: 8300000, guid: b3bab569090fda94987e335d976c1fd9, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_07
+  - clip: {fileID: 8300000, guid: 6c6f5805095089c488a2f27fde5afffe, type: 3}
+    category: interviewer
+    group: angry
+    tags:
+    - angry
+    - angry_08
+  - clip: {fileID: 8300000, guid: 679a705a93d7b0549898efbee9f3614a, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_01
+  - clip: {fileID: 8300000, guid: 489b5b50a30e7f44fb5c01b2c55690e9, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_02
+  - clip: {fileID: 8300000, guid: a83312931a75e3846882b16b1f0148c5, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_03
+  - clip: {fileID: 8300000, guid: 702b1ccbd267bb345a9f0cacba64f55a, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_04
+  - clip: {fileID: 8300000, guid: 6dad7b6491471d344a20fa664491bba6, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_05
+  - clip: {fileID: 8300000, guid: ac5da23b565d8f24d9e6a1a969fb0322, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_06
+  - clip: {fileID: 8300000, guid: bc6dde9e7ac3e6345b49b1886588c7a3, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_07
+  - clip: {fileID: 8300000, guid: 2d469fb821f796d46bf5e9b5e8c2cc4f, type: 3}
+    category: interviewer
+    group: annoyed
+    tags:
+    - annoyed
+    - annoyed_08
+  - clip: {fileID: 8300000, guid: 7db67383f1508714b95b678ed7a7f612, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_01
+  - clip: {fileID: 8300000, guid: d86a5abf74d7d8f4ab81568b71317986, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_02
+  - clip: {fileID: 8300000, guid: 54a16b8145238e64db0465012dd5594d, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_03
+  - clip: {fileID: 8300000, guid: e275c712af23c964292570815a5abb43, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_04
+  - clip: {fileID: 8300000, guid: a0f8c75f488b1554fa44bb474cfc3f01, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_05
+  - clip: {fileID: 8300000, guid: 1dcad4c9487086043a4dd21d9c3dd7e9, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_06
+  - clip: {fileID: 8300000, guid: 69fcb311895ef314b9a36a5807cdc6da, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_07
+  - clip: {fileID: 8300000, guid: 5122246fd50e4e848a558c1603b4ba9b, type: 3}
+    category: interviewer
+    group: bored
+    tags:
+    - bored
+    - bored_08
+  - clip: {fileID: 8300000, guid: 28ec3a1926f30c546ad77c3779c39755, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_01
+  - clip: {fileID: 8300000, guid: 6c7983b66673e304691e346f8320f28f, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_02
+  - clip: {fileID: 8300000, guid: eff0de6778b53cc4e83bba55a9a06828, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_03
+  - clip: {fileID: 8300000, guid: b9d1bcf3757e63a48a75e0630e06c59d, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_04
+  - clip: {fileID: 8300000, guid: 8d5f0b674978e2c44a1327b1969e76e6, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_05
+  - clip: {fileID: 8300000, guid: d7c005cdb5f5cd443b5be5caf449bdaa, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_06
+  - clip: {fileID: 8300000, guid: 6f0a42929e9dad748b7662d1c8342053, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_07
+  - clip: {fileID: 8300000, guid: c32a0f0f0ff779046bf096b0fd6c3331, type: 3}
+    category: interviewer
+    group: delighted
+    tags:
+    - delighted
+    - delighted_08
+  - clip: {fileID: 8300000, guid: de9c0e418287f224aa0e064e136af666, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_01
+  - clip: {fileID: 8300000, guid: d905787d45e13d14ab28df8bacb7a7bb, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_02
+  - clip: {fileID: 8300000, guid: 72407a761e2ca35489920e5b0122f2b8, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_03
+  - clip: {fileID: 8300000, guid: f875716423aad844195968ca6bd2f944, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_04
+  - clip: {fileID: 8300000, guid: 05a52c3cd21cdff4fbc46f8445a4d43a, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_05
+  - clip: {fileID: 8300000, guid: 2fbe846fb3c6d304eb2b41879a3f7f7e, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_06
+  - clip: {fileID: 8300000, guid: 295c4d8e3fb7bd54b9fc3024785ce89d, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_07
+  - clip: {fileID: 8300000, guid: 10ea8b32ab9ad31448356492a59239d2, type: 3}
+    category: interviewer
+    group: disappointed
+    tags:
+    - disappointed
+    - disappointed_08
+  - clip: {fileID: 8300000, guid: c8ad5b640a23b6644aed025d7edda525, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_01
+  - clip: {fileID: 8300000, guid: 34723f38b380aec4f81cc95c472480a8, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_02
+  - clip: {fileID: 8300000, guid: 60adfdd9ef584df4aa2a104167a58ac0, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_03
+  - clip: {fileID: 8300000, guid: b25e1ca5d9fd5a74ca39abb0e645394e, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_04
+  - clip: {fileID: 8300000, guid: f966b859c4c43ed4b9359a3e72a8eea7, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_05
+  - clip: {fileID: 8300000, guid: e0b53215de8845c4c8c11d7aa67ac602, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_06
+  - clip: {fileID: 8300000, guid: 954d97158f3de374bb7134d7e483ce2c, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_07
+  - clip: {fileID: 8300000, guid: 940c3b4e498e999408861bf83d217a27, type: 3}
+    category: interviewer
+    group: disgust
+    tags:
+    - disgust
+    - disgust_08
+  - clip: {fileID: 8300000, guid: 8ae73c1d7a12c0149a92873c0f44beed, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_01
+  - clip: {fileID: 8300000, guid: 2628f3156b41e3b4988ff793748dd876, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_02
+  - clip: {fileID: 8300000, guid: ebb3e529442039644a0b7f8481d23293, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_03
+  - clip: {fileID: 8300000, guid: 897d5ca5f824a0246b1e8fedb9f2adfe, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_04
+  - clip: {fileID: 8300000, guid: e06921b3dd6e2f145b19e01beaf218a0, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_05
+  - clip: {fileID: 8300000, guid: b6263950f276b9d4aa6b36e8928d4ea9, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_06
+  - clip: {fileID: 8300000, guid: e1e04486f5061b040b8a53d4dccbefd2, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_07
+  - clip: {fileID: 8300000, guid: 4c9693577bcb68d4ca0296bfb35d477c, type: 3}
+    category: interviewer
+    group: doubt
+    tags:
+    - doubt
+    - doubt_08
+  - clip: {fileID: 8300000, guid: 1e169ac209bfcbe4792ba549c9d11fa5, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_01
+  - clip: {fileID: 8300000, guid: 7a4d0e294c288aa429060beb9ee65e6a, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_02
+  - clip: {fileID: 8300000, guid: 25dd88e8c4279ef46b0242b3f6047c68, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_03
+  - clip: {fileID: 8300000, guid: e840a3a6e032fa149841b0d253438860, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_04
+  - clip: {fileID: 8300000, guid: 2fb4a2c5f7381e54f99b6a17a7e49b91, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_05
+  - clip: {fileID: 8300000, guid: bfcf5c4cbf7169e44b1e8dbf00b7cf43, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_06
+  - clip: {fileID: 8300000, guid: 0f2ac68955391c040b030942b95770cb, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_07
+  - clip: {fileID: 8300000, guid: 3b9e4715bc6317749a726a6b176673b7, type: 3}
+    category: interviewer
+    group: friendly
+    tags:
+    - friendly
+    - friendly_08
+  - clip: {fileID: 8300000, guid: 9b3e85edbe0f04c4a990ce7d210b4e1f, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_01
+  - clip: {fileID: 8300000, guid: b6c4de76c2dd8634f82e9be1b7f32e3e, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_02
+  - clip: {fileID: 8300000, guid: bae32dec4ae8cde409d708b0181d568e, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_03
+  - clip: {fileID: 8300000, guid: eae2fd3b76d71fd44b3abc05f854c56f, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_04
+  - clip: {fileID: 8300000, guid: 6b51326b3fc1791449dedae540577b9a, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_05
+  - clip: {fileID: 8300000, guid: 8a4b67ba79fe1f9458c7ae2b04f17f26, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_06
+  - clip: {fileID: 8300000, guid: 845dbeccb054ada40a203bb80fbfa4f4, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_07
+  - clip: {fileID: 8300000, guid: e273af58ef2f68141b01a4a8e363e0b9, type: 3}
+    category: interviewer
+    group: pleased
+    tags:
+    - pleased
+    - pleased_08
+  - clip: {fileID: 8300000, guid: 45252c65cceb5c042b1d50ecb4b0f6cb, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_01
+  - clip: {fileID: 8300000, guid: e4a009f5963e31d4bbb009775877d9e6, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_02
+  - clip: {fileID: 8300000, guid: 440f1e4a67d118d46b4e0c2b509fbf90, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_03
+  - clip: {fileID: 8300000, guid: 8d1ccef93640a0941a9d54c2740b0139, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_04
+  - clip: {fileID: 8300000, guid: 9f5cbf2dfb5b1d245a65f25f9c54e654, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_05
+  - clip: {fileID: 8300000, guid: 028f265de653e7449b21a8ae0c796bc2, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_06
+  - clip: {fileID: 8300000, guid: e1f897fed3e4da74e845efb0f65c3ac7, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_07
+  - clip: {fileID: 8300000, guid: f2dda82294d02404aa56e43f774e36ad, type: 3}
+    category: interviewer
+    group: sad
+    tags:
+    - sad
+    - sad_08
+  - clip: {fileID: 8300000, guid: 59eb32035c751bb4b86ab961e46c4268, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_01
+  - clip: {fileID: 8300000, guid: 0c94a973bac7045458266f7b93374ba1, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_02
+  - clip: {fileID: 8300000, guid: 7e70cacf3b65b1f429b0cbc0a1a5d41a, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_03
+  - clip: {fileID: 8300000, guid: ddd8303e253a3104ca0d730b7b49a760, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_04
+  - clip: {fileID: 8300000, guid: c7c9082b4eea32844ad4b5d8693a28f2, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_05
+  - clip: {fileID: 8300000, guid: 1cccb408d30888b428c669bd2b2ff6fa, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_06
+  - clip: {fileID: 8300000, guid: 0875456588956304194abc4ae2896d98, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_07
+  - clip: {fileID: 8300000, guid: e3b953cd9dcb42742819822f2fd2757e, type: 3}
+    category: interviewer
+    group: shock
+    tags:
+    - shock
+    - shock_08
+  - clip: {fileID: 8300000, guid: 7b5e2f1519ac16448948e4643b928902, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_01
+  - clip: {fileID: 8300000, guid: 2620cb8c31146804592c911f1c30ec0c, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_02
+  - clip: {fileID: 8300000, guid: 0cf5ba4396af1b14c8e0fb80b73c05d8, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_03
+  - clip: {fileID: 8300000, guid: f7ec767ad4b7ef1409d5d4da247861e5, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_04
+  - clip: {fileID: 8300000, guid: 1ce4528cd0e29174aa82eb16ea11a8d7, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_05
+  - clip: {fileID: 8300000, guid: 652bc428543e4424db525277813706a3, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_06
+  - clip: {fileID: 8300000, guid: 08a0062eb4bf96749914da1e1852eea3, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_07
+  - clip: {fileID: 8300000, guid: d40c992e98c77a445bf1165345e47c77, type: 3}
+    category: interviewer
+    group: smug
+    tags:
+    - smug
+    - smug_08
+  - clip: {fileID: 8300000, guid: de3300d4b12339e4594ef3b2fd2a6b1e, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_01
+  - clip: {fileID: 8300000, guid: 47090a32b0436034e9c984f986da5ce5, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_02
+  - clip: {fileID: 8300000, guid: 6e967906797f5494a9c5c4949d5d1d94, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_03
+  - clip: {fileID: 8300000, guid: b99b23385b46c89469e90243b9d186f2, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_04
+  - clip: {fileID: 8300000, guid: edee4a35958bd2c448515a2bfcd47891, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_05
+  - clip: {fileID: 8300000, guid: 1df93825c4925bb40b1f1a46f820016a, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_06
+  - clip: {fileID: 8300000, guid: a4371d5cae8bae94d8b9d875cde202f0, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_07
+  - clip: {fileID: 8300000, guid: 8ded49dc830e3f849a8e089f71d18859, type: 3}
+    category: interviewer
+    group: suspicious
+    tags:
+    - suspicious
+    - suspicious_08
+  - clip: {fileID: 8300000, guid: af4fe672533b58f45ac9d884fb2ecf43, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_01
+  - clip: {fileID: 8300000, guid: f04f218da7967694ba03af8a6a203250, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_02
+  - clip: {fileID: 8300000, guid: 9b197d2bd65fd5244affb5407ead6209, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_03
+  - clip: {fileID: 8300000, guid: 4fd0bcb68300fa54c8b7f87d7eecfa2e, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_04
+  - clip: {fileID: 8300000, guid: 98e555232675c4846b4574770aaec7e7, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_05
+  - clip: {fileID: 8300000, guid: 811c8ee346ed7cd4d88bbf20c5a6f2b8, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_06
+  - clip: {fileID: 8300000, guid: 995339be58737a94eb6bb540603732f9, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_07
+  - clip: {fileID: 8300000, guid: 9212174b31f507248bfb4ba2a3b72e88, type: 3}
+    category: interviewer
+    group: worried
+    tags:
+    - worried
+    - worried_08
+  - clip: {fileID: 8300000, guid: 3a08d840de58a4e439d55a61abc2cecf, type: 3}
+    category: menu
+    group: 
+    tags:
+    - pause
+    - menu
+    - pause_menu
+  - clip: {fileID: 8300000, guid: acc435a1794df13449ce2ce865e23ea0, type: 3}
+    category: npcs
+    group: 
+    tags:
+    - npc
+  - clip: {fileID: 8300000, guid: 94df786d481a5224e8ca82cf84306782, type: 3}
+    category: npcs
+    group: 
+    tags:
+    - alien

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e56d631f1d03784ba2edefaa59dd0cf, type: 3}
+  m_Name: StylizedHDRISkySettings
+  m_EditorClassIdentifier: Assembly-CSharp::StylizedHDRISkySettings
+  dayHDRI: {fileID: 2800000, guid: 17dcb86d44eb83047a4de7961f44cb63, type: 3}
+  nightHDRI: {fileID: 2800000, guid: 26b59b4fd18acf04380ea623100ca4c7, type: 3}
+  dawnHDRI: {fileID: 0}
+  duskHDRI: {fileID: 0}
+  startingHour: 9.3
+  runDayNightCycle: 1
+  fullDayLengthMinutes: 12
+  sunriseHour: 6
+  sunsetHour: 18
+  enableMovingProceduralClouds: 1
+  cloudOpacity: 0.434
+  cloudScale: 1.87
+  cloudCoverage: 0.48
+  cloudSpeed: 0.012
+  cloudDetail: 0.45
+  createSunLight: 1
+  createMoonLight: 1
+  middaySunIntensity: 1.25
+  moonIntensity: 0.08
+  sunDiskBrightness: 1.11
+  sunDiskSize: 1.1
+  daytimeAmbientIntensity: 1
+  nighttimeAmbientIntensity: 0.35
+  exposure: 1
+  fogDensity: 0.008
+  animateFog: 1
+  showProceduralStars: 1
+  starBrightness: 0.8

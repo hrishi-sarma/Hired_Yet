@@ -1,0 +1,2514 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 1
+  m_FogColor: {r: 0.66, g: 0.76, b: 0.82, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.00263
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.57, g: 0.68, b: 0.79, a: 1}
+  m_AmbientEquatorColor: {r: 0.76, g: 0.77, b: 0.72, a: 1}
+  m_AmbientGroundColor: {r: 0.31, g: 0.35, b: 0.29, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 1
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 0.35
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 1994523988}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 2
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &14457007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14457011}
+  - component: {fileID: 14457010}
+  - component: {fileID: 14457009}
+  - component: {fileID: 14457008}
+  m_Layer: 0
+  m_Name: Quad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &14457008
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14457007}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &14457009
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14457007}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &14457010
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14457007}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &14457011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14457007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &85229034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85229036}
+  - component: {fileID: 85229035}
+  m_Layer: 0
+  m_Name: AnimalAI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &85229035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85229034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb97c38d90b6e44ba97be4659716ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalAIInstaller
+  settings:
+    deerCount: 5
+    rabbitCount: 8
+    catCount: 6
+    dogCount: 5
+    spawnAttemptsPerTick: 18
+    spawnInterval: 1.25
+    spawnRadiusMin: 14
+    spawnRadiusMax: 78
+    despawnRadius: 115
+    minAnimalSpacing: 2
+    avoidVisibleSpawns: 1
+    deerWalkSpeed: 1.45
+    deerRunSpeed: 5.4
+    deerFleeDistance: 13
+    rabbitWalkSpeed: 1.15
+    rabbitRunSpeed: 4.7
+    rabbitFleeDistance: 11
+    catWalkSpeed: 0.72
+    catRunSpeed: 1.65
+    dogWalkSpeed: 1.5
+    dogRunSpeed: 4.8
+    turnSpeed: 7
+    idleMinSeconds: 3
+    idleMaxSeconds: 8
+    wanderMinSeconds: 2
+    wanderMaxSeconds: 6
+    deerScale: 1.5
+    rabbitScale: 1
+    catScale: 1
+    dogScale: 1
+    deerSounds:
+      ambientSounds: []
+      reactionSounds: []
+      patSounds: []
+      volume: 0.8
+      pitchRange: {x: 0.92, y: 1.08}
+      ambientInterval: {x: 8, y: 20}
+      minDistance: 2
+      maxDistance: 30
+    rabbitSounds:
+      ambientSounds: []
+      reactionSounds: []
+      patSounds: []
+      volume: 0.8
+      pitchRange: {x: 0.92, y: 1.08}
+      ambientInterval: {x: 8, y: 20}
+      minDistance: 2
+      maxDistance: 30
+    catSounds:
+      ambientSounds: []
+      reactionSounds: []
+      patSounds: []
+      volume: 0.8
+      pitchRange: {x: 0.92, y: 1.08}
+      ambientInterval: {x: 8, y: 20}
+      minDistance: 2
+      maxDistance: 30
+    dogSounds:
+      ambientSounds: []
+      reactionSounds: []
+      patSounds: []
+      volume: 0.8
+      pitchRange: {x: 0.92, y: 1.08}
+      ambientInterval: {x: 8, y: 20}
+      minDistance: 2
+      maxDistance: 30
+    butterflyCount: 14
+    birdCount: 16
+    birdAlertDistance: 7
+    birdFlySpeed: 1
+    birdScale: 1
+    butterflyScale: 1
+    songbirdSounds:
+      ambientSounds: []
+      reactionSounds: []
+      patSounds: []
+      volume: 0.8
+      pitchRange: {x: 0.92, y: 1.08}
+      ambientInterval: {x: 8, y: 20}
+      minDistance: 2
+      maxDistance: 30
+    crowSounds:
+      ambientSounds: []
+      reactionSounds: []
+      patSounds: []
+      volume: 0.8
+      pitchRange: {x: 0.92, y: 1.08}
+      ambientInterval: {x: 8, y: 20}
+      minDistance: 2
+      maxDistance: 30
+    socialChance: 0.35
+    sleepAtNight: 1
+    nightStartHour: 20
+    nightEndHour: 6
+    nightSunElevation: -3
+    forceNight: 0
+    catPatRange: 2.2
+    catPatSeconds: 2.8
+    dogPatRange: 2.6
+    dogPatSeconds: 3.2
+    enablePersonality: 1
+    enableReactions: 1
+    playerSprintSpeed: 6
+    playerCalmSpeed: 1.6
+    trustSecondsToFull: 90
+    alertDistanceMultiplier: 1.7
+    useHomes: 1
+    enableRoutines: 1
+    rabbitsUseBurrows: 1
+    showBurrowMarkers: 1
+    petCatLotChance: 0.3
+    petDogLotChance: 0.25
+    catRoamRadius: 24
+    dogRoamRadius: 36
+    rabbitRoamRadius: 18
+    deerRoamRadius: 50
+    burrowTreeChance: 0.08
+    maxBurrows: 250
+    maxDeerBeds: 90
+--- !u!4 &85229036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85229034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -288.7075, y: 41.14834, z: -217.13637}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &323251134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323251136}
+  m_Layer: 0
+  m_Name: ItemsDBtest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323251136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323251134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 215.13748, y: 36.67038, z: -162.87479}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!115 &604701032
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: CinematicOutlineStage
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
+--- !u!115 &1053682681
+MonoScript:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 7
+  m_DefaultReferences: {}
+  m_Icon: {fileID: 0}
+  m_Type: 0
+  m_ExecutionOrder: 0
+  m_ClassName: AmbientLifeStage
+  m_Namespace: 
+  m_AssemblyName: Assembly-CSharp
+--- !u!1 &1319884767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1319884770}
+  - component: {fileID: 1319884769}
+  - component: {fileID: 1319884768}
+  - component: {fileID: 1319884771}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1319884768
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319884767}
+  m_Enabled: 1
+--- !u!20 &1319884769
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319884767}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1319884770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319884767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1319884771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319884767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 1
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
+--- !u!1 &1533525871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533525873}
+  - component: {fileID: 1533525872}
+  m_Layer: 0
+  m_Name: CinematicEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1533525872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533525871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b085e6e4794e2d5498ae298a733688b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinematicEffects
+  enableAll: 0
+  depthOfField: 1
+  dofStart: 140
+  dofEnd: 420
+  dofMaxRadius: 1.5
+  dofHighQuality: 0
+  filmGrain: 1
+  grainType: 0
+  grainIntensity: 0.18
+  grainResponse: 0.8
+  chromaticAberration: 1
+  chromaticIntensity: 0.12
+  outlines: 1
+  outlineBuildings: 1
+  outlineCharacters: 1
+  outlineColor: {r: 0.08, g: 0.06, b: 0.08, a: 1}
+  outlineOpacity: 0.55
+  buildingWidth: 0.03
+  characterWidth: 0.02
+  fadeStart: 60
+  fadeEnd: 160
+  maxActiveDistance: 180
+  minPartSize: 0.8
+  maxOutlinedRenderers: 2500
+  excludePlayer: 1
+  nearHideDistance: 3
+--- !u!4 &1533525873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533525871}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1780358720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780358733}
+  - component: {fileID: 1780358732}
+  - component: {fileID: 1780358731}
+  - component: {fileID: 1780358730}
+  - component: {fileID: 1780358729}
+  - component: {fileID: 1780358728}
+  - component: {fileID: 1780358727}
+  - component: {fileID: 1780358726}
+  - component: {fileID: 1780358725}
+  - component: {fileID: 1780358724}
+  - component: {fileID: 1780358723}
+  - component: {fileID: 1780358722}
+  - component: {fileID: 1780358721}
+  - component: {fileID: 1780358735}
+  - component: {fileID: 1780358734}
+  - component: {fileID: 1780358736}
+  - component: {fileID: 1780358738}
+  - component: {fileID: 1780358737}
+  - component: {fileID: 1780358739}
+  - component: {fileID: 1780358740}
+  - component: {fileID: 1780358745}
+  - component: {fileID: 1780358744}
+  - component: {fileID: 1780358743}
+  - component: {fileID: 1780358742}
+  - component: {fileID: 1780358741}
+  - component: {fileID: 1780358746}
+  - component: {fileID: 1780358749}
+  - component: {fileID: 1780358748}
+  - component: {fileID: 1780358747}
+  - component: {fileID: 1780358750}
+  - component: {fileID: 1780358751}
+  m_Layer: 0
+  m_Name: World Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1780358721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd27719c8c2e5564898ef80d19836c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClipValidator
+  stageEnabled: 1
+  validateInPlayMode: 0
+  checkTerrain: 1
+  terrainTolerance: 0.25
+  floatTolerance: 1
+  maxLoggedIssues: 20
+  testSeeds: 65000000e8070000697a000031de0b0032790600
+--- !u!114 &1780358722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d99a7c01db39845b49dcdf227fc55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundaryStage
+  stageEnabled: 1
+  steps: 96
+  wallLevel: 0.35
+  rayStep: 2
+  thickness: 3
+  extraHeight: 40
+  edgeMargin: 4
+  showGizmo: 1
+--- !u!114 &1780358723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d200156ab3efe6419315063342cac8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropStage
+  stageEnabled: 1
+  lamps: 1
+  suburbSpacing: 20
+  citySpacing: 24
+  poleHeight: 5
+  poleWidth: 0.3
+  headSize: 0.9
+  pole:
+    variants: []
+    primitive: 1
+    material: {fileID: 0}
+    tints:
+    - {r: 0.15, g: 0.15, b: 0.17, a: 1}
+    applyMaterialToModels: 0
+    fit: 1
+    clampToBox: 1
+    rotationOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    random90: 0
+    colliders: 1
+    markStatic: 1
+  head:
+    variants: []
+    primitive: 2
+    material: {fileID: 0}
+    tints:
+    - {r: 1, g: 0.9, b: 0.6, a: 1}
+    applyMaterialToModels: 0
+    fit: 1
+    clampToBox: 1
+    rotationOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    random90: 0
+    colliders: 0
+    markStatic: 1
+  whole:
+    variants: []
+    primitive: 0
+    material: {fileID: 0}
+    tints:
+    - {r: 1, g: 1, b: 1, a: 1}
+    applyMaterialToModels: 0
+    fit: 1
+    clampToBox: 1
+    rotationOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    random90: 0
+    colliders: 1
+    markStatic: 1
+--- !u!114 &1780358724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee09dbb628a7ef4d9c8863eb7bddeb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VegetationStage
+  stageEnabled: 1
+  spacing: 9
+  maxTrees: 1600
+  clearance: 1.5
+  footprintScale: 0.5
+  highwayClearance: 14
+  maxSlopeDeg: 32
+  sink: 0.2
+  noiseFrequency: 0.012
+  forestMinDensity: 0.45
+  openDensity: 0.08
+  types:
+  - name: Broadleaf
+    weight: 3
+    minHeight: 7
+    maxHeight: 12
+    crownRatio: 0.65
+    trunkFraction: 0.4
+    trunk:
+      variants: []
+      primitive: 1
+      material: {fileID: 0}
+      tints:
+      - {r: 0.35, g: 0.24, b: 0.15, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    crown:
+      variants: []
+      primitive: 2
+      material: {fileID: 0}
+      tints:
+      - {r: 0.18, g: 0.42, b: 0.16, a: 1}
+      - {r: 0.25, g: 0.5, b: 0.2, a: 1}
+      - {r: 0.3, g: 0.46, b: 0.15, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 0
+      markStatic: 1
+    whole:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 1, g: 1, b: 1, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: Pine
+    weight: 2
+    minHeight: 10
+    maxHeight: 18
+    crownRatio: 0.3
+    trunkFraction: 0.3
+    trunk:
+      variants: []
+      primitive: 1
+      material: {fileID: 0}
+      tints:
+      - {r: 0.35, g: 0.24, b: 0.15, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    crown:
+      variants: []
+      primitive: 3
+      material: {fileID: 0}
+      tints:
+      - {r: 0.1, g: 0.32, b: 0.17, a: 1}
+      - {r: 0.13, g: 0.38, b: 0.2, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 0
+      markStatic: 1
+    whole:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 1, g: 1, b: 1, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  environmentDressing: 1
+  maxBushes: 520
+  maxStumps: 95
+  maxLogs: 120
+  maxRocks: 420
+  maxRoadsideRocks: 160
+  maxFerns: 360
+  maxSmallDetails: 100
+  maxLandmarks: 8
+  dressingSpacing: 5.5
+  dressingForestBias: 0.78
+  dressingRoadClearance: 18
+  layoutSafetyMargin: 2.5
+--- !u!114 &1780358725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a02629920c7e746957205083ec9dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingStage
+  stageEnabled: 1
+  types:
+  - name: Small House
+    zone: 3
+    weight: 3
+    spawnChance: 0.95
+    minWidth: 8
+    maxWidth: 10
+    minDepth: 8
+    maxDepth: 10
+    minHeight: 4
+    maxHeight: 5
+    frontSetback: 3
+    sideSetback: 1
+    backSetback: 1
+    slot:
+      variants:
+      - {fileID: 919132149155446097, guid: 8ec2bbf93f35cb9419ec8e989e5fcd0d, type: 3}
+      - {fileID: 919132149155446097, guid: 480abfdeb6bab734795ddba3e1d77160, type: 3}
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.85, g: 0.8, b: 0.7, a: 1}
+      - {r: 0.9, g: 0.85, b: 0.6, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: Family House
+    zone: 3
+    weight: 2
+    spawnChance: 0.95
+    minWidth: 9
+    maxWidth: 11
+    minDepth: 9
+    maxDepth: 12
+    minHeight: 5.5
+    maxHeight: 7
+    frontSetback: 3
+    sideSetback: 0.5
+    backSetback: 1
+    slot:
+      variants:
+      - {fileID: 919132149155446097, guid: b4d91f1a68137aa4b8bad5c81f4d95cd, type: 3}
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.75, g: 0.55, b: 0.45, a: 1}
+      - {r: 0.7, g: 0.75, b: 0.8, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: LargeHouse
+    zone: 3
+    weight: 1
+    spawnChance: 0.95
+    minWidth: 10
+    maxWidth: 11
+    minDepth: 6
+    maxDepth: 8
+    minHeight: 3.5
+    maxHeight: 4.5
+    frontSetback: 4
+    sideSetback: 0.5
+    backSetback: 1
+    slot:
+      variants:
+      - {fileID: 919132149155446097, guid: e6e662d7a3343fe49bb7070508244709, type: 3}
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.8, g: 0.7, b: 0.65, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: Office Block
+    zone: 4
+    weight: 3
+    spawnChance: 0.95
+    minWidth: 20
+    maxWidth: 25
+    minDepth: 20
+    maxDepth: 25
+    minHeight: 25
+    maxHeight: 60
+    frontSetback: 1
+    sideSetback: 1
+    backSetback: 1
+    slot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.6, g: 0.62, b: 0.66, a: 1}
+      - {r: 0.45, g: 0.55, b: 0.65, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: Tower
+    zone: 4
+    weight: 1.5
+    spawnChance: 0.95
+    minWidth: 14
+    maxWidth: 18
+    minDepth: 14
+    maxDepth: 18
+    minHeight: 60
+    maxHeight: 110
+    frontSetback: 3
+    sideSetback: 3
+    backSetback: 3
+    slot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.35, g: 0.4, b: 0.48, a: 1}
+      - {r: 0.4, g: 0.5, b: 0.6, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: Mid Rise
+    zone: 4
+    weight: 2
+    spawnChance: 0.95
+    minWidth: 22
+    maxWidth: 26
+    minDepth: 18
+    maxDepth: 24
+    minHeight: 12
+    maxHeight: 24
+    frontSetback: 1
+    sideSetback: 1
+    backSetback: 1
+    slot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.7, g: 0.65, b: 0.6, a: 1}
+      - {r: 0.55, g: 0.55, b: 0.58, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: City Infill Shop
+    zone: 4
+    weight: 3.25
+    spawnChance: 0.95
+    minWidth: 9
+    maxWidth: 13
+    minDepth: 9
+    maxDepth: 12
+    minHeight: 7
+    maxHeight: 14
+    frontSetback: 2
+    sideSetback: 0.5
+    backSetback: 0.5
+    slot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.78, g: 0.7, b: 0.6, a: 1}
+      - {r: 0.6, g: 0.68, b: 0.72, a: 1}
+      - {r: 0.8, g: 0.62, b: 0.5, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: City Infill Row
+    zone: 4
+    weight: 2.925
+    spawnChance: 0.95
+    minWidth: 7
+    maxWidth: 9
+    minDepth: 9
+    maxDepth: 11
+    minHeight: 9
+    maxHeight: 18
+    frontSetback: 2
+    sideSetback: 0.3
+    backSetback: 0.5
+    slot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.7, g: 0.58, b: 0.5, a: 1}
+      - {r: 0.56, g: 0.6, b: 0.7, a: 1}
+      - {r: 0.82, g: 0.76, b: 0.6, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  - name: City Infill Flats
+    zone: 4
+    weight: 2.2749999
+    spawnChance: 0.95
+    minWidth: 12
+    maxWidth: 16
+    minDepth: 10
+    maxDepth: 14
+    minHeight: 12
+    maxHeight: 26
+    frontSetback: 2
+    sideSetback: 0.5
+    backSetback: 0.5
+    slot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.66, g: 0.64, b: 0.6, a: 1}
+      - {r: 0.52, g: 0.6, b: 0.66, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  buildingSink: 0.1
+  tallBuildingHeight: 45
+  tallBuildingWeightScale: 0.3
+--- !u!114 &1780358726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c189acf3a08b48409419664ed6baf84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LotStage
+  stageEnabled: 1
+  suburbLotWidth: 12
+  cityLotWidth: 28
+  lotThickness: 0.3
+  maxHouseGap: 6
+  cityOuterRows: 3
+  cityCoreBlocks: 1.4
+  suburbLot:
+    variants: []
+    primitive: 0
+    material: {fileID: 0}
+    tints:
+    - {r: 0.38, g: 0.5, b: 0.28, a: 1}
+    applyMaterialToModels: 0
+    fit: 1
+    clampToBox: 1
+    rotationOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    random90: 0
+    colliders: 1
+    markStatic: 1
+  cityLot:
+    variants: []
+    primitive: 0
+    material: {fileID: 0}
+    tints:
+    - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    applyMaterialToModels: 0
+    fit: 1
+    clampToBox: 1
+    rotationOffset: {x: 0, y: 0, z: 0}
+    positionOffset: {x: 0, y: 0, z: 0}
+    random90: 0
+    colliders: 1
+    markStatic: 1
+--- !u!114 &1780358727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd80346a02265d94f838718f30f739ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoadStage
+  stageEnabled: 1
+  suburb:
+    roadWidth: 8
+    sidewalkWidth: 2
+    blockSize: 50.63288
+    roadThickness: 0.3
+    curbHeight: 0.15
+    carveDepth: 0.15
+    flattenBlend: 30
+    intersection:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.2, g: 0.2, b: 0.22, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    straight:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.2, g: 0.2, b: 0.22, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    sidewalk:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.65, g: 0.65, b: 0.62, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  city:
+    roadWidth: 16
+    sidewalkWidth: 4
+    blockSize: 56
+    roadThickness: 0.3
+    curbHeight: 0.15
+    carveDepth: 0.15
+    flattenBlend: 30
+    intersection:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.2, g: 0.2, b: 0.22, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    straight:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.2, g: 0.2, b: 0.22, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    sidewalk:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 0.65, g: 0.65, b: 0.62, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+  highway:
+    width: 12
+    shoulder: 2
+    blend: 20
+    carveDepth: 0.2
+    gateLength: 16
+    smoothPasses: 80
+    chaikinIterations: 2
+    sampleSpacing: 8
+    tint: {r: 0.17, g: 0.17, b: 0.19, a: 1}
+    material: {fileID: 0}
+  cityCornerTolerance: 1
+--- !u!114 &1780358728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cc0da46f756974faa9b9f3a220328a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneStage
+  stageEnabled: 1
+  centerDistance: 270
+  angleJitter: 15
+  suburbRadius: 140
+  cityRadius: 120
+  cityGrowth: 85
+  edgeNoise: 0.25
+  edgeNoiseFrequency: 0.008
+  edgeWarpStrength: 35
+  edgeWarpFrequency: 0.01
+  mountainHeight: 0.24
+  forestRingWidth: 150
+  highwayZoneHalfWidth: 14
+  highwayForestCorridor: 90
+  forestPatchThreshold: 0.58
+  forestPatchFrequency: 0.006
+  highway:
+    gridStep: 16
+    gradeWeight: 40
+    maxGrade: 0.1
+    steepPenalty: 300
+    wobble: 0.35
+    wobbleFrequency: 0.012
+    borderMargin: 40
+    chaikinIterations: 3
+    relaxIterations: 12
+    sampleSpacing: 8
+    endInset: 0.85
+  showZoneGizmos: 1
+  gizmoCell: 24
+--- !u!114 &1780358729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72b5ad1c8b045e4ba57e424ecf3f8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TerrainApplyStage
+  stageEnabled: 1
+  customLayers: []
+  alphamapResolution: 512
+  paint:
+    dirtSlopeStart: 14
+    rockSlopeStart: 30
+    rockSlopeEnd: 42
+    snowHeight: 0.55
+    snowBlend: 0.1
+    snowMaxSlope: 48
+    mountainRockHeight: 0.38
+    mountainRockBlend: 0.18
+    patchFrequency: 0.02
+  pixelError: 6
+  basemapDistance: 500
+  grassDetailResolution: 1024
+  forestGrassDensity: 64
+  openGrassDensity: 32
+  grassMinHeight: 0.9
+  grassMaxHeight: 2.1
+  grassMinWidth: 0.45
+  grassMaxWidth: 1.1
+  grassMaxSlope: 1
+--- !u!114 &1780358730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c759589e198059c418476436fec7affe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeightBaseStage
+  stageEnabled: 1
+  baseLevel: 0.12
+  hillAmplitude: 0.05
+  hillFrequency: 0.004
+  hillOctaves: 5
+  lacunarity: 2
+  gain: 0.5
+  detailAmplitude: 0.003
+  detailFrequency: 0.05
+  warpStrength: 60
+  warpFrequency: 0.003
+  mountainWidth: 240
+  mountainHeightMin: 0.45
+  mountainHeightMax: 0.95
+  ridgeFrequency: 0.006
+  ridgeOctaves: 5
+  edgeWarp: 60
+  mountainProfile:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0.3
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.28
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.2
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  erosionIterations: 8
+  talus: 0.0035
+  erosionRate: 0.4
+  testPlateauSize: 160
+  testPlateauBlend: 60
+--- !u!114 &1780358731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49037dcde594154e8e1035727369f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoundationTestStage
+--- !u!114 &1780358732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae71223da9d29f4e87a3cd56bcbb4e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldGenerator
+  settings:
+    seed: 1879991989
+    worldSize: 1024
+    heightmapResolution: 513
+    maxTerrainHeight: 160
+    spatialCellSize: 8
+    defaultMaterial: {fileID: 0}
+  generateOnPlay: 0
+  showOccupancy: 1
+  showClipIssues: 1
+  combineMeshes: 1
+  combineChunkSize: 128
+--- !u!4 &1780358733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1780358734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9867843f8c6de54c8aeb906fb67af6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WorldBootstrap
+  playerPrefab: {fileID: 9156347144040445547, guid: c82236c16aae9d34fbd437f8dea6e2c9, type: 3}
+  playerTag: Player
+  spawnLift: 1.2
+  removeScenePlayers: 1
+  randomSeed: 1
+  runWhenOpenedDirectly: 1
+--- !u!114 &1780358735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121ce9e613fcb6348b6f70eef90e4a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InterviewDoorStage
+  stageEnabled: 1
+  sceneName: InterviewRoom
+  fallbackSceneName: InterviewWorld
+  promptText: '[ PRESS E TO START INTERVIEW ]'
+  font: {fileID: 0}
+  minBuildingHeight: 20
+  triggerSize: {x: 8, y: 6, z: 10}
+  doorSize: {x: 3, y: 3.4, z: 0.25}
+  doorColor: {r: 0.2, g: 1, b: 0.4, a: 1}
+--- !u!114 &1780358736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937ee167d149148488787cb00b0bb1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NpcDirector
+  settings:
+    maxPedestrians: 20
+    maxCars: 10
+    spawnRadiusMin: 35
+    spawnRadiusMax: 140
+    activeRadius: 160
+    despawnGraceSeconds: 2
+    neverDespawnWithin: 0
+    despawnSuburbFraction: 0.25
+    spawnAttemptsPerSecond: 6
+    initialPedestrians: 24
+    initialCars: 10
+    initialRadiusMin: 10
+    initialRadiusMax: 90
+    visibilityCheckInterval: 0.25
+    pedestrianDensity:
+      suburb: 0.14
+      city: 1
+      highway: 0
+    carDensity:
+      suburb: 0.23
+      city: 1
+      highway: 0.3
+    linecastsPerFrame: 12
+    prewarmPedestrians: 3
+    prewarmCars: 2
+    pedestrianSlot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 1, g: 1, b: 1, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    carSlot:
+      variants: []
+      primitive: 0
+      material: {fileID: 0}
+      tints:
+      - {r: 1, g: 1, b: 1, a: 1}
+      applyMaterialToModels: 0
+      fit: 1
+      clampToBox: 1
+      rotationOffset: {x: 0, y: 0, z: 0}
+      positionOffset: {x: 0, y: 0, z: 0}
+      random90: 0
+      colliders: 1
+      markStatic: 1
+    carSlotScale: 1
+    customVehicles:
+    - displayName: truck 1
+      prefab: {fileID: 919132149155446097, guid: 5ce5feb9405b4bc4ab781a2edbc0f01d, type: 3}
+      scale: 0.8
+    - displayName: sedan 1
+      prefab: {fileID: 919132149155446097, guid: 6c13f05f3466d0644af316ec0c1290a6, type: 3}
+      scale: 0.8
+    - displayName: hatchback 1
+      prefab: {fileID: 919132149155446097, guid: 4437a04d34d4781408795c5fce5128b4, type: 3}
+      scale: 0.8
+    defaultAnimations: {fileID: 11400000, guid: ec38e4b4e9944664898121aeaf6d2a32, type: 2}
+    npcProfiles:
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: c4d95b0ee5463764a87dbe918ed300b1, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: a34d375cbd2fc4d4998aad140d52c984, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: caaf7cc1bee245243b6fd8d2a89eac01, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: f20c5ae702665dd45a8a4b1c2c883986, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: a31439c73f1ff544dab780f5d2579a9e, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: 8f86fc39035738d49983867cef4e02be, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: f5dc0624abf0c0f4aa1dd1e2821a8224, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: 28c373cb0b80f0e4da8abb745fad7cf5, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: 623596276f21bfd409e38cfa6162b085, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    - name: human
+      enabled: 1
+      prefab: {fileID: 919132149155446097, guid: a31439c73f1ff544dab780f5d2579a9e, type: 3}
+      spawnWeight: 0.5
+      fitToHeight: 0
+      scaleRange: {x: 0.1, y: 0.1}
+      overrideSpeed: 0
+      speedMin: 0.2
+      speedMax: 0.2
+      animationSet: {fileID: 0}
+      stripPrefabPhysics: 1
+    pedestrian:
+      idleChance: 0.15
+      idleSecondsMin: 3
+      idleSecondsMax: 12
+      enterHouseChance: 0.06
+      crossChance: 0.2
+      curbWaitMax: 20
+      speedMin: 1.1
+      speedMax: 1.6
+      crossSpeed: 1.5
+      yieldSideSeconds: 3
+      yieldTurnAroundSeconds: 8
+    car:
+      resumeDelay: 0.7
+      disableOvertake: 0
+      chargeStopDistance: 0.9
+      nudge: 1
+      nudgeAfterSeconds: 8
+      nudgeSpeed: 0.8
+      honkClips:
+      - {fileID: 8300000, guid: 47008fc9bcb58d74bbca7968e3e68472, type: 3}
+      - {fileID: 8300000, guid: 0233c77f39993c54d88a3071a33c63bf, type: 3}
+      - {fileID: 8300000, guid: ab72846b884de714eaa04d3581d99c97, type: 3}
+      - {fileID: 8300000, guid: 938fdb7c59884814f967bb9f08f08805, type: 3}
+      honkVolume: 0.423
+      drivers:
+      - name: Patient
+        weight: 2
+        speedFactor: 0.9
+        accelFactor: 1
+        honkCount: 0
+        honkFirstDelay: 0
+        honkDuration: 0.2
+        honkInterval: 0
+        honkVolume: 0.45
+        honkPitch: 1.15
+        patience: 6
+        overtakeHonk: 1
+        overtakeSpeed: 5
+        boostSeconds: 0
+        boostFactor: 1
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Polite
+        weight: 2
+        speedFactor: 1
+        accelFactor: 1
+        honkCount: 1
+        honkFirstDelay: 1.5
+        honkDuration: 0.22
+        honkInterval: 2
+        honkVolume: 0.5
+        honkPitch: 1.12
+        patience: 4
+        overtakeHonk: 0
+        overtakeSpeed: 6
+        boostSeconds: 0
+        boostFactor: 1
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Normal
+        weight: 3
+        speedFactor: 1
+        accelFactor: 1
+        honkCount: 3
+        honkFirstDelay: 1
+        honkDuration: 0.5
+        honkInterval: 1.4
+        honkVolume: 0.8
+        honkPitch: 1
+        patience: 5
+        overtakeHonk: 0
+        overtakeSpeed: 7
+        boostSeconds: 0
+        boostFactor: 1
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Impatient
+        weight: 1.5
+        speedFactor: 1.1
+        accelFactor: 1.2
+        honkCount: 4
+        honkFirstDelay: 0.4
+        honkDuration: 0.4
+        honkInterval: 0.8
+        honkVolume: 0.9
+        honkPitch: 1.05
+        patience: 3
+        overtakeHonk: 0
+        overtakeSpeed: 9
+        boostSeconds: 3
+        boostFactor: 1.15
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Angry
+        weight: 1.2
+        speedFactor: 1.1
+        accelFactor: 1.3
+        honkCount: 3
+        honkFirstDelay: 0.5
+        honkDuration: 1.4
+        honkInterval: 0.7
+        honkVolume: 1
+        honkPitch: 0.85
+        patience: 4.5
+        overtakeHonk: 0
+        overtakeSpeed: 12
+        boostSeconds: 8
+        boostFactor: 1.5
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Road Rager
+        weight: 0.8
+        speedFactor: 1.2
+        accelFactor: 1.5
+        honkCount: 5
+        honkFirstDelay: 0.3
+        honkDuration: 2.2
+        honkInterval: 0.5
+        honkVolume: 1
+        honkPitch: 0.78
+        patience: 9
+        overtakeHonk: 0
+        overtakeSpeed: 14
+        boostSeconds: 10
+        boostFactor: 1.6
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Menace
+        weight: 0.6
+        speedFactor: 1.1
+        accelFactor: 1.5
+        honkCount: 4
+        honkFirstDelay: 0.5
+        honkDuration: 1
+        honkInterval: 0.6
+        honkVolume: 1
+        honkPitch: 0.9
+        patience: 6
+        overtakeHonk: 0
+        overtakeSpeed: 12
+        boostSeconds: 6
+        boostFactor: 1.4
+        chargeCount: 1
+        chargeAfterHonks: 2
+        chargeSpeed: 5
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Psycho
+        weight: 0.3
+        speedFactor: 1.25
+        accelFactor: 1.8
+        honkCount: 5
+        honkFirstDelay: 0.3
+        honkDuration: 1.8
+        honkInterval: 0.4
+        honkVolume: 1
+        honkPitch: 0.8
+        patience: 10
+        overtakeHonk: 0
+        overtakeSpeed: 15
+        boostSeconds: 10
+        boostFactor: 1.6
+        chargeCount: 1
+        chargeAfterHonks: 1
+        chargeSpeed: 8
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Tapper
+        weight: 1
+        speedFactor: 1
+        accelFactor: 1.1
+        honkCount: 8
+        honkFirstDelay: 0.6
+        honkDuration: 0.12
+        honkInterval: 0.35
+        honkVolume: 0.8
+        honkPitch: 1.2
+        patience: 4.5
+        overtakeHonk: 0
+        overtakeSpeed: 8
+        boostSeconds: 0
+        boostFactor: 1
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      - name: Sleepy
+        weight: 1
+        speedFactor: 0.85
+        accelFactor: 0.8
+        honkCount: 1
+        honkFirstDelay: 4
+        honkDuration: 0.3
+        honkInterval: 1
+        honkVolume: 0.5
+        honkPitch: 0.95
+        patience: 8
+        overtakeHonk: 0
+        overtakeSpeed: 3.5
+        boostSeconds: 0
+        boostFactor: 1
+        chargeCount: 0
+        chargeAfterHonks: 0
+        chargeSpeed: 0
+        runRedChance: -1
+        tailgate: -1
+        overtakeEagerness: -1
+      maxSimultaneousHorns: 3
+      traffic:
+        signals: 1
+        redRunScale: 1
+        farSimRadius: 70
+        farTick: 0.2
+        followRadius: 380
+        followSeenSeconds: 25
+        drunkChanceLate: 0.12
+        sleepyChanceLate: 0.1
+        debugView: 0
+        debugKey: 102
+        debugRadius: 90
+    events:
+      enabled: 1
+      itemChanceScale: 1
+      minDistanceFromPlayer: 50
+      minDistanceBetween: 80
+      introSeconds: 2.2
+      attempts: 2
+      suburbEvents: 1
+      forestEvents: 2
+      cityEvents: 2
+      interactRange: 2.6
+      backpackMin: 3
+      backpackMax: 6
+      walletMin: 3
+      walletMax: 6
+      standaloneSpacing: 20
+      library: {fileID: 11400000, guid: 570e1f5878442574099fa1993789eac7, type: 2}
+      laneClearance: 2.5
+      sidewalkClearance: 0.9
+      maxGroundDelta: 0.4
+      configTries: 6
+    pickpocket:
+      pickpocketChance: 0.08
+      maxPickpocketTargets: 3
+      successChance: 0.5
+      triggerRadius: 1.6
+      alertSeconds: 2
+      failSuspicionPenalty: 0
+    drawGizmos: 1
+    logEvents: 0
+--- !u!114 &1780358737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 100
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
+--- !u!114 &1780358738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8d21c9a01d4a77a9d4e86b5c2f310a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StylizedWorldSetup
+  applyOnEnable: 1
+  enableDistanceFog: 1
+  fogDensity: 0.00263
+  fogColor: {r: 0.66, g: 0.76, b: 0.82, a: 1}
+  skyAmbient: {r: 0.57, g: 0.68, b: 0.79, a: 1}
+  horizonAmbient: {r: 0.76, g: 0.77, b: 0.72, a: 1}
+  groundAmbient: {r: 0.31, g: 0.35, b: 0.29, a: 1}
+  shadowStrength: 0.78
+  shadowDistance: 115
+  directionalIntensity: 1.05
+  sunlightColor: {r: 1, g: 0.91, b: 0.78, a: 1}
+  contrast: 12
+  saturation: 8
+  vignette: 0.08
+  bloom: 0.035
+--- !u!114 &1780358739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7dc93e529af53409257c99ca99e2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoadVergeStage
+  stageEnabled: 1
+  vergeWidth: 14
+  solidWidth: 2.5
+  strength: 0.92
+  edgeNoiseScale: 0.07
+--- !u!114 &1780358740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec73589bd440bbf4291aa8bd6ec0995f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ForestMistStage
+  stageEnabled: 1
+  spacing: 34
+  deepRadius: 38
+  maxPatches: 320
+  patchSize: {x: 46, y: 80}
+  layerHeights: {x: 0.35, y: 1.15}
+  opacity: 0.2
+  driftSpeed: 1.6
+  mistColor: {r: 0.8, g: 0.87, b: 0.9, a: 1}
+  maxHeight01: 0.34
+  maxSlope: 0.5
+--- !u!114 &1780358741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f3af23dc04b25343851e65eb040f2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ValleyFogStage
+  stageEnabled: 1
+  gridStep: 8
+  textureSize: 384
+  reach: 110
+  highStart: 0.27
+  highEnd: 0.42
+  forestFog: 0.8
+  exclusionRadius: 130
+  opacity: 0.5
+  layerLift: {x: 0.7, y: 2.5}
+  fadeStartHeight: 0.2
+  fadeEndHeight: 0.42
+  noiseScale: 0.011
+  swayDistance: 3
+--- !u!114 &1780358742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f40ce9c18a44c4eb91cc1eb74f4648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PondStage
+  stageEnabled: 1
+  radius: 15
+  depth: 2.2
+  minDistanceFromSuburb: 45
+  reedClumps: 50
+  lilyPads: 12
+--- !u!114 &1780358743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6d94285950172498e8e52c0c76f26a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SurfaceDetailStage
+  stageEnabled: 1
+  roadDetails: 1
+  roadPatches: 1
+  patchOpacity: 0.3
+  crackOpacity: 0.6
+  streetLife: 1
+  lawnDetails: 1
+  buildingWeathering: 1
+  maxGrassTufts: 5000
+--- !u!114 &1780358744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 604701032}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinematicOutlineStage
+  stageEnabled: 1
+--- !u!114 &1780358745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1053682681}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AmbientLifeStage
+  stageEnabled: 1
+  grassWaveStrength: 0.5
+  grassWaveSpeed: 0.6
+  grassWaveAmount: 0.5
+--- !u!114 &1780358746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3559eebdbcd3e64bb35f5f5359affba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindowLightStage
+  stageEnabled: 1
+--- !u!114 &1780358747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a986bd6194f6ccd48a7cd4bf3f611d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RooftopPropStage
+  stageEnabled: 1
+  minProps: 2
+  maxProps: 5
+  beaconMinHeight: 38
+  maxTotalProps: 700
+--- !u!114 &1780358748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64659af259851f4fbc392ed8e898807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CityPlazaStage
+  stageEnabled: 1
+  customModel: {fileID: 0}
+--- !u!114 &1780358749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758089064a5bfb4bbd0a3a0f06bdde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CityBorderStage
+  stageEnabled: 1
+  wallHeight: 4.2
+  segmentLength: 3.5
+  highwayGap: 20
+  stubMaxLength: 60
+  barrierChance: 0.5
+  barrierSpacing: 45
+--- !u!114 &1780358750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5390b8008cf1b324f9a9263da90fb128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloraStage
+  stageEnabled: 1
+  spacing: 5.2
+  maxTrees: 4200
+  clearance: 0.6
+  highwayClearance: 16
+  maxSlopeDeg: 30
+  sink: 0.2
+  noiseFrequency: 0.012
+  minDensity: 0.65
+  chunkSize: 96
+  cullDistance: 320
+  castShadows: 0
+  blossomRadius: 55
+  autumnThreshold: 0.64
+--- !u!114 &1780358751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780358720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f42c9ba4e40f74b9fd52db031893d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingDetailStage
+  stageEnabled: 1
+--- !u!1 &1994523987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994523989}
+  - component: {fileID: 1994523988}
+  - component: {fileID: 1994523990}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1994523988
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994523987}
+  m_Enabled: 1
+  serializedVersion: 12
+  m_Type: 1
+  m_Color: {r: 1, g: 0.91, b: 0.78, a: 1}
+  m_Intensity: 1.05
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 0.78
+    m_Bias: 0.045
+    m_NormalBias: 0.32
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &1994523989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994523987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1994523990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994523987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1319884770}
+  - {fileID: 1994523989}
+  - {fileID: 1780358733}
+  - {fileID: 85229036}
+  - {fileID: 1533525873}
+  - {fileID: 323251136}
+  - {fileID: 14457011}
