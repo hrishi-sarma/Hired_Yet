@@ -244,6 +244,8 @@ public class BuildingStage : WorldStage
             ContactShadows.Add(c.LayerRoot(PlacementLayer.Building), new Vector3(xc, lot.baseY + 0.03f, zc), new Vector2(w + 2.2f, d + 2.2f), lot.yaw);
             GameObject go = ModelFitter.Spawn(t.slot, baseCenter, lot.yaw, size, c.LayerRoot(PlacementLayer.Building), rng.Raw, t.name, variant, native);
             go.name = t.name;
+            if (lot.zone == ZoneType.Suburb) EnsureHouseBounds(go, size);
+            if (lot.zone == ZoneType.City) CityBuildingIds.Add(go.GetInstanceID());
             c.occupancy.Add(box, PlacementLayer.Building, go);
             if (lot.zone == ZoneType.Suburb && IsResidential(t.name))
                 ScatterHouseGarden(c, lot, baseCenter, size, lot.yaw, rng, gardenRoot, ref gardenStones, ref gardenBushes);
@@ -253,6 +255,20 @@ public class BuildingStage : WorldStage
         }
         CombineGardenMeshes(gardenRoot);
         Debug.Log("Buildings: " + placed + " placed (city " + cityPlaced + ", suburb " + suburbPlaced + "), " + empty + " lots left empty, " + rejected + " rejected; garden dressing " + gardenStones + " stones/gravel and " + gardenBushes + " shrubs.");
+    }
+
+    /// <summary>Buildings spawned on City lots, whatever zone the zone map reports at their centre.</summary>
+    public static readonly System.Collections.Generic.HashSet<int> CityBuildingIds = new System.Collections.Generic.HashSet<int>();
+
+    /// <summary>Guarantees every suburb building keeps a solid bounding-box collider (mesh colliders can be missing/unreadable).</summary>
+    static void EnsureHouseBounds(GameObject go, Vector3 size)
+    {
+        BoxCollider bc = go.GetComponent<BoxCollider>();
+        if (bc == null) bc = go.AddComponent<BoxCollider>();
+        bc.isTrigger = false;
+        bc.enabled = true;
+        bc.center = new Vector3(0f, size.y * 0.5f, 0f);
+        bc.size = size;
     }
 
     static bool IsResidential(string name)

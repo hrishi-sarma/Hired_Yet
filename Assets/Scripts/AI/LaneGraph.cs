@@ -284,6 +284,9 @@ public class LaneGraph
         }
     }
 
+    /// <summary>Ramps are virtual lane curves (up to 600m, no road mesh) that cut through walls/terrain and make cars float. Off by default.</summary>
+    public static bool LinkHighwayRamps = false;
+
     static void AddHighway(LaneGraph g, WorldContext ctx)
     {
         int gridCount = g.Nodes.Count;
@@ -337,8 +340,11 @@ public class LaneGraph
         f.node = end;
         g.Nodes.Add(start);
         g.Nodes.Add(end);
-        LinkRamp(g, gridCount, start, f, r);
-        LinkRamp(g, gridCount, end, r, f);
+        if (LinkHighwayRamps)
+        {
+            LinkRamp(g, gridCount, start, f, r);
+            LinkRamp(g, gridCount, end, r, f);
+        }
     }
 
     /// <summary>Joins a highway end node to the nearest free grid node with a lane pair, so traffic can leave the highway.</summary>
@@ -465,7 +471,10 @@ public class LaneGraph
         if (Vector2.Dot(d0, d1) < -0.9f) return (p0 + p2) * 0.5f + d0 * 5f;
         float den = Cross(d0, d1);
         if (Mathf.Abs(den) < 0.05f) return (p0 + p2) * 0.5f;
-        float t = Mathf.Clamp(Cross(p2 - p0, d1) / den, 0.5f, 60f);
+        float t = Cross(p2 - p0, d1) / den;
+        float chord = (p2 - p0).magnitude;
+        // Reject ill-conditioned intersections (behind the car or far past the target) that bulge the curve off-road.
+        if (t < 0.5f || t > chord * 1.5f + 2f) return (p0 + p2) * 0.5f;
         return p0 + d0 * t;
     }
 

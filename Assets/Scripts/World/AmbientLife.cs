@@ -298,20 +298,35 @@ public class AmbientLifeController : MonoBehaviour
         {
             Ent e = flies[i];
             Vector3 p = e.tr.position;
-            p += new Vector3(Mathf.Sin(t * 0.6f + e.phase), Mathf.Sin(t * 0.9f + e.phase * 2f) * 0.4f, Mathf.Cos(t * 0.5f + e.phase * 1.3f)) * 0.5f * dt;
+            // smooth wandering: slowly turning heading plus a gentle vertical bob (old version drifted on shared sine waves)
+            e.heading += (Mathf.PerlinNoise(t * 0.35f + e.phase * 10f, i * 7.1f) - 0.5f) * 3f * dt;
+            float sp = 0.35f * e.speed;
+            p += new Vector3(Mathf.Cos(e.heading), 0f, Mathf.Sin(e.heading)) * sp * dt;
+            p.y += Mathf.Cos(t * 0.8f + e.phase * 2f) * 0.25f * dt;
             float g = Ground(p.x, p.z);
-            if ((p - cp).sqrMagnitude > 1400f || e.age > 100f || p.y < g + 0.3f)
+            if (p.y < g + 0.4f) p.y = g + 0.4f;
+            float dist = (p - cp).magnitude;
+            if (dist > 37f || e.age > 100f)
             {
-                Vector3 centre = nearPond && (i & 1) == 0 ? PondStage.Center : cp;
-                p = Around(centre, nearPond && (i & 1) == 0 ? 22f : 30f, 0.5f, 2.5f);
-                if (centre != cp) p.y = Mathf.Max(p.y, PondStage.Center.y + 0.5f);
+                bool pond = nearPond && (i & 1) == 0;
+                Vector3 centre = pond ? PondStage.Center : cp;
+                for (int tries = 0; tries < 5; tries++)
+                {
+                    p = Around(centre, pond ? 22f : 30f, 0.5f, 2.5f);
+                    if (pond) p.y = Mathf.Max(p.y, PondStage.Center.y + 0.5f);
+                    if ((p - cp).sqrMagnitude > 36f) break; // never spawn on top of the camera
+                }
                 e.age = 0f;
+                e.heading = Random.value * 6.28f;
+                dist = (p - cp).magnitude;
             }
             e.age += dt;
             e.tr.position = p;
             e.tr.rotation = face;
+            // fade in after (re)spawn, fade out toward the edge of the area and when very close, so nothing pops or becomes a giant blob
+            float fade = Mathf.Clamp01(e.age / 1.5f) * Mathf.Clamp01((37f - dist) / 8f) * Mathf.Clamp01((dist - 2f) / 3f);
             float pulse = 0.35f + 0.65f * (0.5f + 0.5f * Mathf.Sin(t * 2.2f + e.phase * 3f));
-            e.tr.localScale = Vector3.one * e.size * pulse;
+            e.tr.localScale = Vector3.one * e.size * pulse * fade;
         }
     }
 

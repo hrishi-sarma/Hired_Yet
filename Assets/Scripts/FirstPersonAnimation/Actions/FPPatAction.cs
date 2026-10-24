@@ -42,7 +42,9 @@ namespace FPAnimation
             float lunge = Mathf.Clamp(d - Standoff, 0f, 1.6f) * down;
             CamMove = dir * lunge;
 
-            float want = Mathf.Clamp(x.camBase.y - (h + 0.45f), 0f, 1.05f);
+            // relative to the animal's ground level (world-y made the dip always max out), and never dip a camera that is already low (crouch/sit)
+            float want = Mathf.Clamp(x.camBase.y - (ap.y + h + 0.45f), 0f, 1.05f);
+            if (FPEvents.Sitting) want = 0f;
             dip = -want * down;
             float camY = x.camBase.y + dip, hz = Mathf.Max(0.15f, d - lunge);
             float look = Mathf.Atan2(camY - basePt.y, hz) * Mathf.Rad2Deg;
