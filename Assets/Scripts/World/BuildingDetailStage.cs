@@ -411,9 +411,13 @@ public class BuildingDetailStage : WorldStage
         OrientedBox box = rec.box;
         float h = box.maxY - box.minY;
         if (h < 3.5f) return false;
-        if (c.zoneMap == null || c.zoneMap.ZoneAt(box.center) != ZoneType.City) return false;
+        if (c.zoneMap == null) return false;
+        // lots placed in the City zone are always city buildings, even if the zone map reads differently at their centre
+        bool cityLot = rec.owner != null && BuildingStage.CityBuildingIds.Contains(rec.owner.GetInstanceID());
+        ZoneType zc = cityLot ? ZoneType.City : c.zoneMap.ZoneAt(box.center);
+        if (zc != ZoneType.City && zc != ZoneType.Open) return false;
         string name = rec.owner != null ? rec.owner.name : "";
-        ZoneType zone = c.zoneMap != null ? c.zoneMap.ZoneAt(box.center) : ZoneType.City;
+        ZoneType zone = zc;
         bool interview = InterviewDoorStage.HasChosen && (InterviewDoorStage.ChosenCenter - box.center).sqrMagnitude < 0.01f;
         bool sky = h >= 40f;
         bool mid = !sky && h >= 14f;

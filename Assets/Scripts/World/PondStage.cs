@@ -112,6 +112,7 @@ public class PondStage : WorldStage
         BuildWater(water, site, wl, shore);
         BuildFoam(water.transform, site, wl, shore);
         Decorate(c, rng, site, wl, shore);
+        BuildBarrier(c, site, wl, shore);
         c.occupancy.Add(OrientedBox.FromBase(new Vector3(site.x, level, site.y), new Vector3(R * 3f, 5f, R * 3f), 0f), PlacementLayer.Prop, water);
         HasPond = true;
         Center = new Vector3(site.x, wl, site.y);
@@ -247,6 +248,32 @@ public class PondStage : WorldStage
         MeshRenderer mr = go.AddComponent<MeshRenderer>();
         mr.sharedMaterial = SurfaceDetailStage.Mat("PondFoam", tex, Color.white, false, 2981, true);
         mr.shadowCastingMode = ShadowCastingMode.Off;
+    }
+
+    /// <summary>Invisible tall wall ring just inside the waterline so the player cannot wade or jump in (no swimming yet).</summary>
+    void BuildBarrier(WorldContext c, Vector2 site, float wl, float[] shore)
+    {
+        int seg = shore.Length;
+        Transform root = new GameObject("PondBarrier").transform;
+        root.SetParent(c.LayerRoot(PlacementLayer.Prop), false);
+        for (int i = 0; i < seg; i++)
+        {
+            float a0 = i / (float)seg * Mathf.PI * 2f, a1 = (i + 1) / (float)seg * Mathf.PI * 2f;
+            float r0 = shore[i] * 0.97f, r1 = shore[(i + 1) % seg] * 0.97f;
+            Vector2 p0 = new Vector2(site.x + Mathf.Cos(a0) * r0, site.y + Mathf.Sin(a0) * r0);
+            Vector2 p1 = new Vector2(site.x + Mathf.Cos(a1) * r1, site.y + Mathf.Sin(a1) * r1);
+            Vector2 d = p1 - p0;
+            float len = d.magnitude;
+            if (len < 0.05f) continue;
+            GameObject go = new GameObject("PondWall");
+            go.transform.SetParent(root, false);
+            go.transform.position = new Vector3((p0.x + p1.x) * 0.5f, wl - 1f, (p0.y + p1.y) * 0.5f);
+            go.transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(d.x, d.y) * Mathf.Rad2Deg, 0f);
+            BoxCollider bc = go.AddComponent<BoxCollider>();
+            bc.size = new Vector3(0.5f, 4.5f, len + 0.3f);
+            bc.center = new Vector3(0f, 2.25f, 0f);
+            go.isStatic = true;
+        }
     }
 
     void Decorate(WorldContext c, WorldRng rng, Vector2 site, float wl, float[] shore)

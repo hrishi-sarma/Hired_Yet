@@ -68,6 +68,7 @@ public sealed class WorldBarrierColliderRepair : MonoBehaviour
             if (up != null) n += "/" + up.name.ToLowerInvariant();
             if (!(n.Contains("fence") || n.Contains("picket"))) continue;
             if (n.Contains("highway") || n.Contains("barrier") || n.Contains("guardrail")) continue;
+            if (n.Contains("perimeter") || n.Contains("combinedrailbatch")) continue; // generated district fence: its colliders stay, so it must stay visible
             Vector3 b = r.bounds.center;
             Vector2 p = new Vector2(b.x, b.z);
             float ext = Mathf.Max(r.bounds.extents.x, r.bounds.extents.z);

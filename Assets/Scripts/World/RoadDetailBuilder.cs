@@ -265,12 +265,6 @@ public static class RoadDetailBuilder
             float yb = c.HeightAt(b.x, b.y);
             float ym = (ya + yb) * 0.5f;
             float normalizedHeight = ym / Mathf.Max(1f, c.settings.maxTerrainHeight);
-            if (normalizedHeight > 0.27f) continue;
-            float probe = 2.5f;
-            float gx = c.HeightAt(mid.x + probe, mid.y) - c.HeightAt(mid.x - probe, mid.y);
-            float gz = c.HeightAt(mid.x, mid.y + probe) - c.HeightAt(mid.x, mid.y - probe);
-            float slope = new Vector2(gx, gz).magnitude / (probe * 2f);
-            if (slope > 0.32f) continue;
             float yaw = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg;
             BoxWithMaterial(root, rootName + "_Upper", new Vector3(mid.x, ym + 1.02f, mid.y),
                 new Vector3(0.10f, 0.12f, len + 0.10f), yaw, railMat);
@@ -279,7 +273,7 @@ public static class RoadDetailBuilder
             if (zone == ZoneType.City)
                 BoxWithMaterial(root, rootName + "_Mid", new Vector3(mid.x, ym + 0.77f, mid.y),
                     new Vector3(0.08f, 0.07f, len + 0.10f), yaw, railMat);
-            AddWallCollider(fenceColliders, new Vector3(mid.x, Mathf.Min(ya, yb), mid.y), 1.12f + Mathf.Abs(yb - ya), 0.14f, len + 0.1f, yaw);
+            AddWallCollider(fenceColliders, new Vector3(mid.x, Mathf.Min(ya, yb), mid.y), 1.12f + Mathf.Abs(yb - ya), 0.14f, len + 0.1f, yaw); // fence height on purpose: the player can jump/hop over it into the forest // tall so the player cannot jump the fence
             BoxWithMaterial(root, rootName + "_Post", new Vector3(a.x, ya + 0.55f, a.y),
                 new Vector3(0.13f, 1.12f, 0.13f), yaw, postMat);
         }

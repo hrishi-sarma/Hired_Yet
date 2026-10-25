@@ -54,12 +54,35 @@ public static class ModelFitter
         }
 
         ApplyColliders(slot, wrapper, boxSize);
+        // Some imported suburb-house slots are configured with ColliderMode.None. Give
+        // those buildings a fallback volume so the player cannot walk straight through them.
+        // Preserve detailed/model colliders when the slot already supplied any.
+        if (IsBuildingSemantic(semanticName) && wrapper.GetComponentInChildren<Collider>(true) == null)
+        {
+            BoxCollider houseCollider = wrapper.AddComponent<BoxCollider>();
+            houseCollider.center = new Vector3(0f, Mathf.Max(0.1f, boxSize.y * 0.5f), 0f);
+            houseCollider.size = new Vector3(Mathf.Max(0.5f, boxSize.x), Mathf.Max(0.5f, boxSize.y), Mathf.Max(0.5f, boxSize.z));
+        }
         // Building prefabs often contain a fence as separate named mesh parts. Their
         // broad house collider is not enough to stop the player passing through rails.
         if (variant != null) ApplyNamedFenceColliders(fit.transform);
         if (slot.markStatic) SetStatic(wrapper.transform);
         wrapper.transform.rotation = Quaternion.Euler(0f, yawDeg, 0f);
         return wrapper;
+    }
+
+    static bool IsBuildingSemantic(string semanticName)
+    {
+        if (string.IsNullOrEmpty(semanticName)) return false;
+        string n = semanticName.ToLowerInvariant();
+        return n.Contains("house") || n.Contains("cottage") || n.Contains("building") ||
+            n.Contains("office") || n.Contains("mall") || n.Contains("hotel") ||
+            n.Contains("hospital") || n.Contains("apartment") || n.Contains("school") ||
+            n.Contains("cinema") || n.Contains("station") || n.Contains("warehouse") ||
+            n.Contains("clinic") || n.Contains("shop") || n.Contains("cafe") ||
+            n.Contains("motel") || n.Contains("library") || n.Contains("workshop") ||
+            n.Contains("plaza") || n.Contains("tower") || n.Contains("hall") ||
+            n.Contains("fire station") || n.Contains("sports club") || n.Contains("garden center");
     }
 
     static void BuildPrimitive(ModelSlot slot, Transform fit, Vector3 box, Color tint)

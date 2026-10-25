@@ -333,7 +333,16 @@ public class Car : AgentBase
         }
         Impair(dt);
         float prevLat = lat;
-        float goal = latGoal + latOffset;
+        // Never carry an overtake/drift offset through an intersection. Connector curves
+        // are narrow and their geometry already defines the vehicle's turning path.
+        if (path.kind == PathKind.Connector)
+        {
+            overtaking = false;
+            overtakeLeader = null;
+            latGoal = 0f;
+            latOffset = 0f;
+        }
+        float goal = path.kind == PathKind.Connector ? 0f : latGoal + latOffset;
         lat = far ? goal : Mathf.MoveTowards(lat, goal, (path.kind == PathKind.Connector ? 3f : 1.6f) * dt);
         latVel = dt > 0.0001f ? (lat - prevLat) / dt : 0f;
         if (Time.time >= nextMood) MoodTick(d);
@@ -831,7 +840,11 @@ public class Car : AgentBase
 
     void TryOvertake(NpcDirector d, CarBehavior b, DriverProfile p, float minRemain)
     {
-        if (path.kind != PathKind.Lane || path.isRamp || path.length - s < minRemain || s < 3f) return;
+        // Suburb/open roads are narrow and often have houses, fences and parked props close
+        // to the lane. Keep traffic in-lane there; only attempt passes on wider city/highway lanes.
+        if (path == null || path.kind != PathKind.Lane ||
+            (path.zone != ZoneType.City && path.zone != ZoneType.Highway) ||
+            path.isRamp || path.length - s < minRemain || s < 3f) return;
         if (Time.time < nextOvertakeTry) return;
         nextOvertakeTry = Time.time + 0.4f;
         Vector2 pathPos;
@@ -1122,8 +1135,22 @@ public class Car : AgentBase
                     speed = 0f;
                     return;
                 }
+                RoadPath nextConnector = planned;
+                // A route connector must belong to this lane and lead to a valid next lane.
+                // If a generated graph contains a stale/broken edge, stop safely instead of
+                // advancing onto an invalid path and sending the car off-road.
+                if (nextConnector.kind != PathKind.Connector ||
+                    nextConnector.inLane != path || nextConnector.next == null ||
+                    !path.outs.Contains(nextConnector))
+                {
+                    reserved = false;
+                    planned = null;
+                    s = path.length - 0.01f;
+                    speed = 0f;
+                    return;
+                }
                 path.cars.Remove(this);
-                path = planned;
+                path = nextConnector;
                 planned = null;
                 s = over;
                 path.cars.Add(this);
@@ -1131,8 +1158,16 @@ public class Car : AgentBase
             else
             {
                 RoadPath conn = path;
+                RoadPath nextLane = conn.next;
+                if (nextLane == null)
+                {
+                    path.cars.Remove(this);
+                    path = null;
+                    Despawn();
+                    return;
+                }
                 path.cars.Remove(this);
-                path = conn.next;
+                path = nextLane;
                 s = over;
                 path.cars.Add(this);
                 holdCtl = conn.node.controller;

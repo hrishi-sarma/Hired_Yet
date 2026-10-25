@@ -36,57 +36,52 @@ public class WorldEventDirector
         PaperGustSpawner.Attach(root, director);
         WorldRng rng = new WorldRng(director.Ctx.settings.seed, "events");
         EventSettings st = director.settings.events;
+        // 3-4 randomized events per zone; distinct configs, families are only preferred to differ
         List<EventZone> slots = new List<EventZone>();
-        for (int i = 0; i < st.suburbEvents; i++) slots.Add(EventZone.Suburb);
-        for (int i = 0; i < st.forestEvents; i++) slots.Add(EventZone.Forest);
-        for (int i = 0; i < st.cityEvents; i++) slots.Add(EventZone.City);
-        int familyCount = System.Enum.GetValues(typeof(EventFamily)).Length - 1;
-        if (slots.Count > familyCount)
+        EventZone[] zs = { EventZone.Suburb, EventZone.Forest, EventZone.City };
+        for (int z = 0; z < zs.Length; z++)
         {
-            Debug.LogWarning("WorldEventDirector: only " + familyCount + " event families exist, extra slots dropped.");
-            slots.RemoveRange(familyCount, slots.Count - familyCount);
+            int n = rng.Range(3, 5);
+            for (int i = 0; i < n; i++) slots.Add(zs[z]);
         }
         Dictionary<EventZone, List<WorldEventConfig>> pools = new Dictionary<EventZone, List<WorldEventConfig>>();
         for (int i = 0; i < slots.Count; i++)
             if (!pools.ContainsKey(slots[i])) pools[slots[i]] = WorldEventCatalog.ForZone(slots[i], st.library);
 
-        // every valid way to give each slot a different family
-        List<EventFamily[]> plans = new List<EventFamily[]>();
-        CollectPlans(slots, pools, 0, new EventFamily[slots.Count], new bool[familyCount], plans, rng);
-        Shuffle(plans, rng);
-
         List<Pick> best = new List<Pick>();
+        HashSet<WorldEventConfig> usedCfg = new HashSet<WorldEventConfig>();
+        HashSet<EventFamily> usedFam = new HashSet<EventFamily>();
         int baseline = placed.Count;
-        for (int p = 0; p < plans.Count && p < 12; p++)
+        for (int i = 0; i < slots.Count; i++)
         {
-            List<Pick> got = new List<Pick>();
-            for (int i = 0; i < slots.Count; i++)
+            List<WorldEventConfig> cands = new List<WorldEventConfig>();
+            List<WorldEventConfig> fresh = new List<WorldEventConfig>();
+            List<WorldEventConfig> pool = pools[slots[i]];
+            for (int k = 0; k < pool.Count; k++)
             {
-                List<WorldEventConfig> cands = new List<WorldEventConfig>();
-                List<WorldEventConfig> pool = pools[slots[i]];
-                for (int k = 0; k < pool.Count; k++)
-                    if (WorldEventCatalog.FamilyOf(pool[k]) == plans[p][i]) cands.Add(pool[k]);
-                bool ok = false;
-                for (int t = 0; t < st.configTries && cands.Count > 0 && !ok; t++)
-                {
-                    WorldEventConfig def = PickWeighted(cands, rng);
-                    Pick pk = new Pick { cfg = def, zone = slots[i] };
-                    if (TryFindSpot(def, slots[i], rng, true, out pk.pos, out pk.yaw, out pk.boxes))
-                    {
-                        got.Add(pk);
-                        placed.Add(pk.pos);
-                        ok = true;
-                    }
-                    else cands.Remove(def);
-                }
-                if (!ok) break;
+                if (usedCfg.Contains(pool[k])) continue;
+                cands.Add(pool[k]);
+                if (!usedFam.Contains(WorldEventCatalog.FamilyOf(pool[k]))) fresh.Add(pool[k]);
             }
-            placed.RemoveRange(baseline, placed.Count - baseline);
-            if (got.Count > best.Count) best = got;
-            if (got.Count == slots.Count) break;
+            List<WorldEventConfig> src = fresh.Count > 0 ? fresh : cands;
+            for (int t = 0; t < st.configTries * 2 && src.Count > 0; t++)
+            {
+                WorldEventConfig def = PickWeighted(src, rng);
+                Pick pk = new Pick { cfg = def, zone = slots[i] };
+                if (TryFindSpot(def, slots[i], rng, true, out pk.pos, out pk.yaw, out pk.boxes))
+                {
+                    best.Add(pk);
+                    placed.Add(pk.pos);
+                    usedCfg.Add(def);
+                    usedFam.Add(WorldEventCatalog.FamilyOf(def));
+                    break;
+                }
+                src.Remove(def);
+                if (src.Count == 0 && src == fresh) { src = cands; cands.RemoveAll(c => fresh.Contains(c)); }
+            }
         }
-        if (plans.Count == 0) Debug.LogWarning("WorldEventDirector: no valid family layout for the configured zone counts.");
-        else if (best.Count < slots.Count) Debug.LogWarning("WorldEventDirector: only placed " + best.Count + " of " + slots.Count + " events.");
+        placed.RemoveRange(baseline, placed.Count - baseline);
+        if (best.Count < slots.Count) Debug.LogWarning("WorldEventDirector: only placed " + best.Count + " of " + slots.Count + " events.");
         for (int i = 0; i < best.Count; i++)
         {
             Spawn(best[i].cfg, best[i].pos, best[i].yaw, best[i].boxes);
