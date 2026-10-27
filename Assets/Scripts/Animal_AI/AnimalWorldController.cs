@@ -49,19 +49,21 @@ public sealed class AnimalWorldController : MonoBehaviour
         TryMaintainPopulation(AnimalSpecies.Rabbit, settings.rabbitCount);
         TryMaintainPopulation(AnimalSpecies.Cat, settings.catCount);
         TryMaintainPopulation(AnimalSpecies.Dog, settings.dogCount);
+        TryMaintainPopulation(AnimalSpecies.Cat, settings.cityCatCount, true);
+        TryMaintainPopulation(AnimalSpecies.Dog, settings.cityDogCount, true);
     }
 
-    void TryMaintainPopulation(AnimalSpecies species, int target)
+    void TryMaintainPopulation(AnimalSpecies species, int target, bool city = false)
     {
-        if (target <= 0 || Count(species) >= target) return;
+        if (target <= 0 || Count(species, city) >= target) return;
         int attempts = settings.spawnAttemptsPerTick;
         for (int i = 0; i < attempts; i++)
         {
-            if (TrySpawn(species)) return;
+            if (TrySpawn(species, city)) return;
         }
     }
 
-    bool TrySpawn(AnimalSpecies species)
+    bool TrySpawn(AnimalSpecies species, bool city = false)
     {
         WorldContext ctx = director.Ctx;
         if (ctx == null || ctx.zoneMap == null || ctx.Size <= 0f) return false;
@@ -69,7 +71,7 @@ public sealed class AnimalWorldController : MonoBehaviour
         bool domestic = species == AnimalSpecies.Cat || species == AnimalSpecies.Dog;
         HomeSpot home = null;
         Vector3 homePos = Vector3.zero;
-        bool useHome = settings.useHomes && AnimalHomes.Built && AnimalHomes.ListFor(species).Count > 0
+        bool useHome = !city && settings.useHomes && AnimalHomes.Built && AnimalHomes.ListFor(species).Count > 0
             && (species != AnimalSpecies.Rabbit || settings.rabbitsUseBurrows);
         if (useHome && !PickHomeSpawn(species, player, out home, out homePos)) return false;
         float minR2 = settings.spawnRadiusMin * settings.spawnRadiusMin;
@@ -82,7 +84,7 @@ public sealed class AnimalWorldController : MonoBehaviour
         float halfWorld = ctx.Size * 0.5f;
         if (x < -halfWorld || x > halfWorld || z < -halfWorld || z > halfWorld) return false;
 
-        ZoneType requiredZone = domestic ? ZoneType.Suburb : ZoneType.Forest;
+        ZoneType requiredZone = domestic ? (city ? ZoneType.City : ZoneType.Suburb) : ZoneType.Forest;
         if (ctx.zoneMap.ZoneAt(x, z) != requiredZone) return false;
         if (!domestic && ctx.NormalAt(x, z).y < 0.94f) return false;
 
@@ -111,7 +113,7 @@ public sealed class AnimalWorldController : MonoBehaviour
         AnimalAgent agent = go.AddComponent<AnimalAgent>();
         int animalSeed = rng.Next() ^ (nextSeed++ * 7919);
         if (home != null) animalSeed = home.seed;     // same home -> same animal (breed, personality)
-        agent.Initialize(this, species, director, settings, animalSeed, home);
+        agent.Initialize(this, species, director, settings, animalSeed, home, city);
         if (home != null && settings.showBurrowMarkers) AnimalHomes.EnsureMarker(home, animalRoot);
         animals.Add(agent);
         return true;
@@ -168,11 +170,11 @@ public sealed class AnimalWorldController : MonoBehaviour
         if (animal != null) animals.Remove(animal);
     }
 
-    int Count(AnimalSpecies species)
+    int Count(AnimalSpecies species, bool city = false)
     {
         int count = 0;
         for (int i = 0; i < animals.Count; i++)
-            if (animals[i] != null && animals[i].Species == species) count++;
+            if (animals[i] != null && animals[i].Species == species && animals[i].IsCityPet == city) count++;
         return count;
     }
 

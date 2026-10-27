@@ -784,7 +784,7 @@ public class Car : AgentBase
                 charging = false;
                 chargesDone++;
                 snarlUntil = Time.time + 1f;
-                Honk(b, p.honkDuration * 1.3f, 1f, p.honkPitch * 0.95f);
+                Honk(b, p.honkDuration * 1.3f, 1f, p.honkPitch * 0.95f, true);
             }
             return;
         }
@@ -929,8 +929,10 @@ public class Car : AgentBase
         boostUntil = Time.time + profile.boostSeconds;
     }
 
-    void Honk(CarBehavior b, float duration, float volume, float pitch)
+    void Honk(CarBehavior b, float duration, float volume, float pitch, bool force = false)
     {
+        if (lights != null) lights.Flash(Mathf.Max(0.8f, duration));            // flash the headlights at whoever is in the way, with the horn
+        if (!force && honkPlaying && Time.time < honkEnd - 0.05f) return;      // one horn per car: never layer a second honk on a sounding one
         float dur = duration * Mathf.Lerp(0.88f, 1.12f, Roll());
         AudioClip clip = HornBank.TryBegin(this, b, dur, ref lastHorn);
         if (clip == null) return;
@@ -982,7 +984,7 @@ public class Car : AgentBase
         }
         float fadeIn = Mathf.Clamp01((t - honkStart) / 0.03f);
         float fadeOut = Mathf.Clamp01((honkEnd - t) / 0.1f);
-        audioSrc.volume = honkVol * Mathf.Min(fadeIn, fadeOut);
+        audioSrc.volume = Mathf.Clamp01(honkVol * AudioDirector.Volume("cars")) * Mathf.Min(fadeIn, fadeOut);   // VEHICLES slider, live
     }
 
     // ---------------- following & routing ----------------

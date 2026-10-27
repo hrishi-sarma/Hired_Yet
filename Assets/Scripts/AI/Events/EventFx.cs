@@ -16,6 +16,7 @@ public class EventFx : MonoBehaviour
     readonly List<Transform> spinners = new List<Transform>();
     readonly List<Transform> plants = new List<Transform>();
     Light fireLight;
+    bool gated;     // campfire: only burns once the event has succeeded
     float baseLight, seed;
 
     static Material mat;
@@ -26,9 +27,10 @@ public class EventFx : MonoBehaviour
         Kind k;
         if (id == "thirsty_plants") k = Kind.Plants;
         else if (id == "sprinkler_valve") k = Kind.Sprinkler;
-        else if (id == "witch_cauldron") k = Kind.Fire;
+        else if (id == "witch_cauldron" || id == "campfire_rain") k = Kind.Fire;
         else return;
         EventFx fx = body.gameObject.AddComponent<EventFx>();
+        fx.gated = id == "campfire_rain";
         fx.Build(k, body);
     }
 
@@ -84,6 +86,7 @@ public class EventFx : MonoBehaviour
         if (ev == null) ev = GetComponentInParent<WorldEvent>();
         bool near = (transform.position - d.Player.position).sqrMagnitude < ActiveRange * ActiveRange;
         float rate = 0f, rain = 0f;
+        bool lit = !gated || (ev != null && ev.Succeeded);
         float prog = ev != null ? ev.Progress : 0f;
         bool working = ev != null && ev.Working;
         switch (kind)
@@ -105,14 +108,14 @@ public class EventFx : MonoBehaviour
                     if (spinners[i] != null) spinners[i].localRotation = Quaternion.Euler(0f, Time.time * (150f - 80f * prog) + i * 90f, 0f);
                 break;
             case Kind.Fire:
-                rate = near ? 22f : 0f;
+                rate = near && lit ? 22f : 0f;
                 break;
         }
         for (int i = 0; i < main.Count; i++) SetRate(main[i], rate);
         if (kind != Kind.Plants) for (int i = 0; i < extra.Count; i++) SetRate(extra[i], kind == Kind.Fire ? rate * 0.2f : rain);
         if (fireLight != null)
         {
-            fireLight.enabled = near;
+            fireLight.enabled = near && lit;
             fireLight.intensity = baseLight * (0.8f + 0.35f * Mathf.PerlinNoise(Time.time * 9f, seed));
         }
     }

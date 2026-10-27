@@ -388,6 +388,7 @@ public sealed class BenchSittingInteraction : MonoBehaviour
         if (water) { why = "CAN'T SIT IN WATER"; return false; }
         if (best.normal.y < 0.88f) { why = "TOO STEEP TO SIT"; return false; }
         if (best.collider is TerrainCollider) return true;
+        if (best.collider.name == "Lawn") return true;
         string nm = NameChain(best.collider);
         if (Has(nm, "road", "asphalt", "highway", "parking", "crosswalk", "sidewalk", "concrete", "plaza", "pavement", "curb", "stair", "metal", "steel", "grate",
                     "wood", "plank", "deck", "porch", "bridge", "pier", "water", "river", "pond", "puddle", "floor", "carpet", "office", "interview", "room", "rug", "tile", "roof"))

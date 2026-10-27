@@ -9,6 +9,7 @@ public class InterviewDoorStage : WorldStage
     public string promptText = "[ PRESS E TO START INTERVIEW ]";
     public TMP_FontAsset font;
     public float minBuildingHeight = 20f;
+    const float DoorLift = 0.25f;     // office door sat 0.25 m too low after the city building drop
     public Vector3 triggerSize = new Vector3(8f, 6f, 10f);
     public Vector3 doorSize = new Vector3(3f, 3.4f, 0.25f);
     public Color doorColor = new Color(0.2f, 1f, 0.4f);
@@ -102,14 +103,14 @@ public class InterviewDoorStage : WorldStage
         GameObject marker = PrimitiveFactory.Create(PrimitiveKind.Cube, root.transform);
         marker.name = "DoorMarker";
         Vector2 markerPos = faceCenter + front * (ds.z * 0.5f + 0.05f);
-        marker.transform.SetPositionAndRotation(new Vector3(markerPos.x, box.minY + ds.y * 0.5f, markerPos.y), Quaternion.Euler(0f, box.yawDeg, 0f));
+        marker.transform.SetPositionAndRotation(new Vector3(markerPos.x, box.minY + DoorLift + ds.y * 0.5f, markerPos.y), Quaternion.Euler(0f, box.yawDeg, 0f));
         marker.transform.localScale = ds;
         Material leafMat = BuildingDetailStage.CreateDoorMaterial(new Color(0.45f, 0.28f, 0.15f));
         marker.GetComponent<Renderer>().sharedMaterial = leafMat;
         GameObject handle = PrimitiveFactory.Create(PrimitiveKind.Cube, root.transform);
         handle.name = "DoorHandle";
         Vector2 hp = faceCenter + front * (ds.z + 0.1f) + box.axisX * (ds.x * 0.5f - 0.3f);
-        handle.transform.SetPositionAndRotation(new Vector3(hp.x, box.minY + 1.1f, hp.y), Quaternion.Euler(0f, box.yawDeg, 0f));
+        handle.transform.SetPositionAndRotation(new Vector3(hp.x, box.minY + DoorLift + 1.1f, hp.y), Quaternion.Euler(0f, box.yawDeg, 0f));
         handle.transform.localScale = new Vector3(0.1f, 0.1f, 0.12f);
         handle.GetComponent<Renderer>().sharedMaterial = MaterialFactory.Get(new Color(0.8f, 0.6f, 0.2f));
 
@@ -132,14 +133,14 @@ public class InterviewDoorStage : WorldStage
             GameObject piece = PrimitiveFactory.Create(PrimitiveKind.Cube, root.transform);
             piece.name = "DoorGlowFrame";
             Vector2 pp = faceCenter + box.axisX * parts[i, 0] + front * (fd * 0.5f);
-            piece.transform.SetPositionAndRotation(new Vector3(pp.x, box.minY + parts[i, 1], pp.y), Quaternion.Euler(0f, box.yawDeg, 0f));
+            piece.transform.SetPositionAndRotation(new Vector3(pp.x, box.minY + DoorLift + parts[i, 1], pp.y), Quaternion.Euler(0f, box.yawDeg, 0f));
             piece.transform.localScale = new Vector3(parts[i, 2], parts[i, 3], fd);
             piece.GetComponent<Renderer>().sharedMaterial = glow;
         }
         GameObject lightGo = new GameObject("DoorGlowLight");
         lightGo.transform.SetParent(root.transform, false);
         Vector2 lp = faceCenter + front * 1.8f;
-        lightGo.transform.position = new Vector3(lp.x, box.minY + ds.y * 0.6f, lp.y);
+        lightGo.transform.position = new Vector3(lp.x, box.minY + DoorLift + ds.y * 0.6f, lp.y);
         Light gl = lightGo.AddComponent<Light>();
         gl.type = LightType.Point;
         gl.color = gold;

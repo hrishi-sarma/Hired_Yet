@@ -63,7 +63,9 @@ namespace Items
         {
             var keyboard = Keyboard.current;
             if (keyboard == null) return;
-            if (Locked || DevConsole.Active) { if (open) SetOpen(false); return; }
+            if (Booklet.Active) return;   // the tutorial booklet owns the keyboard while it is open
+            if (Locked || DevConsole.Active || PhotoMode.Active) { if (open) SetOpen(false); return; }
+            if (open && !Booklet.Active) { if (Cursor.lockState != CursorLockMode.None) Cursor.lockState = CursorLockMode.None; if (!Cursor.visible) Cursor.visible = true; }
             if (keyboard.tabKey.wasPressedThisFrame) SetOpen(!open);
             if (open && keyboard.escapeKey.wasPressedThisFrame) { if (confirm != null) { WorldUtil.Kill(confirm); confirm = null; } else if (context != null) DestroyContext(); else SetOpen(false); }
             if (open && keyboard.leftArrowKey.wasPressedThisFrame) Select(Mathf.Max(0, selected - 1));
@@ -146,7 +148,7 @@ namespace Items
                 slotDetail[i] = Label(card.transform, "Detail", "", 11, Muted, new Vector2(0, -116), new Vector2(226, 24));
             }
 
-            message = Label(root.transform, "Message", "Double-click: hold / unequip   ·   Right-click: item actions", 14, Ink, new Vector2(-135, -218), new Vector2(560, 30));
+            message = Label(root.transform, "Message", "", 14, Ink, new Vector2(-135, -218), new Vector2(560, 30));
             message.alignment = TextAnchor.MiddleLeft; message.fontStyle = FontStyle.Bold;
             var close = Button(root.transform, "Close", "CLOSE", new Vector2(320, -218), new Vector2(210, 44), UIKit.Hex("#FF8A80"));
             close.onClick.AddListener(() => SetOpen(false));
@@ -226,10 +228,10 @@ namespace Items
         Button Button(Transform parent, string name, string value, Vector2 pos, Vector2 size, Color color)
         {
             var go = Box(parent, name, color, pos, size, true); UIKit.Boxy(go.GetComponent<Image>(), 3f, true);
-            var b = go.AddComponent<Button>(); var cb = b.colors; cb.normalColor = Color.white; cb.highlightedColor = new Color(1.1f, 1.1f, 1.1f, 1); cb.pressedColor = new Color(.8f, .8f, .8f, 1); cb.fadeDuration = .05f; b.colors = cb;
+            var b = go.AddComponent<Button>(); b.onClick.AddListener(UiClick.Play); var cb = b.colors; cb.normalColor = Color.white; cb.highlightedColor = new Color(1.1f, 1.1f, 1.1f, 1); cb.pressedColor = new Color(.8f, .8f, .8f, 1); cb.fadeDuration = .05f; b.colors = cb;
             Label(go.transform, "Text", value, 16, Ink, Vector2.zero, size - new Vector2(12, 8)).fontStyle = FontStyle.Bold; return b;
         }
-        // world keeps running while the bag is open, so mouse-look scripts on the player are switched off (movement stays live)
+        // world keeps running while the bag is open, but the player is frozen: movement + look scripts off, only the cursor is free
         readonly System.Collections.Generic.List<Behaviour> lookOff = new System.Collections.Generic.List<Behaviour>();
         void LockLook(bool on)
         {
@@ -237,6 +239,8 @@ namespace Items
             {
                 if (lookOff.Count > 0) return;
                 Transform p = SaveSystem.FindPlayer(); if (p == null) return;
+                foreach (var b in p.GetComponents<MonoBehaviour>()) if (b != null && b.enabled) { b.enabled = false; lookOff.Add(b); }
+                foreach (var pi in p.GetComponentsInChildren<UnityEngine.InputSystem.PlayerInput>()) if (pi != null && pi.enabled) { pi.enabled = false; lookOff.Add(pi); }
                 foreach (var b in p.GetComponentsInChildren<MonoBehaviour>())
                 {
                     if (b == null || !b.enabled) continue;
@@ -329,7 +333,7 @@ namespace Items
             }
             DestroyContext();
             if (tooltip != null) tooltip.SetActive(false);
-            message.text = "Double-click to hold / unequip · Right-click for actions";
+            message.text = "";
         }
 
         // ------------------------------------------------------------------ actions

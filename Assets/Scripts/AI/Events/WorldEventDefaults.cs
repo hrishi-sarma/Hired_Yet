@@ -194,6 +194,8 @@ public static class WorldEventDefaults
         l.Add(D(C, "alien_tourist", "ALIEN TOURIST", "ANSWER THE ALIEN", "Greetings, human. Explain your strange objects to me.", "Fascinating! Take this gift from my planet.", "Your answer was illogical.", Ch, 3f, 0f, 'w', "#40C080", Cu, "#606080", 0.8f, 0.6f, 0.5f, Po));
         l.Add(D(C, "flying_documents", "OFFICE WORKER", "COLLECT THE PAPERS", "My papers blew away! Can you gather them?", "Every page! Thank you. Take this.", "Half of them are gone...", O, 6f, 0f, 's', "#6F7F9F", Cu, "#F0F0F0", 0.3f, 0.02f, 0.4f, In));
         l.Add(D(C, "lost_wallet", "BYSTANDER", "RETURN THE WALLET", "Someone dropped this. Help me find who owns it.", "You found them! A reward for honesty.", "Wrong person. This is awkward.", O, 2f, 0f, 's', "#7F5F3F", Cu, "#6F4F2F", 0.15f, 0.04f, 0.1f, In));
+        l.Add(D(F, "campfire_rain", "CAMPER", "LIGHT THE FIRE", "The rain put out my campfire! Can you light it again?", "Warm at last! Here, take this.", "Still soaked... I give up.", M, 3f, 8f, 's', "#4F7F9F", Cy, "#5F3F20", 1.6f, 0.5f, 1.6f, Ti));
+        l.Add(D(C, "elderly_crosswalk", "ELDERLY WOMAN", "HELP HER CROSS", "Excuse me, dear, could you help me across the road?", "Thank you, dear. Here, take this.", "Oh dear, I will go back and wait.", H, 1f, 0f, 's', "#8F7F9F", Cy, "#6F4F2F", 0.2f, 0.8f, 0.2f, PlayerEventAnim.None));
         return l;
     }
 }

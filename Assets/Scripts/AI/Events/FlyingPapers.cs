@@ -79,6 +79,7 @@ public class PaperGustSpawner : MonoBehaviour
         }
         if (director == null || !director.Running || director.Player == null || cfg == null || !cfg.enabled || cfg.spawnWeight <= 0f) return;
         if (active != null) return;
+        if (WeatherController.Raining) { timer = Mathf.Max(timer, 8f); return; }   // no paper gusts while it rains
         timer -= Time.deltaTime;
         if (timer > 0f) return;
         if (!InCity(director.Player.position)) { timer = 5f; return; }

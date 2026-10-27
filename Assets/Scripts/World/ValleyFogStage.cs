@@ -11,7 +11,7 @@ public class ValleyFogStage : WorldStage
     public float highEnd = 0.42f;
     [Range(0f, 1f)] public float forestFog = 0.8f;
     public float exclusionRadius = 130f;
-    [Range(0f, 1f)] public float opacity = 0.5f;
+    [Range(0f, 1f)] public float opacity = 0.38f;
     public Vector2 layerLift = new Vector2(0.7f, 2.5f);
     [Range(0f, 1f)] public float fadeStartHeight = 0.2f;
     [Range(0f, 1f)] public float fadeEndHeight = 0.42f;

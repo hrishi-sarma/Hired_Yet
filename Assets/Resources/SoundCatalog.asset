@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: SoundCatalog
   m_EditorClassIdentifier: Assembly-CSharp::SoundCatalog
   entries:
+  - clip: {fileID: 8300000, guid: 55b4601e2c4a41f4aaae11ec0bde7955, type: 3}
+    category: ambient
+    group: bg_music
+    tags:
+    - night
+    - night_1
+  - clip: {fileID: 8300000, guid: 2d5c7fda6b2537c4a93125b10c301948, type: 3}
+    category: ambient
+    group: bg_music
+    tags:
+    - night
+    - night_2
   - clip: {fileID: 8300000, guid: 083c4805e9184f44cbffb0be67225a67, type: 3}
     category: ambient
     group: city
@@ -1340,3 +1352,13 @@ MonoBehaviour:
     group: 
     tags:
     - alien
+  - clip: {fileID: 8300000, guid: 76940fdbfcb534b49974ee6bd9bd64e2, type: 3}
+    category: weather
+    group: 
+    tags:
+    - rain
+  - clip: {fileID: 8300000, guid: b7c81e94948534c45a5b8f057fb82598, type: 3}
+    category: weather
+    group: 
+    tags:
+    - thunder

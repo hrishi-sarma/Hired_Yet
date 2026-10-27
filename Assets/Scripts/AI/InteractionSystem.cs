@@ -22,7 +22,7 @@ public class InteractionSystem : MonoBehaviour
 
     public bool Suppressed
     {
-        get { return interviewOpen || DevConsole.Active || Items.InventoryUI.IsOpen || FPAnimation.FPEvents.HoldingItem; }
+        get { return interviewOpen || DevConsole.Active || PhotoMode.Active || Items.InventoryUI.IsOpen || Booklet.Active || FPAnimation.FPEvents.HoldingItem; }
     }
 
     void Awake()

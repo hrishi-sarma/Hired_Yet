@@ -542,6 +542,7 @@ public sealed partial class AnimalAgent
             hideForNight = false;
             hideUntil = now + RandomRange(0f, 25f);
         }
+        if (!hideForNight && WeatherController.Raining) hideUntil = Mathf.Max(hideUntil, now + 2f);   // stay in the burrow while it rains
         if (!hideForNight && now >= hideUntil && playerDistance > 5f) { Emerge(false); return false; }
         if (playerDistance < 2.2f && now - hideStart > 2f) { Emerge(true); return false; }
         return true;

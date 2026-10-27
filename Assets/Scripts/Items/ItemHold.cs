@@ -214,7 +214,7 @@ namespace Items
             }
 
             var keyboard = Keyboard.current;
-            if (keyboard != null && !InventoryUI.IsOpen && !InventoryUI.Locked && !DevConsole.Active && !EventPanelUI.InputLock)
+            if (keyboard != null && !InventoryUI.IsOpen && !InventoryUI.Locked && !DevConsole.Active && !EventPanelUI.InputLock && !Booklet.Active)
             {
                 if (keyboard.digit1Key.wasPressedThisFrame) Equip(0);
                 else if (keyboard.digit2Key.wasPressedThisFrame) Equip(1);

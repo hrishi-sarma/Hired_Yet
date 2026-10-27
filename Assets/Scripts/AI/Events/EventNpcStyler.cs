@@ -27,6 +27,7 @@ public static class EventNpcStyler
         { "grandma_groceries", NpcGender.Female }, // old woman
         { "garage_sale_couch", NpcGender.Female }, // garage sale lady
         { "witch_cauldron", NpcGender.Female },
+        { "elderly_crosswalk", NpcGender.Female }, // grey-haired old lady
     };
 
     public static NpcGender GenderFor(string eventId)
@@ -66,6 +67,8 @@ public static class EventNpcStyler
         {
             case "grandma_groceries":
                 return new NpcLook { hair = Hex("#F4F4F2") };
+            case "elderly_crosswalk":
+                return new NpcLook { hair = Hex("#B4B4BA") };
             case "street_magician":
                 return new NpcLook
                 {

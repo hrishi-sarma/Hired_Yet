@@ -5223,6 +5223,8 @@ MonoBehaviour:
     rabbitCount: 8
     catCount: 6
     dogCount: 5
+    cityCatCount: 3
+    cityDogCount: 2
     spawnAttemptsPerTick: 18
     spawnInterval: 1.25
     spawnRadiusMin: 14
@@ -55709,32 +55711,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b085e6e4794e2d5498ae298a733688b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CinematicEffects
-  enableAll: 0
-  depthOfField: 1
-  dofStart: 140
-  dofEnd: 420
-  dofMaxRadius: 1.5
-  dofHighQuality: 0
-  filmGrain: 1
-  grainType: 0
-  grainIntensity: 0.18
-  grainResponse: 0.8
-  chromaticAberration: 1
-  chromaticIntensity: 0.12
-  outlines: 1
-  outlineBuildings: 1
-  outlineCharacters: 1
-  outlineColor: {r: 0.08, g: 0.06, b: 0.08, a: 1}
-  outlineOpacity: 0.55
-  buildingWidth: 0.03
-  characterWidth: 0.02
-  fadeStart: 60
-  fadeEnd: 160
-  maxActiveDistance: 180
-  minPartSize: 0.8
-  maxOutlinedRenderers: 2500
-  excludePlayer: 1
-  nearHideDistance: 3
 --- !u!4 &1623170433
 Transform:
   m_ObjectHideFlags: 0
@@ -61038,7 +61014,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1741022569}
   - component: {fileID: 1741022568}
-  - component: {fileID: 1741022567}
   - component: {fileID: 1741022566}
   - component: {fileID: 1741022565}
   - component: {fileID: 1741022564}
@@ -62224,18 +62199,6 @@ MonoBehaviour:
   erosionRate: 0.4
   testPlateauSize: 160
   testPlateauBlend: 60
---- !u!114 &1741022567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741022538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FoundationTestStage
 --- !u!114 &1741022568
 MonoBehaviour:
   m_ObjectHideFlags: 0

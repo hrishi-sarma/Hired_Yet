@@ -49,7 +49,7 @@ public sealed class ButterflyVisitor : MonoBehaviour
         if (phase == Phase.Wait)
         {
             timer -= dt;
-            if (timer <= 0f && night <= maxNightToAppear) Spawn(cam);
+            if (timer <= 0f && night <= maxNightToAppear && !WeatherController.Raining) Spawn(cam);
             return;
         }
 
@@ -59,7 +59,7 @@ public sealed class ButterflyVisitor : MonoBehaviour
         if (phase == Phase.Visit)
         {
             stay -= dt;
-            if (stay <= 0f || night > 0.6f) BeginLeave(camPos);
+            if (stay <= 0f || night > 0.6f || WeatherController.Raining) BeginLeave(camPos);
             else Wander(cam, dt);
         }
         else Depart(camPos, dt);

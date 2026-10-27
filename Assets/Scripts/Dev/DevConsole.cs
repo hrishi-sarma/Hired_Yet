@@ -59,16 +59,38 @@ public class DevConsole : MonoBehaviour
     {
         cmd = cmd.Trim().ToLowerInvariant();
         if (cmd == "tp" || cmd == "teleport" || cmd.StartsWith("tp ") || cmd.StartsWith("teleport ")) { Teleport(cmd); return; }
+        if (cmd == "weather" || cmd.StartsWith("weather ")) { SetWeather(cmd.Substring(7).Trim()); return; }
         switch (cmd)
         {
             case "": return;
             case "events": panel = Panel.Events; status = ""; break;
             case "items": panel = Panel.Items; status = ""; break;
             case "skip": Skip(); break;
+            case "devcam": case "dev cam": case "dev camera": SetOpen(false); PhotoMode.RequestDev(); break;
             case "close": case "exit": SetOpen(false); break;
-            case "help": status = "Commands: events, items, skip, teleport office / event<N> / <event id>, close"; break;
+            case "help": status = "Commands: events, items, skip, devcam, weather clear/rain/storm/fog/auto on|off, teleport office / event<N> / <event id>, close"; break;
             default: status = "Unknown command: " + cmd + "  (try: help)"; break;
         }
+    }
+
+    void SetWeather(string arg)
+    {
+        WeatherType t;
+        if (WeatherController.Instance == null) { status = "Weather controller not running"; return; }
+        if (arg == "auto" || arg == "auto on" || arg == "auto off")
+        {
+            bool on = arg != "auto off";
+            WeatherController.SetAuto(on);
+            status = "Automatic weather: " + (on ? "on" : "off");
+            return;
+        }
+        if (arg == "clear" || arg == "off") t = WeatherType.Clear;
+        else if (arg == "rain") t = WeatherType.LightRain;
+        else if (arg == "storm" || arg == "thunder" || arg == "thunderstorm") t = WeatherType.Thunderstorm;
+        else if (arg == "fog") t = WeatherType.MorningFog;
+        else { status = "Usage: weather clear / rain / storm / fog / auto on / auto off"; return; }
+        WeatherController.Set(t);
+        status = "Weather: " + t;
     }
 
     // "teleport office", "teleport to event2", "tp lost_dog"

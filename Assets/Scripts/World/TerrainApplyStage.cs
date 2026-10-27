@@ -204,10 +204,10 @@ public class TerrainApplyStage : WorldStage
         if (customLayers != null && customLayers.Length >= 4 && customLayers[0] != null && customLayers[1] != null && customLayers[2] != null && customLayers[3] != null)
             return new TerrainLayer[] { customLayers[0], customLayers[1], customLayers[2], customLayers[3] };
         string[] names = { "Grass", "Dirt", "Rock", "Snow" };
-        Color[] colors = { new Color(0.30f, 0.43f, 0.17f), new Color(0.38f, 0.29f, 0.20f), new Color(0.39f, 0.39f, 0.38f), new Color(0.82f, 0.85f, 0.88f) };
+        Color[] colors = { new Color(0.30f, 0.43f, 0.17f), new Color(0.38f, 0.29f, 0.20f), new Color(0.44f, 0.41f, 0.39f), new Color(0.82f, 0.85f, 0.88f) };
         TerrainLayer[] r = new TerrainLayer[4];
         for (int i = 0; i < 4; i++) r[i] = GetLayer(names[i], colors[i]);
-        if (r[2] != null) { r[2].tileSize = new Vector2(9f, 9f); r[2].normalScale = 0.3f; }
+        if (r[2] != null) { r[2].tileSize = new Vector2(14f, 14f); r[2].normalScale = 0.2f; }
         return r;
     }
 
@@ -268,9 +268,9 @@ public class TerrainApplyStage : WorldStage
                 float pattern = 0f;
                 if (name == "Rock")
                 {
-                    float band = Mathf.PerlinNoise(u * 8f + v * 2.4f, v * 14f);
+                    float band = Mathf.PerlinNoise(u * 9f + 3.7f, v * 9f + 1.3f); // isotropic: directional strata stretched into vertical streaks on steep slopes
                     float facet = Mathf.PerlinNoise(u * 21f + 7.1f, v * 21f + 2.4f);
-                    pattern = (band > 0.64f ? -0.15f : 0.015f) + (facet > 0.72f ? 0.08f : 0f);
+                    pattern = (band > 0.64f ? -0.10f : 0.015f) + (facet > 0.72f ? 0.08f : 0f);
                 }
                 else if (name == "Dirt")
                 {

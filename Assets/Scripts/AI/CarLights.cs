@@ -28,6 +28,18 @@ public class CarLights : MonoBehaviour
     float lastKey = -1f;
     CarLightSource src;
 
+    float flashStart = -10f, flashUntil = -10f;
+
+    /// <summary>Flashes the headlights (double/triple blink) at whoever is blocking the road. Works day and night.</summary>
+    public void Flash(float seconds)
+    {
+        if (Time.time < flashUntil) return;   // one flash sequence at a time
+        flashStart = Time.time;
+        flashUntil = Time.time + Mathf.Max(0.6f, seconds);
+    }
+
+    bool FlashOn { get { return Time.time < flashUntil && ((Time.time - flashStart) % 0.32f) < 0.17f; } }
+
     public void Configure(float bodyLength)
     {
         length = bodyLength;
@@ -174,15 +186,18 @@ public class CarLights : MonoBehaviour
             if (src == null) src = gameObject.AddComponent<CarLightSource>();
         }
         src.length = length;
-        src.head = head;
+        bool flashOn = FlashOn;
+        bool headEff = head || flashOn;
+        src.head = headEff;
         src.brake = brake;
         src.indicator = indicator;
         src.hazard = hazard;
         src.blinkOn = blink > 0f;
-        float key = (head ? 1f : 0f) + (brake ? 2f : 0f) + (lOn ? 4f : 0f) + (rOn ? 8f : 0f);
+        float key = (headEff ? 1f : 0f) + (brake ? 2f : 0f) + (lOn ? 4f : 0f) + (rOn ? 8f : 0f);
         if (vl != null)
         {
-            vl.extHead = head;
+            vl.extHead = headEff;
+            vl.extFlash = flashOn;
             vl.extBrake = brake;
         }
         if (Mathf.Approximately(key, lastKey)) return;
@@ -191,7 +206,7 @@ public class CarLights : MonoBehaviour
         SetInd(indR, indRBase, rOn);
         if (vl == null)
         {
-            Color h = head ? new Color(1f, 0.95f, 0.78f) * 2.5f : new Color(0.25f, 0.25f, 0.22f);
+            Color h = headEff ? new Color(1f, 0.95f, 0.78f) * (flashOn ? 4f : 2.5f) : new Color(0.25f, 0.25f, 0.22f);
             Color t = brake ? new Color(1f, 0.08f, 0.04f) * 3f : (head ? new Color(0.7f, 0.04f, 0.03f) : new Color(0.25f, 0.04f, 0.03f));
             for (int i = 0; i < 2; i++)
             {
@@ -204,5 +219,6 @@ public class CarLights : MonoBehaviour
     void OnDisable()
     {
         lastKey = -1f;
+        flashUntil = -10f;
     }
 }

@@ -5,10 +5,11 @@ using UnityEngine.Rendering;
 public static class Wind
 {
     public static Vector2 Dir = new Vector2(0.85f, 0.5f).normalized;
+    public static float Boost = 0f;
 
     public static float Gust(float t)
     {
-        return Mathf.Clamp01(0.45f + 0.35f * Mathf.Sin(t * 0.31f) + 0.2f * Mathf.Sin(t * 0.83f + 2f));
+        return Mathf.Clamp01(0.45f + 0.35f * Mathf.Sin(t * 0.31f) + 0.2f * Mathf.Sin(t * 0.83f + 2f) + Boost);
     }
 
     public static Vector3 Vec { get { return new Vector3(Dir.x, 0f, Dir.y); } }
@@ -198,7 +199,7 @@ public class AmbientLifeController : MonoBehaviour
         Leaves(cp, t, dt, gust, wind, face);
         Fluff(cp, t, dt, gust, wind, face);
 
-        bool bOn = day > 0.65f;
+        bool bOn = day > 0.65f && !WeatherController.Raining;
         if (bOn != butterOn) { butterOn = bOn; SetGroup(butter, bOn); }
         if (bOn != birdsOn) { birdsOn = bOn; SetGroup(birds, bOn); }
         bool fOn = night > 0.35f;

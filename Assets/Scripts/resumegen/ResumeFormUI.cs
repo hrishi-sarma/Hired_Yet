@@ -54,7 +54,7 @@ public class SlotPage
     public GameObject saveOverlay;   // shown instead of the blank form when this slot holds a saved game
 }
 
-public class PageTag : MonoBehaviour { public int idx; }
+public class PageTag : MonoBehaviour { public int idx; public bool tab; }
 
 static class MouseIn
 {
@@ -218,9 +218,10 @@ public class ResumeFormUI : MonoBehaviour
             {
                 float sc = PaperW / 600f, tx = (L + i * 106f + 50f) * sc;
                 var th = new GameObject("tabhit"); th.transform.SetParent(s.body, false);
-                th.transform.localPosition = new Vector3(tx, -PaperThick * 0.5f, PaperH * 0.5f + 27f * sc);
-                th.AddComponent<BoxCollider>().size = new Vector3(100f * sc, PaperThick, 54f * sc);
-                th.AddComponent<PageTag>().idx = i;
+                // generous click zone: full tab spacing wide, deeper than the visible tab and tall, so it is easy to hit from the angled camera
+                th.transform.localPosition = new Vector3(tx, 0f, PaperH * 0.5f + 32f * sc);
+                th.AddComponent<BoxCollider>().size = new Vector3(106f * sc, 0.08f, 84f * sc);
+                var tgt = th.AddComponent<PageTag>(); tgt.idx = i; tgt.tab = true;
             }
 
             var cv = new GameObject("Sheet", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
@@ -307,12 +308,16 @@ public class ResumeFormUI : MonoBehaviour
         int hover = -1; bool overBack = false;
         if (!busy)
         {
-            RaycastHit h;
-            if (Physics.Raycast(cam.ScreenPointToRay(MouseIn.Pos()), out h, 5f))
+            // look through every hit (hands / props may be in front); a slot tab always wins over a page body
+            float bestBody = float.MaxValue, bestTab = float.MaxValue; int bodyIdx = -1, tabIdx = -1;
+            foreach (var ph in Physics.RaycastAll(cam.ScreenPointToRay(MouseIn.Pos()), 5f))
             {
-                var tg = h.collider.GetComponent<PageTag>();
-                if (tg != null) hover = tg.idx;
+                var tg = ph.collider.GetComponent<PageTag>();
+                if (tg == null) continue;
+                if (tg.tab) { if (ph.distance < bestTab) { bestTab = ph.distance; tabIdx = tg.idx; } }
+                else if (ph.distance < bestBody) { bestBody = ph.distance; bodyIdx = tg.idx; }
             }
+            hover = tabIdx >= 0 ? tabIdx : bodyIdx;
             // the pen hand / other props can be hit first: look through all hits for the note
             foreach (var bh in Physics.RaycastAll(cam.ScreenPointToRay(MouseIn.Pos()), 5f))
                 if (bh.collider.GetComponent<BackNoteTag>() != null) { overBack = true; break; }
@@ -671,7 +676,7 @@ public class ResumeFormUI : MonoBehaviour
         var b = r.gameObject.AddComponent<Button>();
         b.targetGraphic = r.GetComponent<Image>();
         var cb = b.colors; cb.highlightedColor = new Color(0.85f, 0.85f, 0.85f); cb.pressedColor = new Color(0.65f, 0.65f, 0.65f); b.colors = cb;
-        b.onClick.AddListener(() => click());
+        b.onClick.AddListener(() => { UiClick.Play(); click(); });
         Inner(r, text, size, TextAnchor.MiddleCenter, fg, labelFont).raycastTarget = false;
         return r;
     }

@@ -70,7 +70,6 @@ public class WorldGenerator : MonoBehaviour
         if (GetComponent<SurfaceDetailStage>() == null) gameObject.AddComponent<SurfaceDetailStage>();
         if (GetComponent<PondStage>() == null) gameObject.AddComponent<PondStage>();
         if (GetComponent<AmbientLifeStage>() == null) gameObject.AddComponent<AmbientLifeStage>();
-        if (GetComponent<CinematicOutlineStage>() == null) gameObject.AddComponent<CinematicOutlineStage>();
         if (GetComponent<WindowLightStage>() == null) gameObject.AddComponent<WindowLightStage>();
         if (GetComponent<CityBorderStage>() == null) gameObject.AddComponent<CityBorderStage>();
         if (GetComponent<FloraStage>() == null) gameObject.AddComponent<FloraStage>();

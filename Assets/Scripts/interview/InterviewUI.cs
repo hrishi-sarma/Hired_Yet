@@ -708,7 +708,7 @@ public partial class InterviewUI : MonoBehaviour
         }
 
         Persona.Begin();
-        mood = Persona.StartMood(InterviewerPersonality.Roll());
+        mood = WorldTimer.AdjustMood(Persona.StartMood(InterviewerPersonality.Roll()));   // punctuality (HARD / EXPERT) nudges the starting mood
         InterviewerPersonality.ResetContext();
         InterviewerPersonality.BeginMood(mood);
         moodShiftPending = false;
@@ -739,6 +739,7 @@ public partial class InterviewUI : MonoBehaviour
         ProofCheck.Prepare(job);
 
         impressionLines.Clear();
+        FirstImpression.ArrivedLate = WorldTimer.IsLate;
         float start = FirstImpression.Compute(startSuspicion, impressionLines);
         suspicion = Mathf.Clamp(start, 0f, MaxSuspicion());
         shownSuspicion = suspicion;
@@ -874,6 +875,8 @@ public partial class InterviewUI : MonoBehaviour
         GreetPop();
         yield return Speak(Persona.Line(Remark.Greeting, mood));
         yield return WaitOrKey(3f);
+        string punctual = WorldTimer.TakeRemark();   // late / too early / on time (HARD & EXPERT only)
+        if (punctual != null) { yield return Speak(punctual); yield return WaitOrKey(2.5f); }
     }
 
     // =====================================================================

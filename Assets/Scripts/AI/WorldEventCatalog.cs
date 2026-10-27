@@ -25,7 +25,7 @@ public static class WorldEventCatalog
     public static bool ZoneMatch(WorldEventConfig c, EventZone zone)
     {
         if (c.id == "flying_documents") return false;
-        if (c.id == "lost_backpack" || c.id == "lost_wallet") return false;   // standalone: scattered by WorldEventDirector.SpawnStandalone
+        if (c.id == "lost_backpack" || c.id == "lost_wallet" || c.id == "campfire_rain" || c.id == "elderly_crosswalk") return false;   // standalone: scattered by WorldEventDirector.SpawnStandalone
         return c.zone == zone;
     }
 

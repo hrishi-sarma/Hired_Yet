@@ -271,6 +271,7 @@ public class PauseBoard : MonoBehaviour
         cam.clearFlags = CameraClearFlags.Depth; cam.depth = 500f; cam.fieldOfView = 44f; cam.nearClipPlane = 0.1f; cam.farClipPlane = 60f;
         cam.allowHDR = false; cam.allowMSAA = false; cam.useOcclusionCulling = false; cam.cullingMask = ~0;
         cam.transform.localPosition = Vector3.zero;
+        if (Prewarm) cam.enabled = false;
 
         bg = NewLayer("Backdrop Group", -20f, 0f, 0.24f);
         board = NewLayer("Board Group", -10f, 0.14f, 0.12f);
@@ -279,6 +280,8 @@ public class PauseBoard : MonoBehaviour
     }
 
     bool ready;
+    public bool Ready { get { return ready; } }
+    public static bool Prewarm;
     System.Collections.IEnumerator BuildRoutine()
     {
         BuildBackdrop(); yield return null;   // backdrop slides in first (delay 0), the rest is built while it travels
@@ -427,7 +430,7 @@ public class PauseBoard : MonoBehaviour
         });
     }
 
-    public void Back() { if (!ready) return; if (screen == 2 || screen == 3) ShowSettings(); else if (screen == 1) ShowMain(); }
+    public void Back() { if (!ready) return; if (screen == 2 || screen == 3 || screen == 4) ShowSettings(); else if (screen == 1) ShowMain(); }
 
     void ShowSettings()
     {
@@ -435,27 +438,31 @@ public class PauseBoard : MonoBehaviour
         SetNotes(new[]
         {
             Sl("MASTER", Lemon, 0f, 0.55f, 1.8f, 0.31f, -1.5f, () => GameSettings.Master, v => GameSettings.SetAudio(0, v)),
-            S("", Sky, 0.02f, 0.18f, 1.4f, 0.31f, 1.5f, () => ToggleFull(true)),
-            S("GRAPHICS", Mint, -0.5f, -0.19f, 0.92f, 0.31f, -2f, ShowGraphics),
+            S("VIDEO", Pink, 0.02f, 0.18f, 1.4f, 0.31f, 1.5f, ShowVideo),
+            S("EFFECTS", Mint, -0.5f, -0.19f, 0.92f, 0.31f, -2f, () => ShowGraphics(0)),
             S("SOUNDS", Sky, 0.56f, -0.19f, 0.92f, 0.31f, 2f, ShowSounds),
             S("BACK", Lemon, 0.06f, -0.56f, 0.76f, 0.31f, 2f, ShowMain),
         });
-        fsNote = notes[1]; ToggleFull(false);
     }
 
-    NoteObj[] gfxOn = new NoteObj[5];
+    NoteObj[] gfxOn = new NoteObj[16];
+    int gfxPage;
 
-    // GRAPHICS: left column = ON/OFF, right column = intensity slider
-    void ShowGraphics()
+    // EFFECTS: left column = ON/OFF, right column = intensity slider (5 per page)
+    void ShowGraphics(int page)
     {
         screen = 2; inSettings = true; fsNote = null;
+        int total = GfxPrefs.Names.Length, pages = (total + 4) / 5;
+        gfxPage = page = Mathf.Clamp(page, 0, pages - 1);
+        int start = page * 5, cnt = Mathf.Min(5, total - start);
         Color[] cs = { Mint, Sky, Lemon, Pink, Mint };
         var sp = new List<Spec>();
-        for (int i = 0; i < 5; i++) { int k = i; float y = 0.6f - i * 0.24f; sp.Add(S("", cs[i], -0.78f, y, 1.34f, 0.23f, (i % 2 == 0 ? 1f : -1f), () => ToggleGfx(k))); }
-        for (int i = 0; i < 5; i++) { int k = i; float y = 0.6f - i * 0.24f; sp.Add(Sl("INTENSITY", Sky, 0.78f, y, 1.34f, 0.23f, (i % 2 == 0 ? -1f : 1f), () => GfxPrefs.Amt(k), v => GfxPrefs.SetAmt(k, v), () => GfxPrefs.Get(k))); }
+        for (int i = 0; i < cnt; i++) { int k = start + i; float y = 0.6f - i * 0.24f; sp.Add(S("", cs[i], -0.78f, y, 1.34f, 0.23f, (i % 2 == 0 ? 1f : -1f), () => ToggleGfx(k))); }
+        for (int i = 0; i < cnt; i++) { int k = start + i; float y = 0.6f - i * 0.24f; sp.Add(Sl("INTENSITY", Sky, 0.78f, y, 1.34f, 0.23f, (i % 2 == 0 ? -1f : 1f), () => GfxPrefs.Amt(k), v => GfxPrefs.SetAmt(k, v), () => GfxPrefs.Get(k))); }
+        if (pages > 1) sp.Add(S("MORE  " + (page + 1) + "/" + pages, Pink, -0.78f, -0.6f, 0.9f, 0.23f, 2f, () => ShowGraphics((gfxPage + 1) % pages)));
         sp.Add(S("BACK", Lemon, 0.78f, -0.6f, 0.8f, 0.23f, -2f, ShowSettings));
         SetNotes(sp.ToArray());
-        for (int i = 0; i < 5; i++) { gfxOn[i] = notes[i]; RefreshGfx(i); }
+        for (int i = 0; i < cnt; i++) { gfxOn[start + i] = notes[i]; RefreshGfx(start + i); }
     }
     void ToggleGfx(int k) { GfxPrefs.Set(k, !GfxPrefs.Get(k)); RefreshGfx(k); }
     void RefreshGfx(int k)
@@ -463,14 +470,34 @@ public class PauseBoard : MonoBehaviour
         if (gfxOn[k] != null) Fit(gfxOn[k], GfxPrefs.Names[k] + ": " + (GfxPrefs.Get(k) ? "ON" : "OFF"));
     }
 
+    // VIDEO: resolution, window mode, vsync, fps limit, quality preset | render scale, shadows, anti-aliasing, textures, brightness
+    NoteObj[] vidNotes = new NoteObj[8];
+    void ShowVideo()
+    {
+        screen = 4; inSettings = true; fsNote = null;
+        Color[] cs = { Mint, Sky, Lemon, Pink, Mint };
+        var sp = new List<Spec>();
+        for (int i = 0; i < 5; i++) { int k = i; float y = 0.6f - i * 0.24f; sp.Add(S("", cs[i], -0.78f, y, 1.34f, 0.23f, (i % 2 == 0 ? 1f : -1f), () => CycleVid(k))); }
+        sp.Add(Sl("RENDER SCALE", Sky, 0.78f, 0.6f, 1.34f, 0.23f, -1f, () => GameSettings.GetVideoSlider(0), v => GameSettings.SetVideoSlider(0, v)));
+        for (int j = 0; j < 3; j++) { int k = 5 + j; float y = 0.6f - (j + 1) * 0.24f; sp.Add(S("", cs[(j + 2) % 5], 0.78f, y, 1.34f, 0.23f, (j % 2 == 0 ? 1f : -1f), () => CycleVid(k))); }
+        sp.Add(Sl("BRIGHTNESS", Lemon, 0.78f, 0.6f - 4 * 0.24f, 1.34f, 0.23f, -1f, () => GameSettings.GetVideoSlider(1), v => GameSettings.SetVideoSlider(1, v)));
+        sp.Add(S("BACK", Lemon, 0.78f, -0.6f, 0.8f, 0.23f, -2f, ShowSettings));
+        SetNotes(sp.ToArray());
+        for (int i = 0; i < 5; i++) vidNotes[i] = notes[i];
+        for (int j = 0; j < 3; j++) vidNotes[5 + j] = notes[6 + j];
+        for (int i = 0; i < 8; i++) RefreshVid(i);
+    }
+    void CycleVid(int id) { GameSettings.CycleChoice(id, 1); for (int i = 0; i < 8; i++) RefreshVid(i); }
+    void RefreshVid(int id) { if (vidNotes[id] != null) Fit(vidNotes[id], GameSettings.ChoiceNames[id] + ": " + GameSettings.ChoiceLabel(id)); }
+
     // SOUNDS: one volume slider per kind of sound; the master volume is on the settings screen
     void ShowSounds()
     {
         screen = 3; inSettings = true; fsNote = null;
-        Color[] cs = { Mint, Sky, Lemon, Pink, Mint, Sky, Lemon };
+        Color[] cs = { Mint, Sky, Lemon, Pink, Mint, Sky, Lemon, Pink };
         var sp = new List<Spec>();
-        for (int i = 0; i < 7; i++) { int k = i + 1; float x = i % 2 == 0 ? -0.78f : 0.78f; float y = 0.55f - (i / 2) * 0.27f; sp.Add(Sl(GameSettings.AudioNames[k], cs[i], x, y, 1.34f, 0.24f, (i % 3 - 1) * 1.2f, () => GameSettings.GetAudio(k), v => GameSettings.SetAudio(k, v))); }
-        sp.Add(S("BACK", Lemon, 0.78f, -0.26f, 0.8f, 0.24f, -2f, ShowSettings));
+        for (int i = 0; i < 8; i++) { int k = i + 1; float x = i % 2 == 0 ? -0.78f : 0.78f; float y = 0.55f - (i / 2) * 0.27f; sp.Add(Sl(GameSettings.AudioNames[k], cs[i], x, y, 1.34f, 0.24f, (i % 3 - 1) * 1.2f, () => GameSettings.GetAudio(k), v => GameSettings.SetAudio(k, v))); }
+        sp.Add(S("BACK", Lemon, 0f, -0.56f, 0.8f, 0.24f, -2f, ShowSettings));
         SetNotes(sp.ToArray());
     }
 
@@ -702,7 +729,7 @@ public class PauseBoard : MonoBehaviour
                      (kb != null && hover >= 0 && (kb.enterKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame));
         if (click && hover < notes.Count && pendingAct == null && notes[hover].sp.set == null)
         {
-            var n = notes[hover]; n.clickT = 0f; n.sc.v = -6f; pendingAct = n.sp.click; pendingT = 0.17f;
+            var n = notes[hover]; UiClick.Play(); n.clickT = 0f; n.sc.v = -6f; pendingAct = n.sp.click; pendingT = 0.17f;
         }
     }
 
@@ -819,12 +846,26 @@ public static class GfxPrefs
 
 public class GfxApplier : MonoBehaviour
 {
-    float next;
+    float next, nextFull, burstUntil; int lastSig = int.MinValue;
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    static void Boot() { var g = new GameObject("GfxApplier"); DontDestroyOnLoad(g); g.AddComponent<GfxApplier>(); AudioListener.volume = GameSettings.Master; }
+    static void Boot()
+    {
+        var g = new GameObject("GfxApplier"); DontDestroyOnLoad(g); g.AddComponent<GfxApplier>();
+        AudioListener.volume = GameSettings.Master;
+        GameSettings.RememberAssetValues();
+        GameSettings.ApplyOnBoot();   // saved resolution / window mode / vsync / fps cap / effects
+    }
     void Update()
     {
         if (Time.unscaledTime < next) return; next = Time.unscaledTime + 1f;   // scenes create their own effect objects, so saved choices are re-applied
-        GameSettings.ApplyAll();
+        int sig = UnityEngine.SceneManagement.SceneManager.GetActiveScene().handle;
+        if (sig != lastSig) { lastSig = sig; burstUntil = Time.unscaledTime + 8f; nextFull = 0f; }
+        if (Time.unscaledTime >= nextFull)
+        {
+            nextFull = Time.unscaledTime + (Time.unscaledTime < burstUntil ? 1f : 20f);
+            GameSettings.ApplyAll();
+        }
+        if (GameSettings.Dirty) { GameSettings.Dirty = false; PlayerPrefs.Save(); }
     }
+    void OnApplicationQuit() { PlayerPrefs.Save(); GameSettings.RestoreAssetValues(); }
 }

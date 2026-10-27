@@ -832,6 +832,16 @@ public sealed class FlyerWorldController : MonoBehaviour
         spawnTimer -= Time.deltaTime;
         if (spawnTimer > 0f) return;
         spawnTimer = Mathf.Max(0.4f, settings.spawnInterval * 0.5f);
+        if (WeatherController.Raining)
+        {   // no butterflies / birds in the rain: nothing new spawns and unseen ones quietly go away (summoned birds - bread, guitar audience - are untouched)
+            for (int i = flyers.Count - 1; i >= 0; i--)
+            {
+                FlyerAgent f = flyers[i];
+                if (f == null || f.Summoned || f.Audience || VisibilityTester.CanSeeSpawn(f.transform.position, 0.5f)) continue;
+                flyers.RemoveAt(i); WorldUtil.Kill(f.gameObject);
+            }
+            return;
+        }
         int butterflies = 0, birds = 0;
         for (int i = 0; i < flyers.Count; i++) { if (flyers[i].IsButterfly) butterflies++; else birds++; }
         if (butterflies < settings.butterflyCount) TrySpawnMany(true);

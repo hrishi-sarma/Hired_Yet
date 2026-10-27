@@ -25,6 +25,46 @@ public class OpenHandler : IEventHandler
     }
 }
 
+/// <summary>elderly_crosswalk: keep E held while walking the old lady to the far side of the road. Letting go (after a short grace), or leaving her behind, fails.</summary>
+public class CrossHandler : IEventHandler
+{
+    const float Grace = 1.5f, Release = 0.4f;
+    public Transform player, npc;
+    public Vector3 dest;
+    public float radius = 2.2f;
+    float t, missed, startDist = 10f;
+
+    public string Text { get; private set; }
+    public float Progress { get { return 1f - Mathf.Clamp01(Dist() / Mathf.Max(1f, startDist)); } }
+
+    public float Dist()
+    {
+        if (player == null) return 0f;
+        Vector3 d = player.position - dest;
+        d.y = 0f;
+        return d.magnitude;
+    }
+
+    public void Begin(WorldEventConfig c, System.Random rng) { t = 0f; missed = 0f; Text = ""; startDist = Mathf.Max(6f, Dist()); }
+
+    public EventStatus Tick(float dt, Keyboard kb)
+    {
+        t += dt;
+        bool held = kb != null && kb.eKey.isPressed;
+        missed = held || t < Grace ? 0f : missed + dt;
+        float dist = Dist();
+        if (dist <= radius) { Text = "[ SHE IS SAFE ]"; return EventStatus.Success; }
+        if (npc != null && player != null)
+        {
+            Vector3 g = npc.position - player.position;
+            g.y = 0f;
+            if (g.magnitude > 9f) return EventStatus.Fail;
+        }
+        Text = "KEEP HOLDING E  -  WALK HER ACROSS  " + Mathf.CeilToInt(dist) + " m";
+        return missed > Release ? EventStatus.Fail : EventStatus.Running;
+    }
+}
+
 /// <summary>Three bystanders (built by WorldEventDirector) with name plates; one owns the wallet.</summary>
 public class WalletSetup
 {

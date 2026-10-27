@@ -55,6 +55,8 @@ public class SaveData
     public bool interviewRunning;
     public int attempts;
     public float playTime;
+    public bool bookletPending;              // brand-new save: the tutorial booklet opens once after the first spawn
+    public float worldElapsed;               // seconds on the punctuality timer (HARD / EXPERT only; 0 on older saves)
     public string savedAt = "";
     public List<string> doneEvents = new List<string>();   // world events already finished: "id@x,z=state" (the world regenerates from its seed, so these stay finished)
 }
@@ -226,7 +228,7 @@ public static class SaveSystem
     public static void StartNew(int slot, int pickIdx)
     {
         Active = slot; Pending = null; lastSig = "";
-        Data = new SaveData { stage = 0, sceneName = WorldLauncher.WorldSceneName, jobPick = pickIdx, runId = NewRunId() };
+        Data = new SaveData { stage = 0, sceneName = WorldLauncher.WorldSceneName, jobPick = pickIdx, runId = NewRunId(), bookletPending = true };
         var jobs = ResumeSession.OfferedJobs; var texts = ResumeSession.OfferedTexts;
         if (jobs != null)
         {
@@ -335,12 +337,19 @@ public static class SaveSystem
         Data.roomSeed = rolled; return rolled;
     }
 
-    public static void WorldReady() { if (Data != null) { Pending = null; SaveNow(true); } }
+    public static void WorldReady()
+    {
+        bool intro = false;
+        if (Data != null) { Pending = null; intro = Data.bookletPending; Data.bookletPending = false; SaveNow(true); }
+        WorldTimer.StartWorld();
+        if (intro) Booklet.ShowIntro();
+    }
 
     /// <summary>World door -> interview room: from now on this slot resumes in the interview room.</summary>
     public static void EnterInterview(string scene)
     {
         if (Data == null) return;
+        WorldTimer.Stop();
         Data.stage = 1; Data.sceneName = scene; Data.hasPos = false; Data.interviewRunning = false; Data.interviewInventory = "";
         SaveNow(false);
     }
@@ -398,6 +407,7 @@ public static class SaveSystem
         d.name = ResumeSession.CandidateName; d.hobby = ResumeSession.Hobby; d.experience = ResumeSession.Experience;
         d.education = ResumeSession.EducationScore; d.realEducation = ResumeSession.RealEducation;
         d.perk = (int)ResumeSession.SelectedPerk; d.character = ResumeSession.CharacterIndex;
+        if (WorldTimer.Active && (WorldTimer.Running || d.stage == 1)) d.worldElapsed = WorldTimer.Elapsed;
         d.sceneName = d.stage == 0 ? WorldLauncher.WorldSceneName : SceneManager.GetActiveScene().name;
         if (d.interviewRunning) return;      // mid-interview: keep the pre-interview inventory + position (the interview restarts from its start)
         d.inventory = InventorySave.ToJson(Inventory.Current);

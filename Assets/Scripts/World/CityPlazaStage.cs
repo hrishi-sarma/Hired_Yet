@@ -204,6 +204,44 @@ public class CityPlazaStage : WorldStage
         Vector3[] lamps = { new Vector3(lp, 0f, lp), new Vector3(-lp, 0f, lp), new Vector3(lp, 0f, -lp), new Vector3(-lp, 0f, -lp), new Vector3(0f, 0f, lp), new Vector3(0f, 0f, -lp), new Vector3(lp, 0f, 0f), new Vector3(-lp, 0f, 0f) };
         for (int i = 0; i < lamps.Length; i++)
             LampPost(d, new Vector3(cx + lamps[i].x, pavTop, cz + lamps[i].z), metal, glow);
+
+        // Stage 3 polish: additive, deterministic (no RNG, so existing random results are unchanged).
+        // Paving inlay ring, litter bins beside the benches, bollards and planters flanking the four entrances.
+        if (half >= 19f)
+        {
+            Material ringM = StylizedMaterialFactory.Get("concrete", new Color(0.8f, 0.74f, 0.64f), 1);
+            Material floorM = StylizedMaterialFactory.Get("concrete", new Color(0.72f, 0.7f, 0.66f), 1);
+            Prim(PrimitiveType.Cylinder, d, "InlayRing", new Vector3(cx, pavTop + 0.004f, cz), new Vector3(27f, 0.006f, 27f), ringM, false, 0f);
+            Prim(PrimitiveType.Cylinder, d, "InlayCore", new Vector3(cx, pavTop + 0.007f, cz), new Vector3(24f, 0.006f, 24f), floorM, false, 0f);
+        }
+
+        Material binM = StylizedMaterialFactory.Get("paintedMetal", new Color(0.16f, 0.3f, 0.24f), 2);
+        for (int k = 1; k < 8; k += 2)
+        {
+            float a = k * 45f * Mathf.Deg2Rad;
+            Vector3 bp = new Vector3(cx + Mathf.Cos(a) * 8.6f, pavTop, cz + Mathf.Sin(a) * 8.6f);
+            float byaw = Mathf.Atan2(cx - bp.x, cz - bp.z) * Mathf.Rad2Deg;
+            Vector3 side = Quaternion.Euler(0f, byaw, 0f) * new Vector3(1.7f, 0f, 0f);
+            Prim(PrimitiveType.Cylinder, d, "Bin", bp + side + Vector3.up * 0.4f, new Vector3(0.5f, 0.4f, 0.5f), binM, true, 0f);
+        }
+
+        if (seg > 3f)
+        {
+            Vector3 c0 = new Vector3(cx, pavTop, cz);
+            for (int dir = 0; dir < 4; dir++)
+            {
+                float yaw = dir * 90f;
+                Quaternion q = Quaternion.Euler(0f, yaw, 0f);
+                for (int sd = -1; sd <= 1; sd += 2)
+                {
+                    Vector3 bol = c0 + q * new Vector3(sd * 2.0f, 0f, e);
+                    Prim(PrimitiveType.Cylinder, d, "Bollard", bol + Vector3.up * 0.4f, new Vector3(0.24f, 0.4f, 0.24f), metal, true, 0f);
+                    Vector3 pl = c0 + q * new Vector3(sd * 3.7f, 0f, e - 1.5f);
+                    Prim(PrimitiveType.Cube, d, "Planter", pl + Vector3.up * 0.3f, new Vector3(1.5f, 0.6f, 1.5f), stone, true, yaw);
+                    Prim(PrimitiveType.Sphere, d, "PlanterShrub", pl + Vector3.up * 0.8f, new Vector3(1.1f, 0.8f, 1.1f), hedge, false, 0f);
+                }
+            }
+        }
     }
 
     static readonly Dictionary<int, Material> flowerMats = new Dictionary<int, Material>();

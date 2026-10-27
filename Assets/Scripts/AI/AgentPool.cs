@@ -209,6 +209,25 @@ public class AgentPool
         for (int i = 0; i < cars; i++) Park(Build(AgentKind.Car, -1));
     }
 
+    float nextMaintain;
+
+    public void Maintain()
+    {
+        if (Time.unscaledTime < nextMaintain) return;
+        nextMaintain = Time.unscaledTime + 0.12f;
+        if (free[(int)AgentKind.Car].Count < 8) { Park(Build(AgentKind.Car, -1)); return; }
+        List<NpcProfile> list = director.settings.npcProfiles;
+        bool any = false;
+        if (list != null)
+            for (int k = 0; k < list.Count; k++)
+            {
+                if (list[k] == null || !list[k].IsValid) continue;
+                any = true;
+                if (StackFor(AgentKind.Pedestrian, k).Count < 3) { Park(Build(AgentKind.Pedestrian, k)); return; }
+            }
+        if (!any && free[(int)AgentKind.Pedestrian].Count < 8) Park(Build(AgentKind.Pedestrian, -1));
+    }
+
     void Park(AgentBase a)
     {
         a.transform.SetParent(poolRoot, false);

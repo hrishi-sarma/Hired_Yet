@@ -120,6 +120,7 @@ public class NoteAnim : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerClick(PointerEventData e)
     {
         if (!Live) return;
+        UiClick.Play();
         if (peel) peeling = true;
         else { bounce = 1f; if (onClick != null) onClick(); }
     }
@@ -383,9 +384,10 @@ public class PostItMenu : MonoBehaviour
         if (panelBack != null) panelBack.onClick = ClosePanel;
         Txt("MASTER VOLUME", 38, new Vector2(0f, 330f), new Vector2(600f, 56f));
         AudioRow(0, 262f, false);
-        CheckRow("FULLSCREEN", Screen.fullScreen, 120f, v => { Screen.fullScreen = v; });
-        Make("SOUND MIXER", Sky, new Vector2(0f, -20f), new Vector2(420f, 84f), 1f, 38, () => SubScreen(FillMixer), false, true);
-        Make("GRAPHICS", Mint, new Vector2(0f, -140f), new Vector2(420f, 84f), -1f, 38, () => SubScreen(FillGraphics), false, true);
+        CheckRow("FULLSCREEN", Screen.fullScreen, 135f, v => { GameSettings.SetFullscreen(v); });
+        Make("VIDEO", Pink, new Vector2(0f, 25f), new Vector2(420f, 80f), -1f, 38, () => SubScreen(FillVideo), false, true);
+        Make("SOUND MIXER", Sky, new Vector2(0f, -85f), new Vector2(420f, 80f), 1f, 38, () => SubScreen(FillMixer), false, true);
+        Make("EFFECTS", Mint, new Vector2(0f, -195f), new Vector2(420f, 80f), -1f, 38, () => SubScreen(FillGraphics), false, true);
     }
 
     void SubScreen(Action fill)
@@ -399,7 +401,7 @@ public class PostItMenu : MonoBehaviour
     void FillMixer()
     {
         Txt("SOUND MIXER", 36, new Vector2(0f, 345f), new Vector2(600f, 54f));
-        for (int i = 1; i < GameSettings.AudioKeys.Length; i++) AudioRow(i, 280f - (i - 1) * 92f, true);
+        for (int i = 1; i < GameSettings.AudioKeys.Length; i++) AudioRow(i, 280f - (i - 1) * 80f, true);
     }
 
     void FillGraphics()
@@ -407,12 +409,39 @@ public class PostItMenu : MonoBehaviour
         Txt("EFFECTS", 36, new Vector2(0f, 345f), new Vector2(600f, 54f));
         for (int i = 0; i < GameSettings.GfxNames.Length; i++)
         {
-            int k = i; float y = 250f - i * 118f;
+            int k = i; float y = 285f - i * 78f;
             Text pct = Txt(Mathf.RoundToInt(GameSettings.GetAmt(k) * 100f) + "%", 30, new Vector2(285f, y), new Vector2(110f, 50f));
             Slider sl = MakeSlider(new Vector2(110f, y), 200f, GameSettings.GetAmt(k), v => { GameSettings.SetAmt(k, v); pct.text = Mathf.RoundToInt(v * 100f) + "%"; });
             sl.interactable = GameSettings.GetOn(k); SetSliderLook(sl, sl.interactable);
             CheckBox(new Vector2(-355f, y), GameSettings.GetOn(k), v => { GameSettings.SetOn(k, v); sl.interactable = v; SetSliderLook(sl, v); });
             Txt(GameSettings.GfxNames[i], 28, new Vector2(-175f, y), new Vector2(300f, 60f));
+        }
+    }
+
+    // VIDEO: click a value to step through its options; sliders for render scale and brightness
+    void FillVideo()
+    {
+        Txt("VIDEO", 36, new Vector2(0f, 345f), new Vector2(600f, 54f));
+        var cyc = new List<KeyValuePair<int, NoteAnim>>();
+        Action refresh = () => { foreach (var kv in cyc) kv.Value.label.text = GameSettings.ChoiceLabel(kv.Key); };
+        Color[] cs = { Mint, Sky, Lemon, Pink };
+        float y = 285f; int row = 0;
+        for (int id = 0; id < GameSettings.ChoiceNames.Length; id++)
+        {
+            int k = id;
+            Txt(GameSettings.ChoiceNames[k], 26, new Vector2(-190f, y), new Vector2(250f, 56f));
+            NoteAnim b = Make(GameSettings.ChoiceLabel(k), cs[row % 4], new Vector2(120f, y), new Vector2(330f, 54f), (row % 2 == 0 ? 0.6f : -0.6f), 26, () => { GameSettings.CycleChoice(k, 1); refresh(); }, false, true);
+            cyc.Add(new KeyValuePair<int, NoteAnim>(k, b));
+            y -= 60f; row++;
+            if (id == 4) y -= 6f;
+        }
+        for (int id = 0; id < GameSettings.SliderNames.Length; id++)
+        {
+            int k = id;
+            Txt(GameSettings.SliderNames[k], 26, new Vector2(-190f, y), new Vector2(250f, 56f));
+            Text pct = Txt(GameSettings.SliderLabel(k), 26, new Vector2(335f, y), new Vector2(120f, 50f));
+            MakeSlider(new Vector2(115f, y), 220f, GameSettings.GetVideoSlider(k), v => { GameSettings.SetVideoSlider(k, v); pct.text = GameSettings.SliderLabel(k); });
+            y -= 60f;
         }
     }
 
@@ -779,6 +808,7 @@ public class MenuItemAnim : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void OnPointerClick(PointerEventData e)
     {
         if (!Live) return;
+        UiClick.Play();
         bounce = 1f;
         if (onClick != null) onClick();
     }

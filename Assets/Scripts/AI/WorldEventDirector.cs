@@ -88,6 +88,7 @@ public class WorldEventDirector
             placed.Add(best[i].pos);
         }
         SpawnStandalone(rng, st);
+        SpawnRainAndCrossing(rng);
         if (director.settings.logEvents)
             for (int i = 0; i < events.Count; i++) Debug.Log("World event: " + events[i].cfg.id + " (" + events[i].cfg.zone + ", " + WorldEventCatalog.FamilyOf(events[i].cfg) + ") at " + events[i].transform.position);
     }
@@ -359,6 +360,50 @@ public class WorldEventDirector
         }
     }
 
+    bool FarFromEvents(Vector3 pos)
+    {
+        if ((pos - director.Player.position).sqrMagnitude < 15f * 15f) return false;
+        for (int e = 0; e < events.Count; e++)
+            if ((events[e].transform.position - pos).sqrMagnitude < 25f * 25f) return false;
+        return true;
+    }
+
+    /// <summary>Two forest campers (only visible while it rains) and two old ladies waiting beside crosswalks.</summary>
+    void SpawnRainAndCrossing(WorldRng rng)
+    {
+        WorldEventConfig fire = CfgById("campfire_rain");
+        for (int n = 0; fire != null && n < 2; n++)
+            for (int t = 0; t < 8; t++)
+            {
+                Vector3 pos; float yaw; List<OrientedBox> boxes;
+                if (!TryFindSpot(fire, rng, false, out pos, out yaw, out boxes) || !FarFromEvents(pos)) continue;
+                Spawn(fire, pos, yaw, boxes);
+                break;
+            }
+        WorldEventConfig elder = CfgById("elderly_crosswalk");
+        for (int n = 0; elder != null && n < 2; n++) SpawnCrossing(elder, rng, true);
+    }
+
+    WorldEvent SpawnCrossing(WorldEventConfig elder, WorldRng rng, bool spaced)
+    {
+        PedestrianGraph g = director.PedGraph;
+        if (g == null || g.Crosswalks.Count == 0) return null;
+        for (int t = 0; t < 16; t++)
+        {
+            PedEdge e = g.Crosswalks[rng.Range(0, g.Crosswalks.Count)];
+            if (e.length < 4f) continue;
+            float s = Mathf.Max(0.3f, Mathf.Min(e.curb, e.length * 0.3f) - 0.8f);
+            Vector2 h2 = e.Point(s) + e.left * 1.6f, d2 = e.Point(e.length - s) + e.left * 1.6f;
+            Vector3 home = new Vector3(h2.x, director.GroundY(h2.x, h2.y, e.sideY + 3f), h2.y);
+            if (spaced && !FarFromEvents(home)) continue;
+            Vector3 dest = new Vector3(d2.x, director.GroundY(d2.x, d2.y, e.sideY + 3f), d2.y);
+            WorldEvent ev = Spawn(elder, home, Mathf.Atan2(e.dir.x, e.dir.y) * Mathf.Rad2Deg, new List<OrientedBox>());
+            ev.SetCross(dest);
+            return ev;
+        }
+        return null;
+    }
+
     static readonly string[] CandidateNames = Items.PopCultureNames.Full;
 
     /// <summary>Three bystanders standing along the pavement beside the finder, each with a floating name plate. One of them owns the wallet.</summary>
@@ -425,6 +470,13 @@ public class WorldEventDirector
             spawnedEvent = null;
         }
         WorldRng rng = new WorldRng(director.Ctx.settings.seed, "dev" + (spawnSeq++) + Time.frameCount);
+        if (cfg.id == "elderly_crosswalk")
+        {
+            spawnedEvent = SpawnCrossing(cfg, rng, false);
+            if (spawnedEvent == null) { Debug.LogWarning("SpawnEvent: no crosswalk found"); return null; }
+            TeleportTo(spawnedEvent);
+            return spawnedEvent;
+        }
         Vector3 pos;
         float yaw;
         List<OrientedBox> boxes;
@@ -434,6 +486,7 @@ public class WorldEventDirector
             return null;
         }
         spawnedEvent = Spawn(cfg, pos, yaw, boxes);
+        spawnedEvent.alwaysOn = true;
         TeleportTo(spawnedEvent);
         return spawnedEvent;
     }

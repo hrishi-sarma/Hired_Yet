@@ -120,6 +120,13 @@ public sealed class WorldBarrierColliderRepair : MonoBehaviour
         for (int i = 0; i < all.Length; i++)
         {
             Transform t = all[i];
+            // highway lane markings are paint, never solid: strip anything another scanner may have put on them
+            if (t.name.StartsWith("Highway_LaneMarking", StringComparison.Ordinal))
+            {
+                Collider[] mk = t.GetComponents<Collider>();
+                for (int k = 0; k < mk.Length; k++) if (mk[k] != null) WorldUtil.Kill(mk[k]);
+                continue;
+            }
             if (!IsBarrierPart(t, root)) continue;
             Collider col = t.GetComponent<Collider>();
             if (col != null) { col.enabled = true; continue; }

@@ -25,14 +25,22 @@ namespace EasyPeasyFirstPersonController
             }
         }
 
+        int smoothFrame = -1;
+        Vector2 smoothedLook;
+
         public Vector2 lookInput
         {
             get
             {
 #if ENABLE_INPUT_SYSTEM
                 if (Mouse.current == null) return Vector2.zero;
-                // Multiply by a small delta factor to match the feeling of the old Input.GetAxis
-                return Mouse.current.delta.ReadValue() * 0.05f; 
+                if (smoothFrame != Time.frameCount)
+                {
+                    smoothFrame = Time.frameCount;
+                    float k = 1f - Mathf.Exp(-Time.unscaledDeltaTime / 0.006f);
+                    smoothedLook = Vector2.Lerp(smoothedLook, Mouse.current.delta.ReadValue() * 0.05f, k);
+                }
+                return smoothedLook;
 #else
                 return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 #endif

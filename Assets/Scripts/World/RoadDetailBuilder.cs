@@ -27,6 +27,16 @@ public static class RoadDetailBuilder
         return go;
     }
 
+    /// <summary>Thin marking laid on a sloped surface: ends at (a, y0) and (b, y1), tilted to the slope.</summary>
+    static void SlopedStripe(WorldContext c, Vector2 a, Vector2 b, float y0, float y1, float width, Color color, string name)
+    {
+        Vector3 pa = new Vector3(a.x, y0 + 0.055f, a.y), pb = new Vector3(b.x, y1 + 0.055f, b.y);
+        Vector3 d = pb - pa;
+        if (d.sqrMagnitude < 0.0001f) return;
+        GameObject go = Box(c, name, (pa + pb) * 0.5f, new Vector3(width, 0.025f, d.magnitude), 0f, color);
+        go.transform.rotation = Quaternion.LookRotation(d.normalized, Vector3.up);
+    }
+
     static void Stripe(WorldContext c, Vector2 center, float y, float yaw, float length, float width, Color color, string name)
     { Box(c, name, new Vector3(center.x, y, center.y), new Vector3(width, 0.025f, length), yaw, color); }
 
@@ -103,8 +113,6 @@ public static class RoadDetailBuilder
         float lampCarry = 0f;
         int lampIndex = 0;
         float carry = 0f;
-        Transform railColliders = new GameObject("HighwayRailColliders").transform;
-        railColliders.SetParent(c.LayerRoot(PlacementLayer.Prop), false);
         float railOffset = half + s.shoulder * 0.65f;
         Vector2[] miter = new Vector2[pts.Count];
         for (int i = 0; i < pts.Count; i++)
@@ -133,10 +141,13 @@ public static class RoadDetailBuilder
             float cursor = dashSpacing - carry;
             while (cursor < len)
             {
-                Vector2 mid = a + dir * cursor;
-                float y = Mathf.Lerp(heights[i], heights[i + 1], cursor / len) + 0.055f;
-                Stripe(c, mid + side * (s.width * 0.16f), y, yaw, Mathf.Min(3.0f, dashSpacing * 0.43f), 0.13f, White, "Highway_LaneDash");
-                Stripe(c, mid - side * (s.width * 0.16f), y, yaw, Mathf.Min(3.0f, dashSpacing * 0.43f), 0.13f, White, "Highway_LaneDash");
+                // the dash follows the road slope: its two ends are placed on the road surface (the old flat dash poked out on elevated / sloped sections)
+                float dashHalf = Mathf.Min(3.0f, dashSpacing * 0.43f) * 0.5f;
+                float d0 = Mathf.Clamp(cursor - dashHalf, 0f, len), d1 = Mathf.Clamp(cursor + dashHalf, 0f, len);
+                Vector2 p0 = a + dir * d0, p1 = a + dir * d1;
+                float y0 = Mathf.Lerp(heights[i], heights[i + 1], d0 / len), y1 = Mathf.Lerp(heights[i], heights[i + 1], d1 / len);
+                SlopedStripe(c, p0 + side * (s.width * 0.16f), p1 + side * (s.width * 0.16f), y0, y1, 0.13f, White, "Highway_LaneMarking_Dash");
+                SlopedStripe(c, p0 - side * (s.width * 0.16f), p1 - side * (s.width * 0.16f), y0, y1, 0.13f, White, "Highway_LaneMarking_Dash");
                 dashes++; cursor += dashSpacing;
             }
             carry = (carry + len) % dashSpacing;
@@ -161,7 +172,6 @@ public static class RoadDetailBuilder
                     float ym = (ya + yb) * 0.5f;
                     float railYaw = Mathf.Atan2((qb - qa).x, (qb - qa).y) * Mathf.Rad2Deg;
                     Box(c, "HighwayBarrier_Rail", new Vector3(qm.x, ym + 0.72f, qm.y), new Vector3(0.22f, 0.18f, pieceLen + 0.14f), railYaw, new Color(0.66f, 0.68f, 0.69f));
-                    AddWallCollider(railColliders, new Vector3(qm.x, Mathf.Min(ya, yb), qm.y), 0.82f + Mathf.Abs(yb - ya), 0.22f, pieceLen + 0.14f, railYaw);
                     if (piece == 0 || piece == pieces - 1 || piece % Mathf.Max(1, Mathf.RoundToInt(2.5f / maxRailPiece)) == 0)
                         Box(c, "HighwayBarrier_Post", new Vector3(qa.x, ya + 0.45f, qa.y), new Vector3(0.12f, 0.9f, 0.12f), railYaw, new Color(0.58f, 0.6f, 0.61f));
                     if (piece % 3 == 0)
@@ -225,6 +235,8 @@ public static class RoadDetailBuilder
         float sampleSpacing = 2.6f;
         int samples = Mathf.Clamp(Mathf.CeilToInt(2f * Mathf.PI * nominalRadius / sampleSpacing), 180, 520);
         List<Vector2> path = new List<Vector2>(samples);
+        float[] radii = new float[samples];
+        Vector2[] dirs = new Vector2[samples];
         for (int i = 0; i < samples; i++)
         {
             float angle = (i / (float)samples) * Mathf.PI * 2f;
@@ -241,9 +253,26 @@ public static class RoadDetailBuilder
                 else if (seenZone && r > nominalRadius * 0.58f) break;
             }
             float boundaryRadius = Mathf.Max(nominalRadius * 0.52f, lastInside - 1.2f);
-            Vector2 point = center + dir * boundaryRadius;
-            path.Add(point);
+            radii[i] = boundaryRadius;
+            dirs[i] = dir;
         }
+        // Clean the radius ring so neighbouring samples never jump (jumps made broken / over-long fence pieces).
+        float[] med = new float[samples];
+        float[] win = new float[7];
+        for (int i = 0; i < samples; i++)
+        {
+            for (int k = 0; k < 7; k++) win[k] = radii[((i + k - 3) % samples + samples) % samples];
+            System.Array.Sort(win);
+            med[i] = win[3];
+        }
+        radii = med;
+        const float maxStep = 1.6f;
+        for (int pass = 0; pass < 4; pass++)
+        {
+            for (int i = 0; i < samples; i++) radii[i] = Mathf.Min(radii[i], radii[(i + samples - 1) % samples] + maxStep);
+            for (int i = samples - 1; i >= 0; i--) radii[i] = Mathf.Min(radii[i], radii[(i + 1) % samples] + maxStep);
+        }
+        for (int i = 0; i < samples; i++) path.Add(center + dirs[i] * radii[i]);
 
         GameObject rootObject = new GameObject(rootName);
         Transform root = rootObject.transform;
@@ -259,23 +288,25 @@ public static class RoadDetailBuilder
             Vector2 delta = b - a;
             float len = delta.magnitude;
             if (len < 0.1f) continue;
+            if (len > 4.5f) continue;                                  // safety: never emit an elongated piece
             Vector2 mid = (a + b) * 0.5f;
-            if (IsDistrictRoadOpening(c, mid)) continue;
+            if (IsDistrictRoadOpening(c, mid) || IsDistrictRoadOpening(c, a) || IsDistrictRoadOpening(c, b)
+                || IsDistrictRoadOpening(c, a + delta * 0.25f) || IsDistrictRoadOpening(c, a + delta * 0.75f)) continue;
             float ya = c.HeightAt(a.x, a.y);
             float yb = c.HeightAt(b.x, b.y);
             float ym = (ya + yb) * 0.5f;
-            float normalizedHeight = ym / Mathf.Max(1f, c.settings.maxTerrainHeight);
-            float yaw = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg;
-            BoxWithMaterial(root, rootName + "_Upper", new Vector3(mid.x, ym + 1.02f, mid.y),
-                new Vector3(0.10f, 0.12f, len + 0.10f), yaw, railMat);
-            BoxWithMaterial(root, rootName + "_Lower", new Vector3(mid.x, ym + 0.52f, mid.y),
-                new Vector3(0.10f, 0.12f, len + 0.10f), yaw, railMat);
+            Vector3 d3 = new Vector3(delta.x, yb - ya, delta.y);        // follows the slope
+            float len3 = d3.magnitude;
+            Quaternion rot = Quaternion.LookRotation(d3.normalized, Vector3.up);
+            Vector3 m3 = new Vector3(mid.x, ym, mid.y);
+            BoxRot(root, rootName + "_Upper", m3 + Vector3.up * 1.02f, new Vector3(0.10f, 0.12f, len3 + 0.10f), rot, railMat);
+            BoxRot(root, rootName + "_Lower", m3 + Vector3.up * 0.52f, new Vector3(0.10f, 0.12f, len3 + 0.10f), rot, railMat);
             if (zone == ZoneType.City)
-                BoxWithMaterial(root, rootName + "_Mid", new Vector3(mid.x, ym + 0.77f, mid.y),
-                    new Vector3(0.08f, 0.07f, len + 0.10f), yaw, railMat);
-            AddWallCollider(fenceColliders, new Vector3(mid.x, Mathf.Min(ya, yb), mid.y), 1.12f + Mathf.Abs(yb - ya), 0.14f, len + 0.1f, yaw); // fence height on purpose: the player can jump/hop over it into the forest // tall so the player cannot jump the fence
-            BoxWithMaterial(root, rootName + "_Post", new Vector3(a.x, ya + 0.55f, a.y),
-                new Vector3(0.13f, 1.12f, 0.13f), yaw, postMat);
+                BoxRot(root, rootName + "_Mid", m3 + Vector3.up * 0.77f, new Vector3(0.08f, 0.07f, len3 + 0.10f), rot, railMat);
+            float yaw = Mathf.Atan2(delta.x, delta.y) * Mathf.Rad2Deg;
+            AddWallCollider(fenceColliders, new Vector3(mid.x, Mathf.Min(ya, yb), mid.y), 1.12f + Mathf.Abs(yb - ya), 0.14f, len + 0.1f, yaw); // fence height on purpose: the player can jump/hop over it into the forest
+            BoxRot(root, rootName + "_Post", new Vector3(a.x, ya + 0.55f, a.y), new Vector3(0.13f, 1.12f, 0.13f), Quaternion.Euler(0f, yaw, 0f), postMat);
+            BoxRot(root, rootName + "_Post", new Vector3(b.x, yb + 0.55f, b.y), new Vector3(0.13f, 1.12f, 0.13f), Quaternion.Euler(0f, yaw, 0f), postMat);
         }
         CombineRailMeshes(root);
     }
@@ -283,7 +314,7 @@ public static class RoadDetailBuilder
     static bool IsDistrictRoadOpening(WorldContext c, Vector2 point)
     {
         if (c == null) return false;
-        if (c.zoneMap != null && c.zoneMap.highway != null && c.zoneMap.highway.DistanceTo(point) < 17f)
+        if (c.zoneMap != null && c.zoneMap.highway != null && c.zoneMap.highway.DistanceTo(point) < 20f)
             return true;
         if (c.roads != null)
         {
@@ -295,6 +326,24 @@ public static class RoadDetailBuilder
             }
         }
         return false;
+    }
+
+    static void BoxRot(Transform parent, string name, Vector3 pos, Vector3 scale, Quaternion rot, Material material)
+    {
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        go.name = name;
+        go.transform.SetParent(parent, false);
+        go.transform.SetPositionAndRotation(pos, rot);
+        go.transform.localScale = scale;
+        Renderer r = go.GetComponent<Renderer>();
+        if (r != null) r.sharedMaterial = material;
+        Collider col = go.GetComponent<Collider>();
+        if (col != null)
+        {
+            if (Application.isPlaying) WorldUtil.Kill(col);
+            else Object.DestroyImmediate(col);
+        }
+        go.isStatic = true;
     }
 
     static void BoxWithMaterial(Transform parent, string name, Vector3 pos, Vector3 scale, float yaw, Material material)

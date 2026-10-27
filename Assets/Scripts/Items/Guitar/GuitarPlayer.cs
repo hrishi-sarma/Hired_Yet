@@ -36,7 +36,7 @@ namespace Items
         GuitarPoseDriver driver;
         FPAnimation.FPAnimationSystem fp;
         bool scripted, wasWant, armed, warned;
-        float targetVol, findTimer, startedAt;
+        float targetVol, baseVol, findTimer, startedAt;
         readonly float[] buf = new float[256];
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -155,7 +155,8 @@ namespace Items
                 segEnd = t0 + loopLen; nextQueued = false;
             }
             else { src.loop = false; src.Play(); }
-            targetVol = bank.masterVolume * slot.volume * GameSettings.Category("effects");
+            baseVol = bank.masterVolume * slot.volume;
+            targetVol = baseVol * GameSettings.Category("effects");
             startedAt = Time.unscaledTime;
             Playing = true;
             CurrentTitle = slot.DisplayTitle;
@@ -236,6 +237,7 @@ namespace Items
         void Fade(float dt)
         {
             if (src == null) return;
+            if (Playing) targetVol = baseVol * GameSettings.Category("effects");   // ITEMS & GUITAR slider works while a song plays
             float vol = bank != null ? Mathf.Max(0.0001f, bank.masterVolume) : 1f;
             float secs = Playing ? (bank != null ? bank.fadeIn : 0.15f) : (bank != null ? bank.fadeOut : 0.35f);
             src.volume = Mathf.MoveTowards(src.volume, targetVol, dt * vol / Mathf.Max(0.01f, secs));

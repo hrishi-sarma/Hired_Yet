@@ -40,12 +40,22 @@ public class StylizedVehiclePainter : MonoBehaviour
         nextScan = 0f; // repaint new scene's vehicles right away
     }
 
+    Renderer[] pending;
+    int pendingIdx;
+
     void Update()
     {
+        if (pending != null)
+        {
+            int end = Mathf.Min(pendingIdx + 60, pending.Length);
+            for (; pendingIdx < end; pendingIdx++) Paint(pending[pendingIdx]);
+            if (pendingIdx >= pending.Length) pending = null;
+            return;
+        }
         if (Time.unscaledTime < nextScan) return;
-        nextScan = Time.unscaledTime + 2f;
-        Renderer[] all = FindObjectsByType<Renderer>(FindObjectsSortMode.None);
-        for (int i = 0; i < all.Length; i++) Paint(all[i]);
+        nextScan = Time.unscaledTime + 15f;
+        pending = FindObjectsByType<Renderer>(FindObjectsSortMode.None);
+        pendingIdx = 0;
     }
 
     public static void ApplyNight(float night)

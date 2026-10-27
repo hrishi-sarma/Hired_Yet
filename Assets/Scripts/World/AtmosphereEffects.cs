@@ -72,7 +72,7 @@ public static class ContactShadows
 public class AtmosphereEffects : MonoBehaviour
 {
     public float rayStrength = 0.22f;
-    public float aerialDensityScale = 1.9f;
+    public float aerialDensityScale = 1.2f;
     public float dawnMistBoost = 1.6f;
 
     [Header("Color Grading")]
@@ -319,7 +319,7 @@ public class AtmosphereEffects : MonoBehaviour
         if (adjustColors)
         {
             adj.active = true;
-            adj.postExposure.value = 0.05f + Mathf.Lerp(dayExposureOffset, nightExposureOffset, night);
+            adj.postExposure.value = 0.05f + Mathf.Lerp(dayExposureOffset, nightExposureOffset, night) + GameSettings.BrightnessEv;   // BRIGHTNESS slider
             adj.contrast.value = baseContrast + Mathf.Lerp(dayContrastOffset, nightContrastOffset, night);
             adj.saturation.value = baseSaturation + Mathf.Lerp(daySaturationOffset, nightSaturationOffset, night);
             adj.hueShift.value = nightHueShift * night;

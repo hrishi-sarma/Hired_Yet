@@ -109,9 +109,9 @@ public class InterviewDoor : MonoBehaviour
             try { BuildPrompt(); }
             catch (System.Exception e) { promptFailed = true; Debug.LogWarning("InterviewDoor: UI prompt failed, using IMGUI fallback. " + e.Message); }
         }
-        if (promptRoot != null) promptRoot.SetActive(showing);
+        if (promptRoot != null) promptRoot.SetActive(showing && !rejecting);
 
-        if (showing && EPressed()) Enter();
+        if (showing && !rejecting && !Booklet.Active && EPressed()) Enter();
     }
 
     bool showing;
@@ -203,6 +203,7 @@ public class InterviewDoor : MonoBehaviour
 
     void Enter()
     {
+        if (WorldTimer.TooLate) { BeginReject(); return; }
         string target = ResolveScene();
         if (target == null)
         {
@@ -217,6 +218,26 @@ public class InterviewDoor : MonoBehaviour
         Cursor.visible = true;
         SaveSystem.EnterInterview(target);          // from now on this slot resumes in the interview room
         LoadingScreen.TransitionToScene(target);   // gradual darkness, then the cartoon loading screen
+    }
+
+    bool rejecting;
+
+    // more than 5 min past the punctuality deadline: turned away at the door, no interview
+    void BeginReject()
+    {
+        if (rejecting) return;
+        rejecting = true;
+        errorText = "You're far too late. They've already gone home.";
+        errorUntil = Time.unscaledTime + 4f;
+        if (promptRoot != null) promptRoot.SetActive(false);
+        StartCoroutine(RejectRoutine());
+    }
+
+    System.Collections.IEnumerator RejectRoutine()
+    {
+        yield return new WaitForSecondsRealtime(3.5f);
+        loading = true;
+        WorldTimer.RejectAtDoor();
     }
 
     void BuildPrompt()

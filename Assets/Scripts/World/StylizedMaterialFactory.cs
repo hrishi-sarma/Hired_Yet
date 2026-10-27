@@ -358,6 +358,12 @@ public static class StylizedMaterialFactory
         return Get("surface", fallback, 0);
     }
 
+    public static void CollectByRole(string role, List<Material> into)
+    {
+        foreach (KeyValuePair<string, Material> p in materials)
+            if (p.Value != null && p.Key.StartsWith(role + "_") && !into.Contains(p.Value)) into.Add(p.Value);
+    }
+
     public static Material Get(string role, Color baseColor, int variant = 0)
     {
         string key = role + "_" + ColorKey(baseColor) + "_" + variant;
@@ -404,7 +410,7 @@ public static class StylizedMaterialFactory
         if (m.HasProperty("_OcclusionMap")) m.SetTextureScale("_OcclusionMap", tiling);
         if (m.HasProperty("_ParallaxMap")) m.SetTextureScale("_ParallaxMap", tiling);
         if (role == "house_glass") RegisterWindowGlow(m, variant, tiling);
-        else if (role == "lamp_glow") RegisterGlow(m, new Color(1f, 0.82f, 0.48f), 1f, 3.0f, null, Vector2.one);
+        else if (role == "lamp_glow") RegisterGlow(m, new Color(1f, 0.72f, 0.36f), 1f, 2.3f, null, Vector2.one);
         materials[key] = m;
         return m;
     }

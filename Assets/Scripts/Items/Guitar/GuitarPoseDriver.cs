@@ -6,7 +6,8 @@ namespace Items
     // Lives on the held guitar. The guitar is never shown in the single-hand carry pose: it is hidden until it rises
     // into the two-handed ready pose (mount published each frame by FPGuitarLayer), and lowers out of view when disturbed.
     // GuitarPlayer sets Target (1 = ready/playing pose, 0 = lowered).
-    [DefaultExecutionOrder(1100)]
+    // Must run AFTER FPAnimationSystem (order 32000): it publishes the guitar mount in its own LateUpdate, so running earlier used last frame's mount and made the guitar jitter against the camera.
+    [DefaultExecutionOrder(32001)]
     public class GuitarPoseDriver : MonoBehaviour
     {
         public float blendTime = 0.35f;

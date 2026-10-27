@@ -180,14 +180,7 @@ public class SurfaceDetailStage : WorldStage
                 batch.Quad(patchMat, new Vector3(p.x, y + 0.05f, p.y), u, new Vector2(rng.Range(2f, 4.4f), rng.Range(1.2f, 2.4f)), Vector2.one);
                 count++;
             }
-            if (rng.Chance(0.4f))
-            {
-                float side = rng.Chance(0.5f) ? 1f : -1f;
-                Vector2 p = mid + u * rng.Range(-usable * 0.5f + 2f, usable * 0.5f - 2f) + v * side * (hw - rng.Range(0.7f, 1.5f));
-                float ps = rng.Range(1.5f, 2.6f);
-                batch.Quad(puddleMat, new Vector3(p.x, y + 0.06f, p.y), Rot(u, rng.Range(0f, 360f)), new Vector2(ps, ps), Vector2.one);
-                count++;
-            }
+            // static puddle decals removed: puddles now come from WeatherPuddles (reflective, rain only)
             if (rng.Chance(0.3f))
             {
                 float side = rng.Chance(0.5f) ? 1f : -1f;

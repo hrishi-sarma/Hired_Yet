@@ -10,16 +10,16 @@ public class BuildingStage : WorldStage
         BuildingType.Create("Wide Cottage", ZoneType.Suburb, 1f, new Vector2(10f, 11f), new Vector2(6f, 8f), new Vector2(3.5f, 4.5f), new Vector3(4f, 0.5f, 1f), new Color[] { new Color(0.8f, 0.7f, 0.65f) }),
         BuildingType.Create("Office Block", ZoneType.City, 3f, new Vector2(20f, 25f), new Vector2(20f, 25f), new Vector2(25f, 60f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.6f, 0.62f, 0.66f), new Color(0.45f, 0.55f, 0.65f) }),
         BuildingType.Create("Tower", ZoneType.City, 1.5f, new Vector2(14f, 18f), new Vector2(14f, 18f), new Vector2(60f, 110f), new Vector3(3f, 3f, 3f), new Color[] { new Color(0.35f, 0.4f, 0.48f), new Color(0.4f, 0.5f, 0.6f) }),
-        BuildingType.Create("Mid Rise", ZoneType.City, 2f, new Vector2(22f, 26f), new Vector2(18f, 24f), new Vector2(12f, 24f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.7f, 0.65f, 0.6f), new Color(0.55f, 0.55f, 0.58f) }),
+        BuildingType.Create("Mid Rise", ZoneType.City, 2f, new Vector2(22f, 26f), new Vector2(18f, 24f), new Vector2(12f, 24f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.7f, 0.65f, 0.6f), new Color(0.55f, 0.55f, 0.58f), new Color(0.78f, 0.66f, 0.52f), new Color(0.6f, 0.68f, 0.62f) }),
         BuildingType.Create("Shopping Mall", ZoneType.City, 0.8f, new Vector2(34f, 44f), new Vector2(28f, 38f), new Vector2(8f, 14f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.72f, 0.74f, 0.76f), new Color(0.55f, 0.62f, 0.68f) }),
         BuildingType.Create("Parking Garage", ZoneType.City, 0.8f, new Vector2(26f, 34f), new Vector2(22f, 30f), new Vector2(5f, 10f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.48f, 0.5f, 0.53f) }),
-        BuildingType.Create("Hotel", ZoneType.City, 0.8f, new Vector2(20f, 28f), new Vector2(18f, 24f), new Vector2(24f, 42f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.68f, 0.58f, 0.48f), new Color(0.56f, 0.62f, 0.68f) }),
+        BuildingType.Create("Hotel", ZoneType.City, 0.8f, new Vector2(20f, 28f), new Vector2(18f, 24f), new Vector2(24f, 42f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.68f, 0.58f, 0.48f), new Color(0.56f, 0.62f, 0.68f), new Color(0.76f, 0.66f, 0.56f) }),
         BuildingType.Create("Hospital", ZoneType.City, 0.5f, new Vector2(28f, 36f), new Vector2(24f, 32f), new Vector2(12f, 22f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.82f, 0.84f, 0.82f) }),
         BuildingType.Create("Office Plaza", ZoneType.City, 1.2f, new Vector2(24f, 32f), new Vector2(20f, 28f), new Vector2(30f, 70f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.35f, 0.48f, 0.58f), new Color(0.62f, 0.68f, 0.72f) }),
         BuildingType.Create("Cinema", ZoneType.City, 0.7f, new Vector2(24f, 30f), new Vector2(20f, 26f), new Vector2(8f, 14f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.32f, 0.3f, 0.38f) }),
         BuildingType.Create("Transit Station", ZoneType.City, 0.7f, new Vector2(24f, 34f), new Vector2(18f, 26f), new Vector2(7f, 12f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.66f, 0.68f, 0.69f) }),
         BuildingType.Create("Warehouse", ZoneType.City, 1.1f, new Vector2(26f, 36f), new Vector2(22f, 30f), new Vector2(7f, 13f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.56f, 0.58f, 0.58f) }),
-        BuildingType.Create("Apartment Complex", ZoneType.City, 1.8f, new Vector2(20f, 28f), new Vector2(20f, 28f), new Vector2(22f, 48f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.72f, 0.68f, 0.62f), new Color(0.56f, 0.62f, 0.67f) }),
+        BuildingType.Create("Apartment Complex", ZoneType.City, 1.8f, new Vector2(20f, 28f), new Vector2(20f, 28f), new Vector2(22f, 48f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.72f, 0.68f, 0.62f), new Color(0.56f, 0.62f, 0.67f), new Color(0.74f, 0.58f, 0.48f), new Color(0.8f, 0.76f, 0.6f) }),
         BuildingType.Create("Fire Station", ZoneType.Suburb, 0.8f, new Vector2(12f, 18f), new Vector2(10f, 16f), new Vector2(5f, 9f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.72f, 0.24f, 0.18f) }),
         BuildingType.Create("Corner Shop", ZoneType.Suburb, 1.1f, new Vector2(8f, 12f), new Vector2(8f, 12f), new Vector2(4f, 7f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.8f, 0.72f, 0.48f), new Color(0.62f, 0.7f, 0.58f) }),
         BuildingType.Create("School", ZoneType.Suburb, 0.8f, new Vector2(16f, 22f), new Vector2(14f, 20f), new Vector2(6f, 12f), new Vector3(1f, 1f, 1f), new Color[] { new Color(0.78f, 0.72f, 0.58f) }),
@@ -234,7 +234,8 @@ public class BuildingStage : WorldStage
             float zc = lot.center.y + lot.facingZ * (lot.rect.height * 0.5f - t.frontSetback - d * 0.5f);
             float xc = lot.center.x + rng.Range(-1f, 1f) * (availW - w) * 0.5f;
             Vector3 size = new Vector3(w, h, d);
-            Vector3 baseCenter = new Vector3(xc, lot.baseY - buildingSink, zc);
+            float cityDrop = lot.zone == ZoneType.City ? 0.25f : 0f;           // city models were spawning ~0.25 m too high
+            Vector3 baseCenter = new Vector3(xc, lot.baseY - buildingSink - cityDrop, zc);
             OrientedBox box = OrientedBox.FromBase(baseCenter, size, lot.yaw);
             if (!c.occupancy.IsFree(box, PlacementLayer.Building, 0f))
             {

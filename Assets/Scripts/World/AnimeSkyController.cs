@@ -8,7 +8,7 @@ using UnityEditor;
 [ExecuteAlways, DisallowMultipleComponent]
 public sealed class AnimeSkyController : MonoBehaviour
 {
-    const int StyleVersion = 5;
+    const int StyleVersion = 6;
     [SerializeField, HideInInspector] int styleVersion;
 
     [Header("Cycle")]
@@ -40,20 +40,20 @@ public sealed class AnimeSkyController : MonoBehaviour
     public Light sunLight;
     public Light moonLight;
     [Min(0)] public float daySunIntensity = 1.15f;
-    [Min(0)] public float nightMoonIntensity = 0.18f;
+    [Min(0)] public float nightMoonIntensity = 0.35f;
     public Color dayLightColor = new Color(1f,0.91f,0.78f);
     public Color dawnLightColor = new Color(1f,0.55f,0.38f);
-    public Color nightLightColor = new Color(0.30f,0.42f,0.70f);
+    public Color nightLightColor = new Color(0.36f,0.48f,0.82f);
     [Range(0,2)] public float ambientDayIntensity = 1f;
-    [Range(0,1)] public float ambientNightIntensity = 0.22f;
+    [Range(0,1)] public float ambientNightIntensity = 0.45f;
 
     [Header("Fog")]
     public bool controlFog = true;
     [Min(0)] public float fogDensityDay = 0.00075f;
-    [Min(0)] public float fogDensityNight = 0.00125f;
+    [Min(0)] public float fogDensityNight = 0.00095f;
     public Color fogDay = new Color(0.60f,0.76f,0.90f);
     public Color fogDawn = new Color(0.70f,0.45f,0.42f);
-    public Color fogNight = new Color(0.035f,0.050f,0.095f);
+    public Color fogNight = new Color(0.060f,0.085f,0.160f);
 
     [Header("Palette")]
     public Color skyTopDay = new Color(0.06f,0.27f,0.70f);
@@ -133,6 +133,9 @@ public sealed class AnimeSkyController : MonoBehaviour
         skyHorizonDay=new Color(0.70f,0.88f,0.98f); skyBottomDay=new Color(0.30f,0.45f,0.62f);
         cloudLit=new Color(1f,0.985f,0.95f); cloudShadow=new Color(0.56f,0.70f,0.94f); cloudSunset=new Color(1f,0.62f,0.50f);
         fogDay=new Color(0.60f,0.76f,0.90f); fogDawn=new Color(0.70f,0.45f,0.42f);
+        // v6: night readability (moon/ambient lift, thinner and lighter night fog). Only these fields are reset.
+        nightMoonIntensity=0.35f; nightLightColor=new Color(0.36f,0.48f,0.82f);
+        ambientNightIntensity=0.45f; fogDensityNight=0.00095f; fogNight=new Color(0.060f,0.085f,0.160f);
         styleVersion = StyleVersion;
     }
 
@@ -228,7 +231,9 @@ public sealed class AnimeSkyController : MonoBehaviour
             moonLight.enabled=night>.02f;
         }
         RenderSettings.ambientMode=AmbientMode.Flat;
-        RenderSettings.ambientLight=Color.Lerp(new Color(.10f,.13f,.22f),new Color(.54f,.61f,.70f),daylight);
+        Color amb=Color.Lerp(new Color(.13f,.16f,.30f),new Color(.54f,.61f,.70f),daylight);
+        amb=Color.Lerp(amb,new Color(.40f,.38f,.62f),dawn*.30f); // cool blue-violet shadows at dawn/dusk
+        RenderSettings.ambientLight=amb;
         RenderSettings.ambientIntensity=Mathf.Lerp(ambientNightIntensity,ambientDayIntensity,daylight);
         if (controlFog)
         {

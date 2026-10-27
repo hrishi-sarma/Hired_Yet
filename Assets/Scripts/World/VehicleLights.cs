@@ -11,6 +11,7 @@ public class VehicleLights : MonoBehaviour
     [System.NonSerialized] public bool external;
     [System.NonSerialized] public bool extHead;
     [System.NonSerialized] public bool extBrake;
+    [System.NonSerialized] public bool extFlash;   // headlight flash (driven by CarLights) - brighter than normal lights
     // Indicator driven by the traffic AI: -1 left, +1 right, 0 off. extBlinkOn is the blink phase; extHazard blinks both sides.
     [System.NonSerialized] public int extSide;
     [System.NonSerialized] public bool extBlinkOn;
@@ -28,6 +29,7 @@ public class VehicleLights : MonoBehaviour
     float lastSpeed;
     bool hasMoved;
     Vector3 heading = Vector3.forward;
+    bool carChecked, drivenByCar;
     float honkStart = -10f;
     bool honking;
     bool wasHonkOn;
@@ -135,6 +137,10 @@ public class VehicleLights : MonoBehaviour
             src.brake = brake;
         }
 
+        // A traffic Car owns its horn (Car.PlayHonk / HornBank). Decide that from the hierarchy, not from CarLights' delayed
+        // setup, otherwise this component plays a second, different horn on the same car until `external` gets set.
+        if (!carChecked) { carChecked = true; drivenByCar = GetComponentInParent<Car>() != null; }
+        if (drivenByCar) external = true;
         bool wantHonk = false;
         if (!external && hasMoved && speed < 1.2f)
         {
@@ -166,7 +172,7 @@ public class VehicleLights : MonoBehaviour
 
         float night = external ? (extHead ? 1f : 0f) : StylizedVehiclePainter.CurrentNight;
         Color headColor = new Color(1f, 0.92f, 0.72f) * (external || hasMoved || speed > 0.5f ? 3.2f * night : 0f);
-        if (honkOn) headColor = new Color(1f, 0.95f, 0.8f) * 4.2f;
+        if (honkOn || (external && extFlash)) headColor = new Color(1f, 0.95f, 0.8f) * 4.2f;
         Color tailColor = new Color(1f, 0.08f, 0.05f) * (external || hasMoved || speed > 0.5f ? 0.9f * night : 0f);
         if (brake) tailColor = new Color(1f, 0.1f, 0.06f) * 3.8f;
 
@@ -219,6 +225,6 @@ public class VehicleLights : MonoBehaviour
             audioSource.playOnAwake = false;
         }
         audioSource.pitch = 0.95f + (GetInstanceID() % 10) * 0.012f;
-        audioSource.PlayOneShot(BuildHorn(), honkVolume);
+        audioSource.PlayOneShot(BuildHorn(), honkVolume * AudioDirector.Volume("cars"));   // VEHICLES slider
     }
 }

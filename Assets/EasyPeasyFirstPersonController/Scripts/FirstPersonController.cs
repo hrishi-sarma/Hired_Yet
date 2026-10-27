@@ -167,7 +167,7 @@ namespace EasyPeasyFirstPersonController
             originalCamY = Mathf.Lerp(originalCamY, targetCameraY, Time.deltaTime * 8f);
 
             float targetBobOffset = 0f;
-            if (useHeadBob && characterController.velocity.magnitude > 0.1f && isGrounded)
+            if (useHeadBob && new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude > 0.1f && isGrounded)
             {
                 bobTimer += Time.deltaTime * currentBobSpeed;
                 targetBobOffset = Mathf.Sin(bobTimer) * currentBobIntensity;

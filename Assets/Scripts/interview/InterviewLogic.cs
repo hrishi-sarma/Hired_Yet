@@ -1207,8 +1207,10 @@ public static class FirstImpression
     public static float Compute(float baseSuspicion, List<string> lines)
     {
         float s = baseSuspicion;
-        lines.Add(ArrivedLate ? "Punctuality : LATE (+6)" : "Punctuality : ON TIME");
-        if (ArrivedLate) s += 6f;
+        int latePts = WorldTimer.Active ? WorldTimer.LatePenalty : 6;
+        string pun = WorldTimer.Active && !ArrivedLate && WorldTimer.IsEarly ? "Punctuality : EARLY" : "Punctuality : ON TIME";
+        lines.Add(ArrivedLate ? "Punctuality : LATE (+" + latePts + ")" : pun);
+        if (ArrivedLate) s += latePts;
         lines.Add(CarriedResume ? "Paperwork   : RESUME CARRIED" : "Paperwork   : NO RESUME (+8)");
         if (!CarriedResume) s += 8f;
         if (WorldEventPoints != 0)

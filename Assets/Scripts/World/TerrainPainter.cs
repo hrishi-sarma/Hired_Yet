@@ -13,8 +13,8 @@ public class TerrainPainterSettings
     [Range(0.01f, 0.5f)] public float snowBlend = 0.12f;
     public float snowMaxSlope = 54f;
     [Tooltip("Rock becomes more common above this normalized height, even on gentler mountain slopes.")]
-    [Range(0f, 1f)] public float mountainRockHeight = 0.38f;
-    [Range(0.01f, 0.5f)] public float mountainRockBlend = 0.18f;
+    [Range(0f, 1f)] public float mountainRockHeight = 0.44f;
+    [Range(0.01f, 0.5f)] public float mountainRockBlend = 0.20f;
     public float patchFrequency = 0.02f;
 }
 

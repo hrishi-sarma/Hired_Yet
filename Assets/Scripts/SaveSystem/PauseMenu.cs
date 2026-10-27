@@ -39,10 +39,25 @@ public class PauseMenu : MonoBehaviour
 
     Font F { get { return SaveSystem.UiFont != null ? SaveSystem.UiFont : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf"); } }
 
+    IEnumerator WarmAll()
+    {
+        yield return StartCoroutine(PauseBoard.Warm());
+        yield return new WaitForSecondsRealtime(4f);
+        while (open || busy) yield return null;
+        PauseBoard.Prewarm = true;
+        var pb = new GameObject("Pause Board Warm").AddComponent<PauseBoard>();
+        pb.Init(F, null, null);
+        PauseBoard.Prewarm = false;
+        float guard = 0f;
+        while (pb != null && !pb.Ready && guard < 3f) { guard += Time.unscaledDeltaTime; yield return null; }
+        for (int i = 0; i < 3; i++) yield return null;
+        if (pb != null) WorldUtil.Kill(pb.gameObject);
+    }
+
     void Update()
     {
         UpdateSaving();
-        if (!warmed && SaveSystem.InGame) { warmed = true; StartCoroutine(PauseBoard.Warm()); }   // pre-build menu textures a few per frame
+        if (!warmed && SaveSystem.InGame) { warmed = true; StartCoroutine(WarmAll()); }   // pre-build menu textures a few per frame
         // the world keeps running (player, cursor, timers too) until the backdrop has fully covered it, then everything freezes at once:
         // no visible stall while the menu elements are still coming in. The fallback timer uses a capped dt so a hitch can't trigger it early.
         if (open && !worldFrozen && !busy && board != null)
@@ -60,7 +75,7 @@ public class PauseMenu : MonoBehaviour
 
     void LateUpdate() { wasInvOpen = Items.InventoryUI.IsOpen; }
 
-    static bool CanPause() { return SaveSystem.InGame && !WorldLauncher.Launching && !DevConsole.Active; }
+    static bool CanPause() { return SaveSystem.InGame && !WorldLauncher.Launching && !DevConsole.Active && !PhotoMode.Active && !Booklet.Active; }
 
     // ------------------------------------------------------------ pause / resume
     void Pause()

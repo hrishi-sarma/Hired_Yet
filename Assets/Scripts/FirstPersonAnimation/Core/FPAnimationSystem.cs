@@ -6,7 +6,7 @@ namespace FPAnimation
     /// Owns the rig. Lives on its own root object (NOT under the player) so InterviewUI.FreezePlayer() cannot freeze it.
     /// Stage 1: rest pose + idle breathing only. Layers plug in later at the "pose" step.
     /// </summary>
-    [DefaultExecutionOrder(100)]
+    [DefaultExecutionOrder(32000)]
     public class FPAnimationSystem : MonoBehaviour
     {
         public FPAnimSettings settings = new FPAnimSettings();
@@ -171,7 +171,7 @@ namespace FPAnimation
             }
 
             // Guitar playing pose: both wrists pinned to the guitar (blend 0 = no effect)
-            guitar.Apply(st, origin, frame, ref p);
+            guitar.Apply(st, origin, frame, cam.position - camBase, ref p);
 
             FPArmKinematics.Smooth(ref sR, ref vR, p.R, st.handSpringTime, dt);
             FPArmKinematics.Smooth(ref sL, ref vL, p.L, st.handSpringTime, dt);

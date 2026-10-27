@@ -27,6 +27,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
     AnimalRig rig;
     System.Random rng;
     ZoneType homeZone;
+    public bool IsCityPet { get; private set; }
     Motion motion = Motion.Idle;
     Vector3 moveDirection;
     float motionTimer;
@@ -54,14 +55,15 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
     float lastPlayerDistance;
     static readonly RaycastHit[] groundHits = new RaycastHit[16];
 
-    public void Initialize(AnimalWorldController controller, AnimalSpecies species, NpcDirector npcDirector, AnimalAISettings cfg, int seed, HomeSpot homeSpot = null)
+    public void Initialize(AnimalWorldController controller, AnimalSpecies species, NpcDirector npcDirector, AnimalAISettings cfg, int seed, HomeSpot homeSpot = null, bool cityPet = false)
     {
+        IsCityPet = cityPet;
         owner = controller;
         Species = species;
         director = npcDirector;
         settings = cfg;
         rng = new System.Random(seed);
-        homeZone = (species == AnimalSpecies.Cat || species == AnimalSpecies.Dog) ? ZoneType.Suburb : ZoneType.Forest;
+        homeZone = (species == AnimalSpecies.Cat || species == AnimalSpecies.Dog) ? (cityPet ? ZoneType.City : ZoneType.Suburb) : ZoneType.Forest;
         animalHeight = species == AnimalSpecies.Deer ? 1.25f : (species == AnimalSpecies.Rabbit ? 0.6f : (species == AnimalSpecies.Dog ? 0.8f : 0.6f));
         collisionRadius = species == AnimalSpecies.Deer ? 0.38f : (species == AnimalSpecies.Rabbit ? 0.24f : (species == AnimalSpecies.Dog ? 0.3f : 0.26f));
 
@@ -80,7 +82,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
         bodyRigidbody = gameObject.AddComponent<Rigidbody>();
         bodyRigidbody.isKinematic = true;
         bodyRigidbody.useGravity = false;
-        bodyRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        bodyRigidbody.interpolation = RigidbodyInterpolation.None;
         bodyRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         rig = AnimalModelFactory.Build(species, transform, rng);
@@ -184,6 +186,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
         else if (UpdateSocial(dt, playerDistance)) { /* playing / chasing / following another animal */ }
         else if (UpdateReactions(playerDistance, fromPlayer, dt)) { /* alert / curious / startled by the player */ }
         else if (Species == AnimalSpecies.Dog && UpdateEscort(playerDistance, fromPlayer, dt)) { /* trotting along with the player */ }
+        else if (UpdateRain(dt, playerDistance, fromPlayer)) { /* sheltering from / drying off after rain */ }
         else if (UpdateRoutine(dt, playerDistance, fromPlayer)) { /* heading home / sunbathing / drinking / resting */ }
         else if (Species == AnimalSpecies.Cat) UpdateCatBehavior(playerDistance, fromPlayer, dt);
         else if (Species == AnimalSpecies.Dog) UpdateDogBehavior(playerDistance, fromPlayer, dt);
@@ -385,8 +388,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
                 if (TryGround(next.x, next.z, out y))
                 {
                     next.y = y;
-                    if (bodyRigidbody != null) bodyRigidbody.MovePosition(next);
-                    else transform.position = next;
+                    transform.position = next;
                 }
                 else
                 {
@@ -446,12 +448,14 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
     // ---------------------------------------------------------------------------------
     sealed class Pose
     {
+        public float twist; public bool snap;
         public float pitch, roll, hop, neck, nyaw, head, hyaw, hroll, tyaw, tpitch, tcurl, earL, earR, tongue, eye = 1f;
         public bool tuft;
         public float[] leg = new float[4];
         public bool[] plant = new bool[4];
         public void Clear()
         {
+            twist = 0f; snap = false;
             pitch = roll = hop = neck = nyaw = head = hyaw = hroll = tyaw = tpitch = tcurl = earL = earR = tongue = 0f;
             eye = 1f; tuft = false;
             for (int i = 0; i < 4; i++) { leg[i] = 0f; plant[i] = false; }
@@ -590,7 +594,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
     bool AvailableForSocial()
     {
         return !sleeping && socialRole == SocialRole.None && Time.time >= socialCooldownUntil && Time.time >= patUntil
-            && Time.time >= wakeUntil && !hidden && errand == Errand.None && !escorting && motion != Motion.Flee && motion != Motion.Pat && motion != Motion.Sleep;
+            && Time.time >= wakeUntil && !hidden && errand == Errand.None && !RainBusy && !escorting && motion != Motion.Flee && motion != Motion.Pat && motion != Motion.Sleep;
     }
 
     // Returns true while this animal is steering itself for a social activity.
@@ -1041,6 +1045,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
             return;
         }
 
+        if (motion == Motion.Idle && BuildShake(t, time)) return;
         if (motion == Motion.Pat)   // happy sit: head lifted into the hand, eyes closed, big wag
         {
             for (int i = 0; i < 4; i++) t.plant[i] = true;
@@ -1106,6 +1111,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
             return;
         }
 
+        if (motion == Motion.Idle && BuildShake(t, time)) return;
         t.earL = Flick(time, 0.9f);
         t.earR = Flick(time, 2.6f);
         for (int i = 0; i < 4; i++) t.plant[i] = true;
@@ -1189,8 +1195,9 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
         c.hop = t.hop;
         c.neck = Ease(c.neck, t.neck, k);
         c.head = Ease(c.head, t.head, k);
-        c.hyaw = Ease(c.hyaw, t.hyaw, k);
-        c.hroll = Ease(c.hroll, t.hroll, k);
+        c.twist = t.twist;
+        c.hyaw = t.snap ? t.hyaw : Ease(c.hyaw, t.hyaw, k);
+        c.hroll = t.snap ? t.hroll : Ease(c.hroll, t.hroll, k);
         c.nyaw = Ease(c.nyaw, t.nyaw, k);
         c.tyaw = Ease(c.tyaw, t.tyaw, k);
         c.tpitch = Ease(c.tpitch, t.tpitch, k);
@@ -1223,7 +1230,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
     {
         Pose c = cur;
         rig.visual.localPosition = Vector3.zero;
-        rig.visual.localRotation = Quaternion.Euler(c.pitch, 0f, c.roll);
+        rig.visual.localRotation = Quaternion.Euler(c.pitch, c.twist, c.roll);
 
         for (int i = 0; i < 4; i++)
         {
@@ -1272,6 +1279,7 @@ public sealed partial class AnimalAgent : MonoBehaviour, IInteractable
         Vector3 next = p + direction.normalized * distance;
         if (director.Ctx.zoneMap == null || director.Ctx.zoneMap.ZoneAt(next.x, next.z) != homeZone) return false;
         if (homeZone == ZoneType.Forest && director.Ctx.NormalAt(next.x, next.z).y < 0.88f) return false;
+        if (IsCityPet && director.Ctx.occupancy != null && !director.Ctx.occupancy.IsFree(new OrientedBox(new Vector2(next.x, next.z), new Vector2(collisionRadius, collisionRadius), 0f, next.y - 0.5f, next.y + animalHeight), PlacementLayer.Prop, 0f)) return false;
         if (owner != null && owner.IsCrowded(this, next, collisionRadius * 1.9f)) return false;
         Vector3 origin = p + Vector3.up * Mathf.Max(0.35f, animalHeight * 0.45f);
         RaycastHit hit;

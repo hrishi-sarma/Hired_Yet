@@ -440,6 +440,14 @@ public static class PropBuilder
                 Cyl(ladle, "Shaft", 0f, 0f, 0f, 0.035f, 0.9f, "#6F4F2F", false); Ball(ladle, "Bowl", 0f, -0.45f, 0f, 0.12f, 0.06f, 0.12f, "#404040", false);
                 Hold(ladle, true, 0f, 0.02f, 0.14f, 20f, 0f, 0f);
                 break;
+            case "campfire_rain":
+                for (int i = 0; i < 8; i++) { float a = i * 45f * Mathf.Deg2Rad; Ball(b, "Stone", Mathf.Sin(a) * 0.6f, 0.1f, Mathf.Cos(a) * 0.6f, 0.26f, 0.2f, 0.26f, "#6F6F68", false); }
+                for (int i = 0; i < 3; i++) Cyl(b, "Log", 0f, 0.1f, 0f, 0.12f, 0.9f, "#3F2A18", false, 90f, i * 60f);
+                Ball(b, "Fire", 0f, 0.2f, 0f, 0.4f, 0.3f, 0.4f, "#FF8020", false);
+                break;
+            case "elderly_crosswalk":
+                Cyl(b, "Cane", 0.5f, 0.4f, 0f, 0.04f, 0.8f, "#6F4F2F", false);
+                break;
             case "beekeeper":
                 for (int k = 0; k < 2; k++) for (int i = 0; i < 3; i++) Box(b, "Hive", -0.5f + k * 1.0f, 0.15f + i * 0.3f, 0f, 0.5f, 0.28f, 0.45f, i % 2 == 0 ? "#F0E0A0" : "#E0C860");
                 Box(b, "Roof", -0.5f, 0.95f, 0f, 0.56f, 0.06f, 0.5f, "#808078", false);

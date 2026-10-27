@@ -31,6 +31,8 @@ public class AnimalAISettings
     [Min(0)] public int rabbitCount = 8;
     [Min(0)] public int catCount = 6;
     [Min(0)] public int dogCount = 5;
+    [Min(0)] public int cityCatCount = 3;
+    [Min(0)] public int cityDogCount = 2;
     [Min(1)] public int spawnAttemptsPerTick = 18;
     [Min(0.5f)] public float spawnInterval = 1.25f;
     [Min(5f)] public float spawnRadiusMin = 14f;

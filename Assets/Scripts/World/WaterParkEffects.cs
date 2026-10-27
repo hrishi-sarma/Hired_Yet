@@ -89,9 +89,7 @@ public sealed class WaterParkEffects : MonoBehaviour
         {
             // fountain: jet up from the orb, arcs falling into the bowl, mist
             fx.position = b.center + Vector3.up * b.extents.y * 0.6f;
-            Jet(fx, "Jet", 6.0f, 9f, 130f, 0.08f, 0.11f, 1.1f);
-            Jet(fx, "Arcs", 3.4f, 32f, 70f, 0.06f, 0.09f, 1.0f);
-            Mist(fx, "Mist", 0.9f);
+            FountainWater.BuildFor(r);        // full particle fountain (jet, arcs, overflow, splashes, ripples, mist)
             return;
         }
 

@@ -44,7 +44,7 @@ public sealed class DayNightLightGuard : MonoBehaviour
     {
         if (Time.unscaledTime >= nextScan)
         {
-            nextScan = Time.unscaledTime + 1f;
+            nextScan = Time.unscaledTime + 3f;
             anime = FindFirstObjectByType<AnimeSkyController>();
             hdri = FindFirstObjectByType<StylizedHDRISkyController>();
             dirs = FindObjectsByType<Light>(FindObjectsSortMode.None);

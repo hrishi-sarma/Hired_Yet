@@ -67,6 +67,7 @@ public class BuildShaderSetup : IPreprocessBuildWithReport
         "UI/Default",
         // project shaders (found by name wherever they live in Assets)
         "Stylized/InvertedHullOutline",
+        "Hidden/RGOutlineHull",
         "Custom/AnimeProceduralSkybox",
         "Skybox/Stylized HDRI Moving Clouds",
     };
@@ -117,10 +118,41 @@ public class BuildShaderSetup : IPreprocessBuildWithReport
         var missing = new List<string>();
         int added = EnsureAlwaysIncluded(missing);
         int made = EnsureKeepers(missing);
+        int box = EnsureBoxProjection();
         string msg = "BuildShaderSetup: " + added + " shader(s) added to Always Included Shaders, " + made + " variant-keeper material(s) created."
             + (missing.Count > 0 ? "\nNot found in this project (skipped, usually harmless): " + string.Join(", ", missing) : "");
-        if (added > 0 || made > 0 || dialog) Debug.Log(msg);
+        if (box > 0) msg += "\nURP asset(s): Reflection Probe Box Projection / Blending switched on (used by the runtime rain-puddle probe): " + box;
+        if (added > 0 || made > 0 || box > 0 || dialog) Debug.Log(msg);
         if (dialog) EditorUtility.DisplayDialog("Prepare Shaders For Build", msg, "OK");
+    }
+
+    // Rain puddles create a Custom ReflectionProbe with box projection at runtime. URP strips the box-projection shader variants at build
+    // time when the asset has the option off, so the asset flags are switched on here (runtime code alone only works in the Editor).
+    static int EnsureBoxProjection()
+    {
+        int changed = 0;
+        var seen = new HashSet<Object>();
+        var list = new List<Object>();
+        list.Add(UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline);
+        list.Add(QualitySettings.renderPipeline);
+        for (int q = 0; q < QualitySettings.names.Length; q++) list.Add(QualitySettings.GetRenderPipelineAssetAt(q));
+        for (int i = 0; i < list.Count; i++)
+        {
+            Object a = list[i];
+            if (a == null || !seen.Add(a)) continue;
+            var so = new SerializedObject(a);
+            bool dirty = false;
+            SerializedProperty box = so.FindProperty("m_ReflectionProbeBoxProjection");
+            SerializedProperty blend = so.FindProperty("m_ReflectionProbeBlending");
+            if (box != null && !box.boolValue) { box.boolValue = true; dirty = true; }
+            if (blend != null && !blend.boolValue) { blend.boolValue = true; dirty = true; }
+            if (!dirty) continue;
+            so.ApplyModifiedPropertiesWithoutUndo();
+            EditorUtility.SetDirty(a);
+            changed++;
+        }
+        if (changed > 0) AssetDatabase.SaveAssets();
+        return changed;
     }
 
     static int EnsureAlwaysIncluded(List<string> missing)

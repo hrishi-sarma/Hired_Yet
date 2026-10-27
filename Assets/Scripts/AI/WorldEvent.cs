@@ -27,6 +27,9 @@ public class WorldEvent : MonoBehaviour, IInteractable
     bool inPos;
     float offTime;
     bool delivery, walkOn, feed, standalone;
+    bool rainOnly, cross, shown = true;      // campfire_rain only exists while it rains; elderly_crosswalk walks the old lady over the road
+    Vector3 crossHome, crossDest;
+    public bool alwaysOn;                    // dev-spawned events ignore the weather
     int couchSign = 1;
     DeliveryHandler dh;
     GameObject marker;
@@ -191,8 +194,21 @@ public class WorldEvent : MonoBehaviour, IInteractable
         get
         {
             InteractionSystem sys = InteractionSystem.Instance;
-            return phase == Phase.Idle && attemptsLeft > 0 && sys != null && !sys.Suppressed;
+            return phase == Phase.Idle && attemptsLeft > 0 && sys != null && !sys.Suppressed && !RainHidden;
         }
+    }
+
+    bool RainHidden
+    {
+        get { return rainOnly && !alwaysOn && !WeatherController.Raining && (phase == Phase.Idle || (phase == Phase.Done && !success)); }
+    }
+
+    /// <summary>elderly_crosswalk: where she waits (current NPC spot) and the far-side spot she is led to.</summary>
+    public void SetCross(Vector3 dest)
+    {
+        crossDest = dest;
+        crossHome = npc != null ? npc.position : transform.position;
+        if (restoredDone && success && npc != null) npc.position = dest;
     }
 
     public void Init(WorldEventConfig c, int attempts)
@@ -202,6 +218,8 @@ public class WorldEvent : MonoBehaviour, IInteractable
         feed = c.id == "pigeon_king";
         standalone = c.id == "lost_backpack" || c.id == "lost_wallet";   // no NPC: loose objects that spawn on their own
         delivery = c.id == "grandma_groceries" || c.id == "delivery_boxes" || c.id == "fallen_log";
+        rainOnly = c.id == "campfire_rain";
+        cross = c.id == "elderly_crosswalk";
         attemptsLeft = attempts;
         evKey = c.id + "@" + Mathf.RoundToInt(transform.position.x) + "," + Mathf.RoundToInt(transform.position.z);
         string savedState = SaveSystem.EventState(evKey);
@@ -300,7 +318,7 @@ public class WorldEvent : MonoBehaviour, IInteractable
         switch (cfg.id)
         {
             case "lawnmower": case "thirsty_plants": case "sprinkler_valve": case "injured_deer":
-            case "mushroom_sorting": case "lost_backpack": case "lost_dog": case "hiker_ankle": return true;
+            case "mushroom_sorting": case "lost_backpack": case "lost_dog": case "hiker_ankle": case "campfire_rain": return true;
         }
         return false;
     }
@@ -416,6 +434,13 @@ public class WorldEvent : MonoBehaviour, IInteractable
         if (d == null || d.Player == null || cfg == null) return;
         Vector3 diff = d.Player.position - transform.position;
         diff.y = 0f;
+        if (rainOnly && RainHidden == shown)
+        {
+            shown = !shown;
+            if (npc != null) npc.gameObject.SetActive(shown);
+            Transform rp = transform.Find("Prop");
+            if (rp != null) rp.gameObject.SetActive(shown);
+        }
         if (npc != null && phase != Phase.Done && (npcState == 0 || npcState == 3) && diff.sqrMagnitude < 400f && diff.sqrMagnitude > 0.01f)
         {
             Quaternion look = Quaternion.LookRotation(diff);
@@ -423,6 +448,7 @@ public class WorldEvent : MonoBehaviour, IInteractable
         }
         inPos = PositionOk(d.Player);
         MoveProp(Time.deltaTime);
+        if (cross) UpdateNpcMove(d.Player, Time.deltaTime);
         if (delivery) { UpdateNpcMove(d.Player, Time.deltaTime); UpdateArrow(d); if (phase == Phase.Task && dh != null && cfg.id != "fallen_log") FPEvents.EventCarry = dh.Carrying ? 1f : 0f; }
         switch (phase)
         {
@@ -445,6 +471,7 @@ public class WorldEvent : MonoBehaviour, IInteractable
     void BeginTask()
     {
         phase = Phase.Task;
+        if (cross) { StartCross(NpcDirector.Instance); return; }
         dh = delivery ? new DeliveryHandler() : null;
         if (delivery && cfg.id != "fallen_log") FPEvents.EventCarry = 0f;   // groceries and boxes: crouch to pick them up
         handler = delivery ? (IEventHandler)dh : EventUi.Create(cfg.handler);
@@ -478,8 +505,47 @@ public class WorldEvent : MonoBehaviour, IInteractable
         if (!feed) PlayerAnim(EventStage.During, DuringAnim(), DuringAnim() == PlayerEventAnim.PatDog ? 5f : 0f);   // feeding: the flock's own throw animation runs instead
     }
 
+    // ---------- elderly_crosswalk ----------
+    void StartCross(NpcDirector d)
+    {
+        handler = new CrossHandler { player = d.Player, npc = npc, dest = crossDest };
+        handler.Begin(cfg, d.Rng);
+        npcState = 1;
+        RemoveMarker();
+        marker = new GameObject("DropMarker");
+        Color c = new Color(1f, 0.85f, 0.25f);
+        MakeMarkerPart(marker.transform, PrimitiveType.Cylinder, new Vector3(4.4f, 0.015f, 4.4f), new Vector3(0f, 0.04f, 0f), c);
+        MakeMarkerPart(marker.transform, PrimitiveType.Cylinder, new Vector3(0.16f, 2.5f, 0.16f), new Vector3(0f, 2.5f, 0f), c);
+        marker.transform.position = crossDest;
+    }
+
+    void UpdateCross()
+    {
+        NpcDirector d = NpcDirector.Instance;
+        InteractionSystem isys = InteractionSystem.Instance;
+        CrossHandler ch = (CrossHandler)handler;
+        EventStatus st = isys == null || isys.Suppressed ? EventStatus.Fail : ch.Tick(Time.deltaTime, Keyboard.current);
+        Show(ch.Text);
+        Camera cam = Camera.main;
+        Vector3 f = cam != null ? cam.transform.forward : Vector3.forward, to = crossDest - d.Player.position;
+        f.y = 0f; to.y = 0f;
+        if (f.sqrMagnitude > 1e-4f && to.sqrMagnitude > 1e-4f)
+            EventHud.Set("delivery", true, Vector3.SignedAngle(f, to, Vector3.up), Mathf.CeilToInt(ch.Dist()) + " m", new Color(1f, 0.85f, 0.25f));
+        if (st == EventStatus.Success) Finish(true);
+        else if (st == EventStatus.Fail) Finish(false);
+    }
+
+    // she walks on to the far side after a success, or shuffles back to where she waited after a fail
+    void CrossEnd(bool ok)
+    {
+        RemoveMarker();
+        npcGoal = ok ? crossDest : crossHome;
+        npcState = 2;
+    }
+
     void UpdateTask(Vector3 diff)
     {
+        if (cross) { UpdateCross(); return; }
         if (delivery && dh != null && dh.Carrying)
         {
             // walking with the items: no range or facing checks, the player only has to keep E held until the drop-off
@@ -553,9 +619,10 @@ public class WorldEvent : MonoBehaviour, IInteractable
         Show(text);
         phase = Phase.Result;
         phaseEnd = Time.time + 3.5f;
-        if (npcCtl != null && !delivery) npcCtl.Play(EventStage.After);
+        if (npcCtl != null && !delivery && !cross) npcCtl.Play(EventStage.After);
         if (audioCtl != null) audioCtl.Play(cfg.soundAfter, false);
         if (delivery) PlaceItems(ok, d);
+        if (cross) CrossEnd(ok);
         EventPanelUI.Hide();
         StopPlayerAnim();
         PlayerAnim(EventStage.After, cfg.playerAfter, 1.2f);
@@ -567,7 +634,7 @@ public class WorldEvent : MonoBehaviour, IInteractable
         Clear();
         phase = (success || attemptsLeft <= 0) ? Phase.Done : Phase.Idle;
         if (phase == Phase.Done) RecordDone();
-        if (npcCtl != null && (!delivery || npcState == 0)) npcCtl.PlayIdle();
+        if (npcCtl != null && ((!delivery && !cross) || npcState == 0)) npcCtl.PlayIdle();
     }
 
     // ---------- delivery (groceries, boxes) ----------
@@ -723,7 +790,7 @@ public class WorldEvent : MonoBehaviour, IInteractable
             Vector3 f = pl.forward;
             f.y = 0f;
             f = f.sqrMagnitude > 0.001f ? f.normalized : Vector3.forward;
-            npcGoal = cfg.id == "fallen_log" ? pl.position - f * 1.2f - pl.right * 1.4f : pl.position - f * 1.7f + pl.right * 0.9f;
+            npcGoal = cross ? pl.position - f * 0.9f + pl.right * 0.8f : (cfg.id == "fallen_log" ? pl.position - f * 1.2f - pl.right * 1.4f : pl.position - f * 1.7f + pl.right * 0.9f);
         }
         Vector3 p = npc.position, to = npcGoal - p;
         to.y = 0f;

@@ -16,6 +16,7 @@ namespace FPAnimation
         static void Install()
         {
             if (instance != null) return;
+            UnityEngine.InputSystem.InputSystem.settings.updateMode = UnityEngine.InputSystem.InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
             var go = new GameObject("FP Anim Bootstrap");
             DontDestroyOnLoad(go);
             instance = go.AddComponent<FPAnimBootstrap>();

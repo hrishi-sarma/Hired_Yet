@@ -40,7 +40,7 @@ namespace FPAnimation
 
         float phase, period = 0.5f, lastOnset, avg, vibe, prevS, chordClock, fretZ = 0.44f, fretVel, curlL = 0.5f, curlVel;
 
-        public void Apply(FPAnimSettings s, Vector3 origin, Quaternion frame, ref FPPose p)
+        public void Apply(FPAnimSettings s, Vector3 origin, Quaternion frame, Vector3 camDelta, ref FPPose p)
         {
             float b = FPEvents.GuitarBlend;
             HandW = 0f;
@@ -76,11 +76,11 @@ namespace FPAnimation
             fretZ = Mathf.SmoothDamp(fretZ, zT, ref fretVel, 0.15f, Mathf.Infinity, dt);
             curlL = Mathf.SmoothDamp(curlL, cT, ref curlVel, 0.1f, Mathf.Infinity, dt);
 
-            // ---- guitar mount (lowered while blend is small, tiny breathing sway) ----
+            // ---- guitar mount (lowered while blend is small). No breathing sway, and the camera bob/dip offset (camDelta) is cancelled so the guitar stays still ----
             Vector3 n3 = g.neckDir.normalized, f = g.faceDir;
             f -= n3 * Vector3.Dot(n3, f);
             Quaternion mr = Quaternion.LookRotation(n3, f.normalized);
-            Vector3 mount = g.mountPos + g.lowerOffset * (1f - e) + new Vector3(0f, Mathf.Sin(Time.time * 1.7f) * 0.003f * e, 0f);
+            Vector3 mount = g.mountPos + g.lowerOffset * (1f - e) - Quaternion.Inverse(frame) * camDelta * e;
             FPEvents.GuitarMountPos = origin + frame * mount;
             FPEvents.GuitarMountRot = frame * mr;
 

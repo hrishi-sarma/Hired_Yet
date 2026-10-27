@@ -156,6 +156,7 @@ public class NpcDirector : MonoBehaviour
         }
         if (PlayerCamera == null || !PlayerCamera.isActiveAndEnabled) PlayerCamera = FindCamera();
         VisibilityTester.BeginFrame(settings.linecastsPerFrame);
+        if (Pool != null) Pool.Maintain();
         if (Pedestrians != null) Pedestrians.Tick(Time.deltaTime);
         TrafficSignals.Refresh();
         if (Traffic != null) Traffic.Tick(Time.deltaTime);
